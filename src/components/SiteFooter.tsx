@@ -40,6 +40,8 @@ export function SiteFooter() {
                 ["/about", "About"],
                 ["/services", "Services"],
                 ["/industries", "Industries"],
+                ["/case-studies", "Case Studies"],
+                ["/resources", "Resources"],
                 ["/gallery", "Gallery"],
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
