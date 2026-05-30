@@ -31,7 +31,7 @@ export async function captureLead(payload: LeadPayload) {
       requirement: payload.requirement?.slice(0, 2000) || null,
       source: payload.source,
       source_detail: payload.source_detail?.slice(0, 200) || null,
-      meta: payload.meta ?? {},
+      meta: (payload.meta ?? {}) as never,
     });
     if (error) console.warn("[leadCapture]", error.message);
   } catch (e) {
