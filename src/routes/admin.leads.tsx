@@ -67,7 +67,7 @@ function LeadsPage() {
   }, [leads, query, statusFilter]);
 
   const updateLead = async (id: string, patch: Partial<Lead>) => {
-    const { error } = await supabase.from("leads").update(patch).eq("id", id);
+    const { error } = await supabase.from("leads").update(patch as never).eq("id", id);
     if (error) return toast.error(error.message);
     setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
     if (selected?.id === id) setSelected((s) => (s ? { ...s, ...patch } : s));
