@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { PageHero } from "@/components/PageHero";
+import { captureLead } from "@/lib/leadCapture";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -39,6 +40,15 @@ function Contact() {
     const requirement = String(fd.get("requirement") || "").trim().slice(0, 1000);
 
     if (!name || !phone || !requirement) return;
+
+    // Save lead to CRM (fire-and-forget; never blocks UX)
+    void captureLead({
+      name,
+      phone,
+      requirement,
+      source: "contact_form",
+      source_detail: "/contact",
+    });
 
     // 1) Structured intake message to VECTREV
     const intake = [

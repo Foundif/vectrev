@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download, FileText, ShieldCheck, CheckCircle2, Lock } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import { captureLead } from "@/lib/leadCapture";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
@@ -141,6 +142,17 @@ function LeadGate({ resource, onClose }: { resource: Resource; onClose: () => vo
     const email = String(fd.get("email") || "").trim().slice(0, 120);
     const company = String(fd.get("company") || "").trim().slice(0, 120);
     const role = String(fd.get("role") || "").trim().slice(0, 80);
+
+    void captureLead({
+      name,
+      phone,
+      email,
+      company,
+      requirement: `Downloaded resource: ${resource.title}`,
+      source: "resource_download",
+      source_detail: resource.id,
+      meta: { role, file: resource.fileLabel },
+    });
 
     // Trigger download
     const a = document.createElement("a");
