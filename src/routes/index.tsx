@@ -69,17 +69,35 @@ const fadeUp: Variants = {
   },
 };
 
-const clients = [
-  "NLC Tamilnadu Power (NTPL)",
-  "Kusam-Meco",
-  "Shri Enterprises",
-  "Gabon · Grid Supply",
-  "Cameroon · HV Substations",
-  "Nigeria · Field Testing",
-  "Cement & Process Plants",
-  "Textile Mills",
-  "EPC Contractors",
-  "Substation Projects",
+import kusamMeco from "@/assets/clients/kusam-meco.png.asset.json";
+import petron from "@/assets/clients/petron.png.asset.json";
+import siemens from "@/assets/clients/siemens.png.asset.json";
+import lt from "@/assets/clients/lt.png.asset.json";
+import bhel from "@/assets/clients/bhel.png.asset.json";
+import areva from "@/assets/clients/areva.png.asset.json";
+
+const partnerLogos = [
+  { name: "Kusam-Meco", src: kusamMeco.url, note: "Authorized Distributor · TN" },
+  { name: "Siemens", src: siemens.url, note: "EPC / Integration Partner" },
+  { name: "Larsen & Toubro", src: lt.url, note: "EPC / Integration Partner" },
+  { name: "BHEL", src: bhel.url, note: "EPC / Integration Partner" },
+  { name: "Areva", src: areva.url, note: "EPC / Integration Partner" },
+  { name: "Petron Engineering", src: petron.url, note: "EPC / Integration Partner" },
+];
+
+const consultantPartners = [
+  "ABB",
+  "Get Power Ltd.",
+  "Engineers India Ltd. (EIL)",
+  "Tata Consultancy Services",
+  "Fichtner-India",
+  "Avant-Garde",
+  "Development Consultants",
+  "DEWA · UAE",
+  "SECO · Saudi Arabia",
+  "Kahramaa · Qatar",
+  "NCC · Saudi Arabia",
+  "ORC · Oman",
 ];
 
 const heroSlides = [
