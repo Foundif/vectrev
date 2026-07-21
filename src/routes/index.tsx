@@ -109,17 +109,17 @@ function Hero() {
             execution — for operations that can't afford downtime.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-7 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 bg-foreground text-background font-semibold px-7 py-4 rounded-full hover:bg-accent transition group"
+              className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
             >
               Get a Quote
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 border border-foreground/20 px-7 py-4 rounded-full text-foreground hover:bg-secondary transition"
+              className="inline-flex items-center justify-center gap-2 border border-foreground/20 px-5 sm:px-7 py-3.5 sm:py-4 rounded-full text-foreground hover:bg-secondary transition text-sm sm:text-base"
             >
               Our Services
             </Link>
@@ -205,9 +205,9 @@ function ClientsMarquee() {
 }
 
 const problems = [
-  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss." },
-  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment." },
-  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework." },
+  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation },
+  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest },
+  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables },
 ];
 
 function Problem() {
@@ -235,13 +235,23 @@ function Problem() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: i * 0.08 }}
-              className="rounded-2xl border border-border bg-card p-6 shadow-card-premium"
+              className="group rounded-2xl border border-border bg-card overflow-hidden shadow-card-premium hover:-translate-y-1 transition"
             >
-              <div className="h-11 w-11 rounded-xl bg-accent/10 flex items-center justify-center">
-                <p.icon className="h-5 w-5 text-accent-brand" />
+              <div className="relative h-36 overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute top-3 left-3 h-10 w-10 rounded-xl bg-white/95 flex items-center justify-center">
+                  <p.icon className="h-5 w-5 text-accent-brand" />
+                </div>
               </div>
-              <h3 className="mt-5 font-bold text-foreground">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+              <div className="p-5">
+                <h3 className="font-bold text-foreground">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -334,12 +344,13 @@ function FeaturedServices() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: i * 0.06 }}
+              className="h-full"
             >
               <Link
                 to="/services"
-                className="group block rounded-3xl overflow-hidden bg-card border border-border shadow-card-premium hover:-translate-y-1 transition"
+                className="group flex h-full flex-col rounded-3xl overflow-hidden bg-card border border-border shadow-card-premium hover:-translate-y-1 transition"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-56 overflow-hidden flex-shrink-0">
                   <img src={s.image} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
                   <div className="absolute top-4 left-4 h-10 w-10 rounded-full bg-white/95 flex items-center justify-center">
@@ -349,7 +360,7 @@ function FeaturedServices() {
                     <ArrowUpRight className="h-4 w-4 text-foreground group-hover:rotate-45 transition" />
                   </div>
                 </div>
-                <div className="p-5">
+                <div className="p-5 flex-1 flex flex-col">
                   <h3 className="font-bold text-foreground">{s.title}</h3>
                   <p className="mt-1.5 text-sm text-muted-foreground">{s.desc}</p>
                 </div>

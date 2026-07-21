@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Phone, MessageCircle, Mail } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, MessageCircle, Mail, ChevronDown, Image as ImageIcon, FileText } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
 const links = [
@@ -24,9 +24,16 @@ const desktopLinks = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const moreLinks = [
+  { to: "/resources", label: "Resources", desc: "PDF checklists & guides", icon: FileText },
+  { to: "/gallery", label: "Gallery", desc: "Field & project photos", icon: ImageIcon },
+] as const;
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -37,6 +44,15 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => setMoreOpen(false), [pathname]);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
+    };
+    window.addEventListener("mousedown", onClick);
+    return () => window.removeEventListener("mousedown", onClick);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -81,9 +97,53 @@ export function SiteHeader() {
                 {l.label}
               </Link>
             ))}
+            <div ref={moreRef} className="relative">
+              <button
+                onClick={() => setMoreOpen((v) => !v)}
+                className={`px-3.5 py-2 rounded-full text-sm font-medium transition inline-flex items-center gap-1 ${
+                  moreOpen || pathname === "/resources" || pathname === "/gallery"
+                    ? "text-accent-brand bg-accent/10"
+                    : "text-foreground/75 hover:text-foreground hover:bg-secondary"
+                }`}
+              >
+                More
+                <ChevronDown className={`h-3.5 w-3.5 transition ${moreOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {moreOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[320px] bg-card border border-border rounded-2xl shadow-card-premium p-2 z-50"
+                  >
+                    {moreLinks.map((m) => (
+                      <Link
+                        key={m.to}
+                        to={m.to}
+                        onClick={() => setMoreOpen(false)}
+                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-secondary transition group"
+                      >
+                        <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <m.icon className="h-5 w-5 text-accent-brand" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-semibold text-foreground text-sm flex items-center gap-1.5">
+                            {m.label}
+                            <ArrowUpRight className="h-3.5 w-3.5 opacity-40 group-hover:opacity-100 group-hover:rotate-45 transition" />
+                          </div>
+                          <div className="text-xs text-muted-foreground mt-0.5">{m.desc}</div>
+                        </div>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
-          <div className="flex items-center gap-2 mr-14">
+          <div className="flex items-center gap-2 lg:mr-0 mr-14">
             <a
               href="tel:+918879608428"
               className="hidden xl:inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition px-3"
@@ -106,7 +166,7 @@ export function SiteHeader() {
       <button
         onClick={() => setOpen(true)}
         aria-label="Open menu"
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 h-12 w-12 rounded-full bg-foreground text-background flex items-center justify-center shadow-soft hover:bg-accent transition"
+        className="lg:hidden fixed top-5 right-5 sm:top-7 sm:right-7 z-[60] h-11 w-11 rounded-full bg-foreground text-background flex items-center justify-center shadow-soft hover:bg-accent transition"
       >
         <Menu className="h-5 w-5" />
       </button>
