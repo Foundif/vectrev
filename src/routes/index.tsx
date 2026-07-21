@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
           telephone: "+91-88796-08428",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "61E/2D, Olepettai",
+            streetAddress: "61E/2D, TMC Colony, Polepettai",
             addressLocality: "Thoothukudi",
             addressRegion: "Tamil Nadu",
             postalCode: "628002",

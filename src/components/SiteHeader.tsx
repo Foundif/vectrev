@@ -265,7 +265,7 @@ export function SiteHeader() {
 
               <div className="px-6 mt-10 pt-6 border-t border-white/10 text-xs text-white/60 space-y-2 pb-10">
                 <div className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> info@vectrev.in</div>
-                <div>61E/2D, Olepettai · Thoothukudi 628002</div>
+                <div>61E/2D, TMC Colony, Polepettai · Thoothukudi 628002</div>
                 <div className="text-white/40">CIN U71200TN2025PTC180169</div>
               </div>
             </motion.aside>
