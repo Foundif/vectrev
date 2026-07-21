@@ -104,26 +104,28 @@ function Contact() {
       <section className="px-5 sm:px-8 pb-20">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-4">
-            <a href="tel:+918879608428" className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group">
+            <a href="tel:+916379608428" className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group">
               <div className="flex items-start gap-4">
                 <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center">
                   <Phone className="h-5 w-5 text-accent-brand" />
                 </div>
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Phone</div>
-                  <div className="mt-1 text-lg font-bold text-foreground">+91 88796 08428</div>
+                  <div className="mt-1 text-lg font-bold text-foreground leading-tight">+91 63796 08428</div>
+                  <div className="text-sm text-muted-foreground">+91 96004 49144</div>
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:rotate-45 transition" />
               </div>
             </a>
-            <a href="mailto:contact@vectrev.in" className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group">
+            <a href="mailto:info@vectrev.in" className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group">
               <div className="flex items-start gap-4">
                 <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center">
                   <Mail className="h-5 w-5 text-accent-brand" />
                 </div>
                 <div className="flex-1">
                   <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Email</div>
-                  <div className="mt-1 text-lg font-bold text-foreground">contact@vectrev.in</div>
+                  <div className="mt-1 text-lg font-bold text-foreground leading-tight">info@vectrev.in</div>
+                  <div className="text-sm text-muted-foreground break-all">revengineers.tuty@gmail.com</div>
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:rotate-45 transition" />
               </div>
@@ -133,17 +135,49 @@ function Contact() {
                 <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center">
                   <MapPin className="h-5 w-5 text-accent-brand" />
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Office</div>
+                <div className="flex-1">
+                  <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Operating Office</div>
                   <div className="mt-1 text-foreground font-semibold leading-snug">
-                    61E/2D, Olepettai<br />
+                    61E/2D, TMC Colony, Polepettai<br />
+                    (Nanthagopalapuram)<br />
                     Thoothukudi — 628002<br />
                     Tamil Nadu, India
                   </div>
+                  <div className="mt-3 text-xs text-muted-foreground">
+                    <span className="font-semibold text-foreground">Hours:</span> Mon – Sat · 9:00 AM – 6:00 PM · Sun closed
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 rounded-xl overflow-hidden border border-border">
+                <iframe
+                  title="VECTREV Engineering Solutions — Thoothukudi office location"
+                  src="https://www.google.com/maps?q=VECTREV+Engineering+Solutions+TMC+Colony+Polepettai+Thoothukudi+628002&output=embed"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=VECTREV+Engineering+Solutions+TMC+Colony+Polepettai+Thoothukudi+628002"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-brand hover:underline"
+              >
+                Open in Google Maps <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+              <div className="mt-5 pt-4 border-t border-border">
+                <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Registered Office</div>
+                <div className="mt-1.5 text-sm text-foreground/80 leading-snug">
+                  111L/2, State Bank Colony, Polenaickenpettai,<br />
+                  Tuticorin, Thoothukkudi — 628002, Tamil Nadu
                 </div>
               </div>
             </div>
           </div>
+
 
           <form
             onSubmit={handleSubmit}
