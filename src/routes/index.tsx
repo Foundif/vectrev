@@ -82,10 +82,26 @@ const clients = [
   "Substation Projects",
 ];
 
+const heroSlides = [
+  { src: controlPanel, label: "Control & Protection · LV / MV", badge: "70 kV AC / 80 kV DC", tag: "HV Testing" },
+  { src: substation, label: "Substation Commissioning", badge: "33 / 11 kV", tag: "Switchyard" },
+  { src: technician, label: "On-Site Engineering", badge: "24×7", tag: "Field Team" },
+  { src: testKit, label: "Omicron & Megger Kits", badge: "CPC 100 · SFRA", tag: "Diagnostics" },
+  { src: relay, label: "Protection Relays", badge: "ABB · Siemens", tag: "Numerical" },
+  { src: cables, label: "HV Cable Terminations", badge: "Up to 33 kV", tag: "Jointing" },
+  { src: hvTest, label: "High-Potential Testing", badge: "AC / DC Hi-Pot", tag: "Insulation" },
+];
+
 function Hero() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % heroSlides.length), 3800);
+    return () => clearInterval(t);
+  }, []);
+  const slide = heroSlides[idx];
   return (
-    <section className="relative px-5 sm:px-8 pt-6 md:pt-10 pb-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <section className="relative px-5 sm:px-8 pt-8 md:pt-14 pb-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         <motion.div
           initial="hidden"
           animate="show"
@@ -102,19 +118,19 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-5 text-[2.2rem] leading-[1.05] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground"
+            className="mt-6 text-[2.4rem] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
           >
-            Engineering <br />
-            <span className="text-accent-brand">Reliability</span> Into <br />
-            Every Plant.
+            <span className="block">Engineering</span>
+            <span className="block"><span className="text-accent-brand">Reliability</span> Into</span>
+            <span className="block">Every Plant.</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
+          <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
             Industrial T&C, engineering consultancy and safety-compliant
             execution — for operations that can't afford downtime.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-7 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
@@ -130,7 +146,7 @@ function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-8 grid grid-cols-3 max-w-lg gap-6">
+          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
             {[
               ["50+", "Sites Commissioned"],
               ["5.0", "Client Rating"],
@@ -151,16 +167,54 @@ function Hero() {
           className="lg:col-span-5 relative"
         >
           <div className="relative rounded-[2rem] overflow-hidden bg-dark aspect-[4/3] lg:aspect-[4/5] max-h-[62vh] lg:max-h-none shadow-soft">
-            <img src={controlPanel} alt="Industrial control panel" className="absolute inset-0 w-full h-full object-cover" />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={idx}
+                src={slide.src}
+                alt={slide.label}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.7 }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
             <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-white/95 text-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
               <Gauge className="h-3.5 w-3.5 text-accent-brand" />
-              Control & Protection · LV / MV
+              {slide.label}
             </div>
             <div className="absolute top-5 right-5 bg-gradient-accent text-accent-foreground rounded-2xl px-4 py-3 text-right shadow-accent">
-              <div className="text-[10px] uppercase tracking-widest opacity-80">HV Testing</div>
-              <div className="text-lg font-extrabold leading-none mt-1">70 kV AC</div>
-              <div className="text-[10px] opacity-80">80 kV DC</div>
+              <div className="text-[10px] uppercase tracking-widest opacity-80">{slide.tag}</div>
+              <div className="text-base font-extrabold leading-tight mt-1">{slide.badge}</div>
+            </div>
+
+            {/* Carousel controls */}
+            <div className="absolute inset-x-0 bottom-4 flex items-center justify-between px-4">
+              <button
+                onClick={() => setIdx((i) => (i - 1 + heroSlides.length) % heroSlides.length)}
+                aria-label="Previous slide"
+                className="h-9 w-9 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {heroSlides.map((_, i) => (
+                  <button
+                    key={i}
+                    aria-label={`Slide ${i + 1}`}
+                    onClick={() => setIdx(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === idx ? "w-6 bg-white" : "w-1.5 bg-white/50"}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setIdx((i) => (i + 1) % heroSlides.length)}
+                aria-label="Next slide"
+                className="h-9 w-9 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center transition"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
 
