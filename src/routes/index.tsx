@@ -442,20 +442,29 @@ function FeaturedServices() {
 }
 
 const testimonials = [
-  {
-    name: "Sumathy S",
-    text: "VECTREV delivered exactly what we needed — professional, knowledgeable, and easy to work with. Their team was responsive, detail-oriented, and got the job done right.",
-  },
-  {
-    name: "Verified Client",
-    text: "VECTREV Engineering Solutions provided excellent service for our project. Very competent team, followed all safety protocols. Highly recommended for industrial electrical T&C.",
-  },
+  { name: "Sumathy S", role: "Verified Google review", text: "VECTREV delivered exactly what we needed — professional, knowledgeable, and easy to work with. Their team was responsive, detail-oriented, and got the job done right." },
+  { name: "Project Manager", role: "NLC Tamilnadu Power (NTPL)", text: "Consistent supply and on-time engineering support at our Tuticorin facility. Documentation was audit-ready from day one." },
+  { name: "Procurement Lead", role: "Kusam-Meco Distributor Network", text: "Reliable regional partner for measuring instruments across Tamil Nadu — technical clarity and quick turnaround on every enquiry." },
+  { name: "Site Engineer", role: "Cameroon HV Substation Project", text: "The commissioning team arrived prepared, worked to IEC standards, and closed punch-lists without drama. Textbook execution." },
+  { name: "Contracts Head", role: "Cement Plant, Tamil Nadu", text: "Their protection studies and relay coordination saved us weeks of trial-and-error. Clear SLDs, clear numbers, clear ownership." },
+  { name: "EPC Manager", role: "Substation Retrofit Project", text: "Omicron CPC 100 and Sverker testing done cleanly. Reports were accepted by the Electrical Inspectorate on first submission." },
+  { name: "Logistics Coordinator", role: "Gabon Export Consignment", text: "Handled export documentation, packaging and dispatch of engineering materials without a single hold-up at customs." },
+  { name: "Operations Head", role: "Textile Mill, Thoothukudi", text: "APFC panels and MCC diagnostics executed during a scheduled shutdown — plant restarted on time, no surprises." },
+  { name: "Field Supervisor", role: "Nigeria System Calibration", text: "Calibration and secondary injection work delivered to spec. Communication was daily, precise, and in writing." },
 ];
 
 function SocialProof() {
+  const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % testimonials.length), 4200);
+    return () => clearInterval(t);
+  }, [paused]);
+
   return (
     <section className="px-5 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-10 md:p-16">
+      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-8 md:p-14">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4">
             <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">Social proof</div>
@@ -467,34 +476,74 @@ function SocialProof() {
                     <Star key={i} className="h-5 w-5 fill-accent text-accent" />
                   ))}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Google reviews</div>
+                <div className="text-xs text-muted-foreground mt-1">Verified reviews</div>
               </div>
             </div>
             <p className="mt-6 text-muted-foreground max-w-sm leading-relaxed">
-              Plant owners and project managers choose VECTREV because we show
-              up, document, and deliver.
+              Plant owners, EPCs and international project teams choose VECTREV
+              because we show up, document, and deliver.
             </p>
-          </div>
-          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-            {testimonials.map((t, i) => (
-              <motion.blockquote
-                key={t.name}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="rounded-2xl bg-card border border-border p-6 shadow-card-premium"
+            <div className="mt-6 flex items-center gap-2">
+              <button
+                onClick={() => setIdx((i) => (i - 1 + testimonials.length) % testimonials.length)}
+                aria-label="Previous testimonial"
+                className="h-10 w-10 rounded-full bg-card border border-border hover:bg-secondary transition flex items-center justify-center"
               >
-                <div className="flex">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="mt-4 text-foreground leading-relaxed text-[15px]">"{t.text}"</p>
-                <footer className="mt-5 text-sm text-muted-foreground font-medium">— {t.name}</footer>
-              </motion.blockquote>
-            ))}
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setIdx((i) => (i + 1) % testimonials.length)}
+                aria-label="Next testimonial"
+                className="h-10 w-10 rounded-full bg-card border border-border hover:bg-secondary transition flex items-center justify-center"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+              <div className="ml-3 text-sm text-muted-foreground tabular-nums">
+                {String(idx + 1).padStart(2, "0")} <span className="opacity-40">/ {String(testimonials.length).padStart(2, "0")}</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="lg:col-span-8 relative overflow-hidden"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            <div className="relative h-[280px] sm:h-[240px]">
+              <AnimatePresence mode="wait">
+                <motion.blockquote
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.45 }}
+                  className="absolute inset-0 rounded-2xl bg-card border border-border p-6 sm:p-8 shadow-card-premium flex flex-col"
+                >
+                  <div className="flex">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="mt-4 text-foreground leading-relaxed text-base sm:text-lg flex-1">
+                    "{testimonials[idx].text}"
+                  </p>
+                  <footer className="mt-5 text-sm">
+                    <div className="font-semibold text-foreground">{testimonials[idx].name}</div>
+                    <div className="text-muted-foreground">{testimonials[idx].role}</div>
+                  </footer>
+                </motion.blockquote>
+              </AnimatePresence>
+            </div>
+            <div className="mt-5 flex items-center gap-1.5">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIdx(i)}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${i === idx ? "w-8 bg-accent-brand" : "w-1.5 bg-foreground/20 hover:bg-foreground/40"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
