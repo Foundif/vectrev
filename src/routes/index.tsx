@@ -79,8 +79,8 @@ const clients = [
 
 function Hero() {
   return (
-    <section className="relative px-5 sm:px-8 pt-10 md:pt-16">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section className="relative px-5 sm:px-8 pt-6 md:pt-10 pb-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <motion.div
           initial="hidden"
           animate="show"
@@ -97,20 +97,19 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-[2.6rem] leading-[1.02] sm:text-5xl lg:text-[5.5rem] font-extrabold tracking-tight text-foreground"
+            className="mt-5 text-[2.2rem] leading-[1.05] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground"
           >
             Engineering <br />
             <span className="text-accent-brand">Reliability</span> Into <br />
             Every Plant.
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-7 text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Industrial electrical Testing & Commissioning, engineering
-            consultancy and safety-compliant execution — built for operations
-            that can't afford downtime, defects or delays.
+          <motion.p variants={fadeUp} className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
+            Industrial T&C, engineering consultancy and safety-compliant
+            execution — for operations that can't afford downtime.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center gap-3">
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 bg-foreground text-background font-semibold px-7 py-4 rounded-full hover:bg-accent transition group"
@@ -126,14 +125,14 @@ function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-12 grid grid-cols-3 max-w-lg gap-6">
+          <motion.div variants={fadeUp} className="mt-8 grid grid-cols-3 max-w-lg gap-6">
             {[
               ["50+", "Sites Commissioned"],
               ["5.0", "Client Rating"],
               ["24h", "Response Time"],
             ].map(([n, l]) => (
               <div key={l}>
-                <div className="text-3xl sm:text-4xl font-extrabold text-foreground">{n}</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-foreground">{n}</div>
                 <div className="text-xs text-muted-foreground mt-1">{l}</div>
               </div>
             ))}
@@ -146,7 +145,7 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-5 relative"
         >
-          <div className="relative rounded-[2rem] overflow-hidden bg-dark aspect-[4/5] shadow-soft">
+          <div className="relative rounded-[2rem] overflow-hidden bg-dark aspect-[4/3] lg:aspect-[4/5] max-h-[62vh] lg:max-h-none shadow-soft">
             <img src={controlPanel} alt="Industrial control panel" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
             <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-white/95 text-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
