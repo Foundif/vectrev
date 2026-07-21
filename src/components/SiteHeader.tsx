@@ -56,8 +56,10 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    document.body.classList.toggle("menu-open", open);
+    return () => { document.body.style.overflow = ""; document.body.classList.remove("menu-open"); };
   }, [open]);
+
 
   return (
     <>
@@ -75,13 +77,14 @@ export function SiteHeader() {
           <Link to="/" className="flex items-center gap-3 pl-1 pr-3 rounded-full">
             <img src={logo} alt="VECTREV" className="h-12 w-12 sm:h-14 sm:w-14" />
             <div className="leading-none">
-              <div className="font-extrabold tracking-tight text-foreground text-lg sm:text-xl">
-                vec<span className="text-accent-brand">trev</span>
+              <div className="font-extrabold tracking-tight text-accent-brand text-lg sm:text-xl">
+                vectrev
               </div>
               <div className="text-[9px] mt-1.5 uppercase tracking-[0.22em] text-muted-foreground hidden sm:block">
                 Engineering Solutions
               </div>
             </div>
+
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1 mx-4">
@@ -143,7 +146,7 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          <div className="flex items-center gap-2 lg:mr-0 mr-14">
+          <div className="flex items-center gap-2">
             <a
               href="tel:+916379608428"
               className="hidden xl:inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition px-3"
@@ -158,18 +161,20 @@ export function SiteHeader() {
               Get Quote
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition-transform" />
             </Link>
+            {!open && (
+              <button
+                onClick={() => setOpen(true)}
+                aria-label="Open menu"
+                className="lg:hidden h-10 w-10 rounded-full bg-foreground text-background flex items-center justify-center shadow-soft hover:bg-accent transition"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+            )}
           </div>
         </motion.div>
       </header>
 
-      {/* Corner hamburger — always top-right, opens sidebar drawer */}
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Open menu"
-        className="lg:hidden fixed top-5 right-5 sm:top-7 sm:right-7 z-[60] h-11 w-11 rounded-full bg-foreground text-background flex items-center justify-center shadow-soft hover:bg-accent transition"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
+
 
       <AnimatePresence>
         {open && (
