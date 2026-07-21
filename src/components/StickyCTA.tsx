@@ -16,7 +16,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export function StickyCTA() {
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col gap-3 items-end [body.menu-open_&]:hidden">
+    <div className="sticky-cta fixed bottom-5 right-5 z-40 flex flex-col gap-3 items-end">
       <a
         href="https://wa.me/916379608428?text=Hi%20VECTREV%2C%20I%27d%20like%20a%20consultation"
         target="_blank"
