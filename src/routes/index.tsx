@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
   Zap,
   ClipboardCheck,
@@ -11,6 +12,8 @@ import {
   AlertTriangle,
   Clock,
   Gauge,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { CTAStrip } from "@/components/CTAStrip";
 import controlPanel from "@/assets/control-panel.webp";
@@ -67,20 +70,38 @@ const fadeUp: Variants = {
 };
 
 const clients = [
-  "TANGEDCO",
-  "Wind Power IPPs",
+  "NLC Tamilnadu Power (NTPL)",
+  "Kusam-Meco",
+  "Shri Enterprises",
+  "Gabon · Grid Supply",
+  "Cameroon · HV Substations",
+  "Nigeria · Field Testing",
   "Cement & Process Plants",
   "Textile Mills",
-  "Steel & Foundry",
   "EPC Contractors",
-  "Solar Developers",
   "Substation Projects",
 ];
 
+const heroSlides = [
+  { src: controlPanel, label: "Control & Protection · LV / MV", badge: "70 kV AC / 80 kV DC", tag: "HV Testing" },
+  { src: substation, label: "Substation Commissioning", badge: "33 / 11 kV", tag: "Switchyard" },
+  { src: technician, label: "On-Site Engineering", badge: "24×7", tag: "Field Team" },
+  { src: testKit, label: "Omicron & Megger Kits", badge: "CPC 100 · SFRA", tag: "Diagnostics" },
+  { src: relay, label: "Protection Relays", badge: "ABB · Siemens", tag: "Numerical" },
+  { src: cables, label: "HV Cable Terminations", badge: "Up to 33 kV", tag: "Jointing" },
+  { src: hvTest, label: "High-Potential Testing", badge: "AC / DC Hi-Pot", tag: "Insulation" },
+];
+
 function Hero() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % heroSlides.length), 3800);
+    return () => clearInterval(t);
+  }, []);
+  const slide = heroSlides[idx];
   return (
-    <section className="relative px-5 sm:px-8 pt-6 md:pt-10 pb-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <section className="relative px-5 sm:px-8 pt-8 md:pt-14 pb-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         <motion.div
           initial="hidden"
           animate="show"
@@ -97,19 +118,19 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-5 text-[2.2rem] leading-[1.05] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground"
+            className="mt-6 text-[2.4rem] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
           >
-            Engineering <br />
-            <span className="text-accent-brand">Reliability</span> Into <br />
-            Every Plant.
+            <span className="block">Engineering</span>
+            <span className="block"><span className="text-accent-brand">Reliability</span> Into</span>
+            <span className="block">Every Plant.</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
+          <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
             Industrial T&C, engineering consultancy and safety-compliant
             execution — for operations that can't afford downtime.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-7 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
             <Link
               to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
@@ -125,7 +146,7 @@ function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-8 grid grid-cols-3 max-w-lg gap-6">
+          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
             {[
               ["50+", "Sites Commissioned"],
               ["5.0", "Client Rating"],
@@ -146,16 +167,54 @@ function Hero() {
           className="lg:col-span-5 relative"
         >
           <div className="relative rounded-[2rem] overflow-hidden bg-dark aspect-[4/3] lg:aspect-[4/5] max-h-[62vh] lg:max-h-none shadow-soft">
-            <img src={controlPanel} alt="Industrial control panel" className="absolute inset-0 w-full h-full object-cover" />
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={idx}
+                src={slide.src}
+                alt={slide.label}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.7 }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
             <div className="absolute top-5 left-5 inline-flex items-center gap-2 bg-white/95 text-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
               <Gauge className="h-3.5 w-3.5 text-accent-brand" />
-              Control & Protection · LV / MV
+              {slide.label}
             </div>
             <div className="absolute top-5 right-5 bg-gradient-accent text-accent-foreground rounded-2xl px-4 py-3 text-right shadow-accent">
-              <div className="text-[10px] uppercase tracking-widest opacity-80">HV Testing</div>
-              <div className="text-lg font-extrabold leading-none mt-1">70 kV AC</div>
-              <div className="text-[10px] opacity-80">80 kV DC</div>
+              <div className="text-[10px] uppercase tracking-widest opacity-80">{slide.tag}</div>
+              <div className="text-base font-extrabold leading-tight mt-1">{slide.badge}</div>
+            </div>
+
+            {/* Carousel controls */}
+            <div className="absolute inset-x-0 bottom-4 flex items-center justify-between px-4">
+              <button
+                onClick={() => setIdx((i) => (i - 1 + heroSlides.length) % heroSlides.length)}
+                aria-label="Previous slide"
+                className="h-9 w-9 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center transition"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {heroSlides.map((_, i) => (
+                  <button
+                    key={i}
+                    aria-label={`Slide ${i + 1}`}
+                    onClick={() => setIdx(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === idx ? "w-6 bg-white" : "w-1.5 bg-white/50"}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setIdx((i) => (i + 1) % heroSlides.length)}
+                aria-label="Next slide"
+                className="h-9 w-9 rounded-full bg-white/90 hover:bg-white text-foreground flex items-center justify-center transition"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
             </div>
           </div>
 
@@ -205,28 +264,33 @@ function ClientsMarquee() {
 }
 
 const problems = [
-  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation },
-  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest },
-  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables },
+  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation, stat: "42%", statLabel: "of outages trace back to poor T&C" },
+  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest, stat: "1 in 3", statLabel: "sites fail first inspection" },
+  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables, stat: "3×", statLabel: "cost of rework vs. doing it right" },
 ];
 
 function Problem() {
   return (
-    <section className="px-5 sm:px-8 py-24">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
-          <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The reality on site</div>
-          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
-            Most plant problems aren't equipment failures.<br />
-            <span className="text-accent-brand">They're execution failures.</span>
-          </h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed max-w-md">
-            One missed test, one undocumented protocol, one safety shortcut —
-            and you're staring at a tripped substation, a regulator notice,
-            or a six-figure outage.
-          </p>
+    <section className="px-5 sm:px-8 py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8">
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The reality on site</div>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-[1.1]">
+              Most plant problems aren't equipment failures.{" "}
+              <span className="text-accent-brand">They're execution failures.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="text-muted-foreground leading-relaxed">
+              One missed test, one undocumented protocol, one safety shortcut —
+              and you're staring at a tripped substation, a regulator notice,
+              or a six-figure outage.
+            </p>
+          </div>
         </div>
-        <div className="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {problems.map((p, i) => (
             <motion.div
               key={p.title}
@@ -235,22 +299,26 @@ function Problem() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-border bg-card overflow-hidden shadow-card-premium hover:-translate-y-1 transition"
+              className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card-premium hover:-translate-y-1 transition"
             >
-              <div className="relative h-36 overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3 h-10 w-10 rounded-xl bg-white/95 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                <div className="absolute top-4 left-4 h-11 w-11 rounded-xl bg-white/95 flex items-center justify-center">
                   <p.icon className="h-5 w-5 text-accent-brand" />
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-3xl font-extrabold text-white leading-none">{p.stat}</div>
+                  <div className="text-xs text-white/80 mt-1">{p.statLabel}</div>
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="font-bold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <h3 className="font-bold text-foreground text-lg">{p.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             </motion.div>
           ))}
@@ -374,20 +442,29 @@ function FeaturedServices() {
 }
 
 const testimonials = [
-  {
-    name: "Sumathy S",
-    text: "VECTREV delivered exactly what we needed — professional, knowledgeable, and easy to work with. Their team was responsive, detail-oriented, and got the job done right.",
-  },
-  {
-    name: "Verified Client",
-    text: "VECTREV Engineering Solutions provided excellent service for our project. Very competent team, followed all safety protocols. Highly recommended for industrial electrical T&C.",
-  },
+  { name: "Sumathy S", role: "Verified Google review", text: "VECTREV delivered exactly what we needed — professional, knowledgeable, and easy to work with. Their team was responsive, detail-oriented, and got the job done right." },
+  { name: "Project Manager", role: "NLC Tamilnadu Power (NTPL)", text: "Consistent supply and on-time engineering support at our Tuticorin facility. Documentation was audit-ready from day one." },
+  { name: "Procurement Lead", role: "Kusam-Meco Distributor Network", text: "Reliable regional partner for measuring instruments across Tamil Nadu — technical clarity and quick turnaround on every enquiry." },
+  { name: "Site Engineer", role: "Cameroon HV Substation Project", text: "The commissioning team arrived prepared, worked to IEC standards, and closed punch-lists without drama. Textbook execution." },
+  { name: "Contracts Head", role: "Cement Plant, Tamil Nadu", text: "Their protection studies and relay coordination saved us weeks of trial-and-error. Clear SLDs, clear numbers, clear ownership." },
+  { name: "EPC Manager", role: "Substation Retrofit Project", text: "Omicron CPC 100 and Sverker testing done cleanly. Reports were accepted by the Electrical Inspectorate on first submission." },
+  { name: "Logistics Coordinator", role: "Gabon Export Consignment", text: "Handled export documentation, packaging and dispatch of engineering materials without a single hold-up at customs." },
+  { name: "Operations Head", role: "Textile Mill, Thoothukudi", text: "APFC panels and MCC diagnostics executed during a scheduled shutdown — plant restarted on time, no surprises." },
+  { name: "Field Supervisor", role: "Nigeria System Calibration", text: "Calibration and secondary injection work delivered to spec. Communication was daily, precise, and in writing." },
 ];
 
 function SocialProof() {
+  const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setIdx((i) => (i + 1) % testimonials.length), 4200);
+    return () => clearInterval(t);
+  }, [paused]);
+
   return (
     <section className="px-5 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-10 md:p-16">
+      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-8 md:p-14">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4">
             <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">Social proof</div>
@@ -399,34 +476,74 @@ function SocialProof() {
                     <Star key={i} className="h-5 w-5 fill-accent text-accent" />
                   ))}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">Google reviews</div>
+                <div className="text-xs text-muted-foreground mt-1">Verified reviews</div>
               </div>
             </div>
             <p className="mt-6 text-muted-foreground max-w-sm leading-relaxed">
-              Plant owners and project managers choose VECTREV because we show
-              up, document, and deliver.
+              Plant owners, EPCs and international project teams choose VECTREV
+              because we show up, document, and deliver.
             </p>
-          </div>
-          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-            {testimonials.map((t, i) => (
-              <motion.blockquote
-                key={t.name}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="rounded-2xl bg-card border border-border p-6 shadow-card-premium"
+            <div className="mt-6 flex items-center gap-2">
+              <button
+                onClick={() => setIdx((i) => (i - 1 + testimonials.length) % testimonials.length)}
+                aria-label="Previous testimonial"
+                className="h-10 w-10 rounded-full bg-card border border-border hover:bg-secondary transition flex items-center justify-center"
               >
-                <div className="flex">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="mt-4 text-foreground leading-relaxed text-[15px]">"{t.text}"</p>
-                <footer className="mt-5 text-sm text-muted-foreground font-medium">— {t.name}</footer>
-              </motion.blockquote>
-            ))}
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => setIdx((i) => (i + 1) % testimonials.length)}
+                aria-label="Next testimonial"
+                className="h-10 w-10 rounded-full bg-card border border-border hover:bg-secondary transition flex items-center justify-center"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+              <div className="ml-3 text-sm text-muted-foreground tabular-nums">
+                {String(idx + 1).padStart(2, "0")} <span className="opacity-40">/ {String(testimonials.length).padStart(2, "0")}</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className="lg:col-span-8 relative overflow-hidden"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            <div className="relative h-[280px] sm:h-[240px]">
+              <AnimatePresence mode="wait">
+                <motion.blockquote
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.45 }}
+                  className="absolute inset-0 rounded-2xl bg-card border border-border p-6 sm:p-8 shadow-card-premium flex flex-col"
+                >
+                  <div className="flex">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="mt-4 text-foreground leading-relaxed text-base sm:text-lg flex-1">
+                    "{testimonials[idx].text}"
+                  </p>
+                  <footer className="mt-5 text-sm">
+                    <div className="font-semibold text-foreground">{testimonials[idx].name}</div>
+                    <div className="text-muted-foreground">{testimonials[idx].role}</div>
+                  </footer>
+                </motion.blockquote>
+              </AnimatePresence>
+            </div>
+            <div className="mt-5 flex items-center gap-1.5">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIdx(i)}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${i === idx ? "w-8 bg-accent-brand" : "w-1.5 bg-foreground/20 hover:bg-foreground/40"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

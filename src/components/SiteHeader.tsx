@@ -61,15 +61,15 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 px-3 sm:px-6 pt-3 sm:pt-5">
+      <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? "px-3 sm:px-6 pt-3 sm:pt-5" : "px-0 pt-0"}`}>
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.45 }}
-          className={`max-w-7xl mx-auto flex items-center justify-between gap-3 pl-3 pr-3 py-2 border border-border transition-all duration-300 ${
+          className={`flex items-center justify-between gap-3 pl-3 pr-3 py-2 transition-all duration-300 ${
             scrolled
-              ? "bg-card/95 backdrop-blur-xl shadow-soft rounded-full"
-              : "bg-card/90 backdrop-blur-md rounded-2xl"
+              ? "max-w-7xl mx-auto border border-border bg-card/95 backdrop-blur-xl shadow-soft rounded-full"
+              : "w-full border-b border-border bg-card/90 backdrop-blur-md rounded-none px-4 sm:px-8"
           }`}
         >
           <Link to="/" className="flex items-center gap-3 pl-1 pr-3 rounded-full">
