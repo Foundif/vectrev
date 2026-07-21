@@ -15,6 +15,15 @@ const links = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const desktopLinks = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/services", label: "Services" },
+  { to: "/industries", label: "Industries" },
+  { to: "/case-studies", label: "Case Studies" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
