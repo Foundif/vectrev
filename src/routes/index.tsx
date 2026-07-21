@@ -264,28 +264,33 @@ function ClientsMarquee() {
 }
 
 const problems = [
-  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation },
-  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest },
-  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables },
+  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation, stat: "42%", statLabel: "of outages trace back to poor T&C" },
+  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest, stat: "1 in 3", statLabel: "sites fail first inspection" },
+  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables, stat: "3×", statLabel: "cost of rework vs. doing it right" },
 ];
 
 function Problem() {
   return (
-    <section className="px-5 sm:px-8 py-24">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
-          <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The reality on site</div>
-          <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
-            Most plant problems aren't equipment failures.<br />
-            <span className="text-accent-brand">They're execution failures.</span>
-          </h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed max-w-md">
-            One missed test, one undocumented protocol, one safety shortcut —
-            and you're staring at a tripped substation, a regulator notice,
-            or a six-figure outage.
-          </p>
+    <section className="px-5 sm:px-8 py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-8">
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The reality on site</div>
+            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-[1.1]">
+              Most plant problems aren't equipment failures.{" "}
+              <span className="text-accent-brand">They're execution failures.</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="text-muted-foreground leading-relaxed">
+              One missed test, one undocumented protocol, one safety shortcut —
+              and you're staring at a tripped substation, a regulator notice,
+              or a six-figure outage.
+            </p>
+          </div>
         </div>
-        <div className="lg:col-span-7 grid sm:grid-cols-3 gap-4">
+
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {problems.map((p, i) => (
             <motion.div
               key={p.title}
@@ -294,22 +299,26 @@ function Problem() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-border bg-card overflow-hidden shadow-card-premium hover:-translate-y-1 transition"
+              className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card-premium hover:-translate-y-1 transition"
             >
-              <div className="relative h-36 overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3 h-10 w-10 rounded-xl bg-white/95 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                <div className="absolute top-4 left-4 h-11 w-11 rounded-xl bg-white/95 flex items-center justify-center">
                   <p.icon className="h-5 w-5 text-accent-brand" />
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="text-3xl font-extrabold text-white leading-none">{p.stat}</div>
+                  <div className="text-xs text-white/80 mt-1">{p.statLabel}</div>
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="font-bold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <h3 className="font-bold text-foreground text-lg">{p.title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             </motion.div>
           ))}
