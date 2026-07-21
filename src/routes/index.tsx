@@ -70,13 +70,15 @@ const fadeUp: Variants = {
 };
 
 const clients = [
-  "TANGEDCO",
-  "Wind Power IPPs",
+  "NLC Tamilnadu Power (NTPL)",
+  "Kusam-Meco",
+  "Shri Enterprises",
+  "Gabon · Grid Supply",
+  "Cameroon · HV Substations",
+  "Nigeria · Field Testing",
   "Cement & Process Plants",
   "Textile Mills",
-  "Steel & Foundry",
   "EPC Contractors",
-  "Solar Developers",
   "Substation Projects",
 ];
 
