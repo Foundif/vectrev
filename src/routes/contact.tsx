@@ -61,7 +61,7 @@ function Contact() {
       requirement,
     ].join("\n");
     window.open(
-      `https://wa.me/918879608428?text=${encodeURIComponent(intake)}`,
+      `https://wa.me/916379608428?text=${encodeURIComponent(intake)}`,
       "_blank",
       "noopener",
     );
@@ -79,7 +79,7 @@ function Contact() {
         "(Reply against each line so an engineer can come back within 24 hours.)",
       ].join("\n");
       window.open(
-        `https://wa.me/918879608428?text=${encodeURIComponent(followUp)}`,
+        `https://wa.me/916379608428?text=${encodeURIComponent(followUp)}`,
         "_blank",
         "noopener",
       );
@@ -241,7 +241,7 @@ function Contact() {
                 </p>
                 <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                   <a
-                    href={`https://wa.me/918879608428?text=${encodeURIComponent(
+                    href={`https://wa.me/916379608428?text=${encodeURIComponent(
                       [
                         `Hi VECTREV, this is ${submitted.name} again.`,
                         "Here is the project info you need:",

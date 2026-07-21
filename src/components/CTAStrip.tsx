@@ -32,10 +32,10 @@ export function CTAStrip({
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
             </Link>
             <a
-              href="tel:+918879608428"
+              href="tel:+916379608428"
               className="inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 backdrop-blur px-6 py-4 rounded-full text-white hover:bg-white/10 transition"
             >
-              Call +91 88796 08428
+              Call +91 63796 08428
             </a>
           </div>
         </div>
