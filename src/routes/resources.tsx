@@ -172,7 +172,7 @@ function LeadGate({ resource, onClose }: { resource: Resource; onClose: () => vo
       role ? `Role: ${role}` : "",
     ].filter(Boolean).join("\n");
     window.open(
-      `https://wa.me/918879608428?text=${encodeURIComponent(lines)}`,
+      `https://wa.me/916379608428?text=${encodeURIComponent(lines)}`,
       "_blank",
       "noopener",
     );

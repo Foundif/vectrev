@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
           telephone: "+91-88796-08428",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "61E/2D, Olepettai",
+            streetAddress: "61E/2D, TMC Colony, Polepettai",
             addressLocality: "Thoothukudi",
             addressRegion: "Tamil Nadu",
             postalCode: "628002",
@@ -69,17 +69,35 @@ const fadeUp: Variants = {
   },
 };
 
-const clients = [
-  "NLC Tamilnadu Power (NTPL)",
-  "Kusam-Meco",
-  "Shri Enterprises",
-  "Gabon · Grid Supply",
-  "Cameroon · HV Substations",
-  "Nigeria · Field Testing",
-  "Cement & Process Plants",
-  "Textile Mills",
-  "EPC Contractors",
-  "Substation Projects",
+import kusamMeco from "@/assets/clients/kusam-meco.png.asset.json";
+import petron from "@/assets/clients/petron.png.asset.json";
+import siemens from "@/assets/clients/siemens.png.asset.json";
+import lt from "@/assets/clients/lt.png.asset.json";
+import bhel from "@/assets/clients/bhel.png.asset.json";
+import areva from "@/assets/clients/areva.png.asset.json";
+
+const partnerLogos = [
+  { name: "Kusam-Meco", src: kusamMeco.url, note: "Authorized Distributor · TN" },
+  { name: "Siemens", src: siemens.url, note: "EPC / Integration Partner" },
+  { name: "Larsen & Toubro", src: lt.url, note: "EPC / Integration Partner" },
+  { name: "BHEL", src: bhel.url, note: "EPC / Integration Partner" },
+  { name: "Areva", src: areva.url, note: "EPC / Integration Partner" },
+  { name: "Petron Engineering", src: petron.url, note: "EPC / Integration Partner" },
+];
+
+const consultantPartners = [
+  "ABB",
+  "Get Power Ltd.",
+  "Engineers India Ltd. (EIL)",
+  "Tata Consultancy Services",
+  "Fichtner-India",
+  "Avant-Garde",
+  "Development Consultants",
+  "DEWA · UAE",
+  "SECO · Saudi Arabia",
+  "Kahramaa · Qatar",
+  "NCC · Saudi Arabia",
+  "ORC · Oman",
 ];
 
 const heroSlides = [
@@ -241,22 +259,45 @@ function Hero() {
 }
 
 function ClientsMarquee() {
-  const row = [...clients, ...clients];
   return (
-    <section className="mt-24 py-14 border-y border-border bg-secondary/50">
-      <div className="text-center text-xs uppercase tracking-[0.22em] text-muted-foreground">
-        Trusted across
-      </div>
-      <h2 className="mt-2 text-center text-3xl md:text-4xl font-extrabold text-foreground">
-        Industries & Project Owners
-      </h2>
-      <div className="mt-10 overflow-hidden relative">
-        <div className="flex gap-12 whitespace-nowrap marquee w-max">
-          {row.map((c, i) => (
-            <span key={i} className="text-2xl md:text-3xl font-bold text-foreground/30 hover:text-accent-brand transition">
-              {c}
-            </span>
+    <section className="mt-24 py-16 border-y border-border bg-secondary/50">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="text-center text-xs uppercase tracking-[0.22em] text-accent-brand">
+          Clients & Partners
+        </div>
+        <h2 className="mt-3 text-center text-3xl md:text-4xl font-extrabold text-foreground">
+          Trusted by EPCs, OEMs & utilities
+        </h2>
+        <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto text-sm">
+          VECTREV works alongside global project builders, OEMs and consultants —
+          delivering pre-commissioning, protection studies and HV field testing.
+        </p>
+
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {partnerLogos.map((p) => (
+            <div
+              key={p.name}
+              className="group relative rounded-2xl bg-card border border-border p-6 flex flex-col items-center justify-center h-32 shadow-card-premium hover:-translate-y-0.5 transition"
+              title={`${p.name} — ${p.note}`}
+            >
+              <img
+                src={p.src}
+                alt={p.name}
+                loading="lazy"
+                className="max-h-14 max-w-[80%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
+              />
+            </div>
           ))}
+        </div>
+
+        <div className="mt-10 overflow-hidden relative">
+          <div className="flex gap-10 whitespace-nowrap marquee w-max">
+            {[...consultantPartners, ...consultantPartners].map((c, i) => (
+              <span key={i} className="text-lg md:text-xl font-semibold text-foreground/40 hover:text-accent-brand transition">
+                {c}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

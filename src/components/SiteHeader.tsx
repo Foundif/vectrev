@@ -145,11 +145,11 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2 lg:mr-0 mr-14">
             <a
-              href="tel:+918879608428"
+              href="tel:+916379608428"
               className="hidden xl:inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition px-3"
             >
               <Phone className="h-4 w-4" />
-              +91 88796 08428
+              +91 63796 08428
             </a>
             <Link
               to="/contact"
@@ -248,7 +248,7 @@ export function SiteHeader() {
                   <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
                 </Link>
                 <a
-                  href="https://wa.me/918879608428?text=Hi%20VECTREV%2C%20I%27d%20like%20a%20consultation"
+                  href="https://wa.me/916379608428?text=Hi%20VECTREV%2C%20I%27d%20like%20a%20consultation"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 backdrop-blur px-6 py-4 rounded-full text-white hover:bg-white/10 transition"
@@ -256,16 +256,16 @@ export function SiteHeader() {
                   <MessageCircle className="h-4 w-4" /> WhatsApp Us
                 </a>
                 <a
-                  href="tel:+918879608428"
+                  href="tel:+916379608428"
                   className="inline-flex items-center justify-center gap-2 border border-white/20 bg-white/5 backdrop-blur px-6 py-4 rounded-full text-white hover:bg-white/10 transition"
                 >
-                  <Phone className="h-4 w-4" /> +91 88796 08428
+                  <Phone className="h-4 w-4" /> +91 63796 08428
                 </a>
               </div>
 
               <div className="px-6 mt-10 pt-6 border-t border-white/10 text-xs text-white/60 space-y-2 pb-10">
-                <div className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> contact@vectrev.in</div>
-                <div>61E/2D, Olepettai · Thoothukudi 628002</div>
+                <div className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> info@vectrev.in</div>
+                <div>61E/2D, TMC Colony, Polepettai · Thoothukudi 628002</div>
                 <div className="text-white/40">CIN U71200TN2025PTC180169</div>
               </div>
             </motion.aside>

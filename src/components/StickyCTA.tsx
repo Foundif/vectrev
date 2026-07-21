@@ -18,7 +18,7 @@ export function StickyCTA() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3 items-end">
       <a
-        href="https://wa.me/918879608428?text=Hi%20VECTREV%2C%20I%27d%20like%20a%20consultation"
+        href="https://wa.me/916379608428?text=Hi%20VECTREV%2C%20I%27d%20like%20a%20consultation"
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp"
@@ -27,7 +27,7 @@ export function StickyCTA() {
         <WhatsAppIcon className="h-7 w-7" />
       </a>
       <a
-        href="tel:+918879608428"
+        href="tel:+916379608428"
         aria-label="Call"
         className="h-14 w-14 rounded-full bg-gradient-accent text-accent-foreground flex items-center justify-center shadow-accent hover:scale-105 transition"
       >

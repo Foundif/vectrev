@@ -59,15 +59,15 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-4 text-white/80 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 mt-0.5 text-accent-brand" />
-                <a href="tel:+918879608428" className="hover:text-white">+91 88796 08428</a>
+                <a href="tel:+916379608428" className="hover:text-white">+91 63796 08428</a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 mt-0.5 text-accent-brand" />
-                <a href="mailto:contact@vectrev.in" className="hover:text-white">contact@vectrev.in</a>
+                <a href="mailto:info@vectrev.in" className="hover:text-white">info@vectrev.in</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 text-accent-brand" />
-                <span>61E/2D, Olepettai, Thoothukudi — 628002, Tamil Nadu</span>
+                <span>61E/2D, TMC Colony, Polepettai, Thoothukudi — 628002, Tamil Nadu</span>
               </li>
             </ul>
           </div>
