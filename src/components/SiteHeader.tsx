@@ -50,26 +50,43 @@ export function SiteHeader() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.45 }}
-          className={`max-w-7xl mx-auto flex items-center justify-between gap-3 rounded-full pl-3 pr-3 py-2 border border-border transition-all ${
-            scrolled ? "bg-card/95 backdrop-blur-xl shadow-soft" : "bg-card/80 backdrop-blur-md"
+          className={`max-w-7xl mx-auto flex items-center justify-between gap-3 pl-3 pr-3 py-2 border border-border transition-all duration-300 ${
+            scrolled
+              ? "bg-card/95 backdrop-blur-xl shadow-soft rounded-full"
+              : "bg-card/90 backdrop-blur-md rounded-2xl"
           }`}
         >
-          <Link to="/" className="flex items-center gap-2.5 pl-1 pr-3 rounded-full">
-            <img src={logo} alt="VECTREV" className="h-9 w-9" />
+          <Link to="/" className="flex items-center gap-3 pl-1 pr-3 rounded-full">
+            <img src={logo} alt="VECTREV" className="h-12 w-12 sm:h-14 sm:w-14" />
             <div className="leading-none">
-              <div className="font-extrabold tracking-tight text-foreground text-base">
+              <div className="font-extrabold tracking-tight text-foreground text-lg sm:text-xl">
                 vec<span className="text-accent-brand">trev</span>
               </div>
-              <div className="text-[9px] mt-1 uppercase tracking-[0.22em] text-muted-foreground hidden sm:block">
+              <div className="text-[9px] mt-1.5 uppercase tracking-[0.22em] text-muted-foreground hidden sm:block">
                 Engineering Solutions
               </div>
             </div>
           </Link>
 
-          <div className="flex items-center gap-2">
+          <nav className="hidden lg:flex items-center gap-1 mx-4">
+            {desktopLinks.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{ className: "text-accent-brand bg-accent/10" }}
+                inactiveProps={{ className: "text-foreground/75 hover:text-foreground hover:bg-secondary" }}
+                className="px-3.5 py-2 rounded-full text-sm font-medium transition"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2 mr-14">
             <a
               href="tel:+918879608428"
-              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition px-3"
+              className="hidden xl:inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition px-3"
             >
               <Phone className="h-4 w-4" />
               +91 88796 08428
