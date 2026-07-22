@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   Zap,
   ClipboardCheck,
@@ -14,7 +14,13 @@ import {
   Gauge,
   ChevronLeft,
   ChevronRight,
+  Award,
+  BadgeCheck,
+  FileCheck2,
+  ScrollText,
+  X,
 } from "lucide-react";
+
 import { CTAStrip } from "@/components/CTAStrip";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
