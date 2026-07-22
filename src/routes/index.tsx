@@ -157,7 +157,7 @@ function Hero() {
           <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
+              className="glow-ink inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
             >
               Get a Quote
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
@@ -169,6 +169,7 @@ function Hero() {
               Our Services
             </Link>
           </motion.div>
+
 
           <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
             {[
