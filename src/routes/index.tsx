@@ -84,14 +84,6 @@ const partnerLogos = [
   { name: "Petron Engineering", src: "/clients/petron.png", note: "EPC / Integration Partner" },
 ];
 
-const _unusedPartnerRefs = [
-  { name: "Kusam-Meco", src: kusamMeco.url, note: "Authorized Distributor · TN" },
-  { name: "Siemens", src: siemens.url, note: "EPC / Integration Partner" },
-  { name: "Larsen & Toubro", src: lt.url, note: "EPC / Integration Partner" },
-  { name: "BHEL", src: bhel.url, note: "EPC / Integration Partner" },
-  { name: "Areva", src: areva.url, note: "EPC / Integration Partner" },
-  { name: "Petron Engineering", src: petron.url, note: "EPC / Integration Partner" },
-];
 
 const consultantPartners = [
   "ABB",
