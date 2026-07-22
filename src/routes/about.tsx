@@ -38,6 +38,24 @@ function About() {
         subtitle="VECTREV Engineering Solutions Pvt Ltd is an independent industrial engineering company based in Thoothukudi, Tamil Nadu — focused on electrical Testing & Commissioning, consultancy and safety-compliant execution."
       />
 
+      {/* Registered highlight — CIN & GSTIN prominent */}
+      <section className="px-5 sm:px-8 -mt-4">
+        <div className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          {[
+            ["MCA Registered Pvt Ltd", "CIN · U71200TN2025PTC180169"],
+            ["GST Compliant", "GSTIN · 33AALCV0745P1ZU"],
+            ["Registered Office", "Thoothukudi · Tamil Nadu"],
+            ["Statutory Ready", "CEA · IS/IEC · Factories Act"],
+          ].map(([label, val]) => (
+            <div key={label} className="rounded-2xl border border-border bg-card px-5 py-4 shadow-card-premium">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-accent-brand">{label}</div>
+              <div className="mt-1.5 font-semibold text-foreground text-sm tabular-nums">{val}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+
       <section className="px-5 sm:px-8 py-12">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-[2rem] overflow-hidden shadow-soft">
