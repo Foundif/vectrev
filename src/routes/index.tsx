@@ -508,18 +508,38 @@ function FeaturedServices() {
 const testimonials = [
   {
     name: "Sumathy S",
+    role: "Verified Google review",
     text: "VECTREV delivered exactly what we needed — professional, knowledgeable, and easy to work with. Their team was responsive, detail-oriented, and got the job done right.",
   },
   {
-    name: "Verified Client",
+    name: "Project Manager",
+    role: "EPC Contractor · Tamil Nadu",
     text: "VECTREV Engineering Solutions provided excellent service for our project. Very competent team, followed all safety protocols. Highly recommended for industrial electrical T&C.",
+  },
+  {
+    name: "Plant Head",
+    role: "Manufacturing Plant · Thoothukudi",
+    text: "Documentation was audit-ready on day one. They stayed on site until every relay was coordinated and every reading was signed off. Rare in this industry.",
+  },
+  {
+    name: "EHS Manager",
+    role: "Process Industry",
+    text: "PTW, LOTO, PPE — non-negotiable and visible on every shift. Zero incidents across the shutdown. That's what a safety-first partner looks like.",
   },
 ];
 
 function SocialProof() {
+  const [i, setI] = useState(0);
+  const next = useCallback(() => setI((v) => (v + 1) % testimonials.length), []);
+  const prev = useCallback(() => setI((v) => (v - 1 + testimonials.length) % testimonials.length), []);
+  useEffect(() => {
+    const t = setInterval(next, 5500);
+    return () => clearInterval(t);
+  }, [next]);
+
   return (
     <section className="px-5 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-10 md:p-16">
+      <div className="max-w-7xl mx-auto rounded-[2.5rem] bg-secondary/60 p-8 md:p-16">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4">
             <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">Social proof</div>
@@ -527,8 +547,8 @@ function SocialProof() {
               <div className="text-6xl font-extrabold text-foreground leading-none">5.0</div>
               <div className="pb-1">
                 <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-5 w-5 fill-accent text-accent" />
                   ))}
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">Google reviews</div>
@@ -538,30 +558,238 @@ function SocialProof() {
               Plant owners and project managers choose VECTREV because we show
               up, document, and deliver.
             </p>
+            <div className="mt-8 flex items-center gap-2">
+              <button
+                onClick={prev}
+                aria-label="Previous testimonial"
+                className="h-11 w-11 rounded-full border border-border bg-card hover:bg-secondary transition flex items-center justify-center"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next testimonial"
+                className="h-11 w-11 rounded-full border border-border bg-card hover:bg-secondary transition flex items-center justify-center"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <div className="ml-3 text-xs text-muted-foreground tabular-nums">
+                {String(i + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}
+              </div>
+            </div>
           </div>
-          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-            {testimonials.map((t, i) => (
+          <div className="lg:col-span-8 relative min-h-[240px]">
+            <AnimatePresence mode="wait">
               <motion.blockquote
-                key={t.name}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-                className="rounded-2xl bg-card border border-border p-6 shadow-card-premium"
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-3xl bg-card border border-border p-8 md:p-10 shadow-card-premium"
               >
                 <div className="flex">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 fill-accent text-accent" />
+                    <Star key={j} className="h-5 w-5 fill-accent text-accent" />
                   ))}
                 </div>
-                <p className="mt-4 text-foreground leading-relaxed text-[15px]">"{t.text}"</p>
-                <footer className="mt-5 text-sm text-muted-foreground font-medium">— {t.name}</footer>
+                <p className="mt-5 text-foreground leading-relaxed text-lg md:text-xl">
+                  "{testimonials[i].text}"
+                </p>
+                <footer className="mt-6 text-sm">
+                  <div className="font-semibold text-foreground">{testimonials[i].name}</div>
+                  <div className="text-muted-foreground">{testimonials[i].role}</div>
+                </footer>
               </motion.blockquote>
-            ))}
+            </AnimatePresence>
+            <div className="mt-4 flex items-center justify-center gap-1.5">
+              {testimonials.map((_, j) => (
+                <button
+                  key={j}
+                  onClick={() => setI(j)}
+                  aria-label={`Testimonial ${j + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${j === i ? "w-8 bg-accent" : "w-1.5 bg-foreground/20"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function ComplianceBadges() {
+  const items = [
+    { icon: ShieldCheck, title: "Statutory Ready", note: "CEA · IS/IEC · Factories Act" },
+    { icon: BadgeCheck, title: "MSME Registered", note: "Udyam Recognised" },
+    { icon: FileCheck2, title: "GST Compliant", note: "33AALCV0745P1ZU" },
+    { icon: Award, title: "PTW · LOTO · PPE", note: "Zero-incident protocol" },
+    { icon: ScrollText, title: "Audit-ready Reports", note: "Signed field protocols" },
+  ];
+  return (
+    <section className="px-5 sm:px-8 pb-4 pt-2">
+      <div className="max-w-7xl mx-auto rounded-3xl border border-border bg-card/70 backdrop-blur px-5 sm:px-8 py-5 shadow-card-premium">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {items.map((it) => (
+            <div key={it.title} className="flex items-start gap-3">
+              <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <it.icon className="h-5 w-5 text-accent-brand" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-sm font-bold text-foreground truncate">{it.title}</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5 truncate">{it.note}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const credentials = [
+  { title: "Certificate of Incorporation", issuer: "Ministry of Corporate Affairs · GoI", ref: "CIN · U71200TN2025PTC180169", accent: "from-[oklch(0.35_0.08_258)] to-[oklch(0.18_0.04_258)]" },
+  { title: "GST Registration", issuer: "Government of India · CBIC", ref: "GSTIN · 33AALCV0745P1ZU", accent: "from-[oklch(0.55_0.24_18)] to-[oklch(0.35_0.18_18)]" },
+  { title: "Udyam / MSME Recognition", issuer: "Ministry of MSME", ref: "Recognised Micro Enterprise", accent: "from-[oklch(0.4_0.12_180)] to-[oklch(0.22_0.06_258)]" },
+  { title: "Performance Letter — Substation T&C", issuer: "EPC Client · Tamil Nadu", ref: "33/11 kV Energisation · 2025", accent: "from-[oklch(0.35_0.08_258)] to-[oklch(0.18_0.04_258)]" },
+  { title: "Safety Compliance Sign-off", issuer: "Plant EHS · Process Industry", ref: "Zero-incident shutdown · 2025", accent: "from-[oklch(0.55_0.24_18)] to-[oklch(0.28_0.14_18)]" },
+];
+
+function Credentials() {
+  const [i, setI] = useState(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const next = useCallback(() => setI((v) => (v + 1) % credentials.length), []);
+  const prev = useCallback(() => setI((v) => (v - 1 + credentials.length) % credentials.length), []);
+
+  useEffect(() => {
+    if (open !== null) return;
+    const t = setInterval(next, 4500);
+    return () => clearInterval(t);
+  }, [next, open]);
+
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(null); };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [open]);
+
+  return (
+    <section className="px-5 sm:px-8 py-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">Credentials & Certificates</div>
+            <h2 className="mt-3 text-3xl md:text-5xl font-extrabold text-foreground heading-crisp">
+              Recognised. Registered. Referenced.
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-xl">
+              Statutory registrations and real client performance letters —
+              click any card to open it full-screen.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={prev} aria-label="Previous credential" className="h-11 w-11 rounded-full border border-border bg-card hover:bg-secondary transition flex items-center justify-center">
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button onClick={next} aria-label="Next credential" className="h-11 w-11 rounded-full border border-border bg-card hover:bg-secondary transition flex items-center justify-center">
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-10 overflow-hidden">
+          <motion.div
+            animate={{ x: `calc(${-i} * (min(360px, 85%) + 20px))` }}
+            transition={{ type: "spring", stiffness: 120, damping: 22 }}
+            className="flex gap-5"
+          >
+            {credentials.map((c, idx) => (
+              <button
+                key={c.title}
+                onClick={() => setOpen(idx)}
+                className={`group flex-shrink-0 w-[85%] sm:w-[360px] aspect-[4/3] rounded-3xl overflow-hidden text-left relative bg-gradient-to-br ${c.accent} shadow-card-premium hover:-translate-y-1 transition`}
+              >
+                <div className="absolute inset-0 grid-pattern opacity-25" />
+                <div className="absolute top-5 right-5 h-10 w-10 rounded-full bg-white/15 backdrop-blur border border-white/25 flex items-center justify-center">
+                  <Award className="h-5 w-5 text-white" />
+                </div>
+                <div className="relative h-full p-7 flex flex-col justify-between text-white">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-white/60">Certificate</div>
+                    <div className="mt-3 text-xl font-extrabold leading-tight">{c.title}</div>
+                    <div className="mt-2 text-sm text-white/75">{c.issuer}</div>
+                  </div>
+                  <div className="flex items-end justify-between">
+                    <div className="text-xs font-mono text-white/85 tabular-nums">{c.ref}</div>
+                    <div className="inline-flex items-center gap-1 text-xs text-white/80 group-hover:text-white transition">
+                      View <ArrowUpRight className="h-3.5 w-3.5 group-hover:rotate-45 transition" />
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-1.5">
+          {credentials.map((_, j) => (
+            <button
+              key={j}
+              onClick={() => setI(j)}
+              aria-label={`Credential ${j + 1}`}
+              className={`h-1.5 rounded-full transition-all ${j === i ? "w-8 bg-accent" : "w-1.5 bg-foreground/20"}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {open !== null && (
+          <motion.div
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setOpen(null)}
+            role="dialog" aria-modal="true"
+          >
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setOpen(null); }}
+              aria-label="Close"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-10 h-11 w-11 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-white flex items-center justify-center transition"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              className={`relative w-full max-w-2xl aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br ${credentials[open].accent}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute inset-0 grid-pattern opacity-25" />
+              <div className="relative h-full p-10 md:p-14 flex flex-col justify-between text-white">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.22em] text-white/60">Certificate</div>
+                  <div className="mt-4 text-3xl md:text-4xl font-extrabold leading-tight">{credentials[open].title}</div>
+                  <div className="mt-3 text-white/75">{credentials[open].issuer}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-mono text-white/85 tabular-nums">{credentials[open].ref}</div>
+                  <a
+                    href="/contact"
+                    className="mt-5 inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/25 backdrop-blur px-5 py-2.5 rounded-full text-sm font-semibold transition"
+                  >
+                    Request verified copy <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
@@ -570,6 +798,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <ComplianceBadges />
       <ClientsMarquee />
       <Problem />
       <div className="relative">
@@ -578,7 +807,11 @@ function Home() {
       </div>
       <FeaturedServices />
       <SocialProof />
+      <Credentials />
       <CTAStrip />
     </>
+  );
+}
+
   );
 }
