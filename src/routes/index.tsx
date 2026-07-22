@@ -75,14 +75,16 @@ const fadeUp: Variants = {
   },
 };
 
-import kusamMeco from "@/assets/clients/kusam-meco.png.asset.json";
-import petron from "@/assets/clients/petron.png.asset.json";
-import siemens from "@/assets/clients/siemens.png.asset.json";
-import lt from "@/assets/clients/lt.png.asset.json";
-import bhel from "@/assets/clients/bhel.png.asset.json";
-import areva from "@/assets/clients/areva.png.asset.json";
-
 const partnerLogos = [
+  { name: "Kusam-Meco", src: "/clients/kusam-meco.png", note: "Instruments & Test Equipment" },
+  { name: "Siemens", src: "/clients/siemens.png", note: "EPC / Integration Partner" },
+  { name: "Larsen & Toubro", src: "/clients/lt.png", note: "EPC / Integration Partner" },
+  { name: "BHEL", src: "/clients/bhel.png", note: "EPC / Integration Partner" },
+  { name: "Areva", src: "/clients/areva.png", note: "EPC / Integration Partner" },
+  { name: "Petron Engineering", src: "/clients/petron.png", note: "EPC / Integration Partner" },
+];
+
+const _unusedPartnerRefs = [
   { name: "Kusam-Meco", src: kusamMeco.url, note: "Authorized Distributor · TN" },
   { name: "Siemens", src: siemens.url, note: "EPC / Integration Partner" },
   { name: "Larsen & Toubro", src: lt.url, note: "EPC / Integration Partner" },
