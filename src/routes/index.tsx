@@ -297,7 +297,22 @@ function ClientsMarquee() {
           ))}
         </div>
 
+        {/* Continuous moving logo strip */}
         <div className="mt-10 overflow-hidden relative">
+          <div className="flex gap-14 items-center whitespace-nowrap marquee-slow w-max py-4">
+            {[...partnerLogos, ...partnerLogos, ...partnerLogos].map((p, i) => (
+              <img
+                key={i}
+                src={p.src}
+                alt={p.name}
+                loading="lazy"
+                className="h-10 md:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition"
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden relative">
           <div className="flex gap-10 whitespace-nowrap marquee w-max">
             {[...consultantPartners, ...consultantPartners].map((c, i) => (
               <span key={i} className="text-lg md:text-xl font-semibold text-foreground/40 hover:text-accent-brand transition">
@@ -306,6 +321,7 @@ function ClientsMarquee() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
