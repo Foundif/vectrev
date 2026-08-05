@@ -15,7 +15,9 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyProfileRouteImport } from './routes/company-profile'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -56,9 +58,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompanyProfileRoute = CompanyProfileRouteImport.update({
+  id: '/company-profile',
+  path: '/company-profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaseStudiesRoute = CaseStudiesRouteImport.update({
   id: '/case-studies',
   path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesRoute = BranchesRouteImport.update({
+  id: '/branches',
+  path: '/branches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -111,7 +123,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/branches': typeof BranchesRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -128,7 +142,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/branches': typeof BranchesRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -147,7 +163,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
+  '/branches': typeof BranchesRoute
   '/case-studies': typeof CaseStudiesRoute
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/industries': typeof IndustriesRoute
@@ -167,7 +185,9 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/branches'
     | '/case-studies'
+    | '/company-profile'
     | '/contact'
     | '/gallery'
     | '/industries'
@@ -184,7 +204,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/branches'
     | '/case-studies'
+    | '/company-profile'
     | '/contact'
     | '/gallery'
     | '/industries'
@@ -202,7 +224,9 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/branches'
     | '/case-studies'
+    | '/company-profile'
     | '/contact'
     | '/gallery'
     | '/industries'
@@ -221,7 +245,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
+  BranchesRoute: typeof BranchesRoute
   CaseStudiesRoute: typeof CaseStudiesRoute
+  CompanyProfileRoute: typeof CompanyProfileRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   IndustriesRoute: typeof IndustriesRoute
@@ -278,11 +304,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/company-profile': {
+      id: '/company-profile'
+      path: '/company-profile'
+      fullPath: '/company-profile'
+      preLoaderRoute: typeof CompanyProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies': {
       id: '/case-studies'
       path: '/case-studies'
       fullPath: '/case-studies'
       preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches': {
+      id: '/branches'
+      path: '/branches'
+      fullPath: '/branches'
+      preLoaderRoute: typeof BranchesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -367,7 +407,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
+  BranchesRoute: BranchesRoute,
   CaseStudiesRoute: CaseStudiesRoute,
+  CompanyProfileRoute: CompanyProfileRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   IndustriesRoute: IndustriesRoute,
