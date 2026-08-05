@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -22,11 +21,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -93,7 +87,6 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/resources': typeof ResourcesRoute
-  '/services': typeof ServicesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -106,7 +99,6 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/resources': typeof ResourcesRoute
-  '/services': typeof ServicesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -121,7 +113,6 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/resources': typeof ResourcesRoute
-  '/services': typeof ServicesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -137,7 +128,6 @@ export interface FileRouteTypes {
     | '/industries'
     | '/login'
     | '/resources'
-    | '/services'
     | '/admin/leads'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -150,7 +140,6 @@ export interface FileRouteTypes {
     | '/industries'
     | '/login'
     | '/resources'
-    | '/services'
     | '/admin/leads'
     | '/admin'
   id:
@@ -164,7 +153,6 @@ export interface FileRouteTypes {
     | '/industries'
     | '/login'
     | '/resources'
-    | '/services'
     | '/admin/leads'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -179,18 +167,10 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRoute
   LoginRoute: typeof LoginRoute
   ResourcesRoute: typeof ResourcesRoute
-  ServicesRoute: typeof ServicesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -293,7 +273,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRoute,
   LoginRoute: LoginRoute,
   ResourcesRoute: ResourcesRoute,
-  ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
