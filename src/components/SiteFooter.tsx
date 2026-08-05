@@ -39,10 +39,14 @@ export function SiteFooter() {
               {[
                 ["/about", "About"],
                 ["/services", "Services"],
+                ["/products", "Products"],
                 ["/industries", "Industries"],
                 ["/case-studies", "Case Studies"],
+                ["/blog", "Blog"],
                 ["/resources", "Resources"],
+                ["/company-profile", "Company Profile"],
                 ["/gallery", "Gallery"],
+                ["/branches", "Branches"],
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
                 <li key={to}>

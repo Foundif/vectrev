@@ -4,36 +4,48 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Phone, MessageCircle, Mail, ChevronDown, Image as ImageIcon, FileText } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
+import { services, serviceCategories } from "@/data/services";
+
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/industries", label: "Industries" },
   { to: "/case-studies", label: "Case Studies" },
+  { to: "/blog", label: "Blog" },
   { to: "/resources", label: "Resources" },
+  { to: "/company-profile", label: "Company Profile" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/branches", label: "Branches" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const desktopLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/industries", label: "Industries" },
-  { to: "/case-studies", label: "Case Studies" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const moreLinks = [
+  { to: "/case-studies", label: "Case Studies", desc: "Proven project outcomes", icon: FileText },
   { to: "/resources", label: "Resources", desc: "PDF checklists & guides", icon: FileText },
+  { to: "/company-profile", label: "Company Profile", desc: "Download the 2025 PDF", icon: FileText },
   { to: "/gallery", label: "Gallery", desc: "Field & project photos", icon: ImageIcon },
+  { to: "/branches", label: "Branches", desc: "Offices & deployment", icon: ImageIcon },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement | null>(null);
+  const megaRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -44,11 +56,12 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
-  useEffect(() => setMoreOpen(false), [pathname]);
+  useEffect(() => { setMoreOpen(false); setMegaOpen(false); }, [pathname]);
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
+      if (megaRef.current && !megaRef.current.contains(e.target as Node)) setMegaOpen(false);
     };
     window.addEventListener("mousedown", onClick);
     return () => window.removeEventListener("mousedown", onClick);
@@ -88,6 +101,74 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1 mx-4">
+            <div ref={megaRef} className="relative">
+              <button
+                onClick={() => { setMegaOpen((v) => !v); setMoreOpen(false); }}
+                className={`px-3.5 py-2 rounded-full text-sm font-medium transition inline-flex items-center gap-1 ${
+                  megaOpen || pathname.startsWith("/services")
+                    ? "text-accent-brand bg-accent/10"
+                    : "text-foreground/75 hover:text-foreground hover:bg-secondary"
+                }`}
+              >
+                Services
+                <ChevronDown className={`h-3.5 w-3.5 transition ${megaOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {megaOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-3 w-[860px] max-w-[90vw] bg-card border border-border rounded-3xl shadow-card-premium p-6 z-50 grid grid-cols-3 gap-6"
+                  >
+                    {serviceCategories.map((cat) => (
+                      <div key={cat}>
+                        <div className="text-[10px] uppercase tracking-widest text-accent-brand font-semibold">
+                          {cat}
+                        </div>
+                        <div className="mt-3 space-y-1">
+                          {services
+                            .filter((s) => s.category === cat)
+                            .map((s) => (
+                              <Link
+                                key={s.slug}
+                                to="/services/$slug"
+                                params={{ slug: s.slug }}
+                                onClick={() => setMegaOpen(false)}
+                                className="block p-2.5 rounded-xl hover:bg-secondary transition"
+                              >
+                                <div className="text-sm font-semibold text-foreground leading-snug">
+                                  {s.title}
+                                </div>
+                                <div className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
+                                  {s.short}
+                                </div>
+                              </Link>
+                            ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div className="col-span-3 pt-4 border-t border-border flex items-center justify-between">
+                      <Link
+                        to="/services"
+                        onClick={() => setMegaOpen(false)}
+                        className="text-sm font-semibold text-accent-brand inline-flex items-center gap-1.5"
+                      >
+                        View all services <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                      <Link
+                        to="/products"
+                        onClick={() => setMegaOpen(false)}
+                        className="text-sm font-semibold text-foreground inline-flex items-center gap-1.5"
+                      >
+                        Panels & instruments <ArrowUpRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             {desktopLinks.map((l) => (
               <Link
                 key={l.to}

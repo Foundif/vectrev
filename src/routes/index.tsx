@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 
 import { CTAStrip } from "@/components/CTAStrip";
+import { OemBrands } from "@/components/OemBrands";
+import { ProfileTeaser } from "@/components/ProfileTeaser";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
 import technician from "@/assets/technician.webp";
@@ -786,6 +788,8 @@ function Home() {
       <Hero />
       <ComplianceBadges />
       <ClientsMarquee />
+      <OemBrands />
+      <ProfileTeaser />
       <Problem />
       <div className="relative">
         <img src={substation} alt="" aria-hidden="true" className="absolute -z-10 inset-0 w-full h-full object-cover opacity-[0.04]" />
