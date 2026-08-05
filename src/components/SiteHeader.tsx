@@ -56,11 +56,12 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
-  useEffect(() => setMoreOpen(false), [pathname]);
+  useEffect(() => { setMoreOpen(false); setMegaOpen(false); }, [pathname]);
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
+      if (megaRef.current && !megaRef.current.contains(e.target as Node)) setMegaOpen(false);
     };
     window.addEventListener("mousedown", onClick);
     return () => window.removeEventListener("mousedown", onClick);
