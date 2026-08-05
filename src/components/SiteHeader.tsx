@@ -4,30 +4,40 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Phone, MessageCircle, Mail, ChevronDown, Image as ImageIcon, FileText } from "lucide-react";
 import logo from "@/assets/logo.webp";
 
+import { services, serviceCategories } from "@/data/services";
+
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/industries", label: "Industries" },
   { to: "/case-studies", label: "Case Studies" },
+  { to: "/blog", label: "Blog" },
   { to: "/resources", label: "Resources" },
+  { to: "/company-profile", label: "Company Profile" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/branches", label: "Branches" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const desktopLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
+  { to: "/products", label: "Products" },
   { to: "/industries", label: "Industries" },
-  { to: "/case-studies", label: "Case Studies" },
+  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const moreLinks = [
+  { to: "/case-studies", label: "Case Studies", desc: "Proven project outcomes", icon: FileText },
   { to: "/resources", label: "Resources", desc: "PDF checklists & guides", icon: FileText },
+  { to: "/company-profile", label: "Company Profile", desc: "Download the 2025 PDF", icon: FileText },
   { to: "/gallery", label: "Gallery", desc: "Field & project photos", icon: ImageIcon },
+  { to: "/branches", label: "Branches", desc: "Offices & deployment", icon: ImageIcon },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
