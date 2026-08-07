@@ -47,16 +47,8 @@ export function OemBrands({
           ))}
         </div>
 
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {textBrands.map((t) => (
-            <div
-              key={t}
-              className="rounded-xl border border-border bg-secondary/60 h-16 flex items-center justify-center text-sm font-semibold tracking-tight text-foreground/75"
-            >
-              {t}
-            </div>
-          ))}
-        </div>
+
+
 
         <p className="mt-6 text-sm text-muted-foreground max-w-2xl">
           Brand names and logos are the property of their respective owners and are shown to indicate
