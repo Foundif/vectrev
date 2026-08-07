@@ -184,7 +184,7 @@ export function SiteHeader() {
                 )}
               </AnimatePresence>
             </div>
-            {desktopLinks.map((l) => (
+            {desktopLinksAfter.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
