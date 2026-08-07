@@ -84,6 +84,14 @@ const partnerLogos = [
   { name: "BHEL", src: "/clients/bhel.png", note: "EPC / Integration Partner" },
   { name: "Areva", src: "/clients/areva.png", note: "EPC / Integration Partner" },
   { name: "Petron Engineering", src: "/clients/petron.png", note: "EPC / Integration Partner" },
+  { name: "ABB", src: "/clients/abb.png", note: "OEM equipment & relays" },
+  { name: "Schneider Electric", src: "/clients/schneider.png", note: "OEM switchgear & automation" },
+  { name: "OMICRON", src: "/clients/omicron.png", note: "Relay test equipment" },
+  { name: "Megger", src: "/clients/megger.png", note: "Test & measurement" },
+  { name: "GE Grid Solutions", src: "/clients/ge-grid.png", note: "Protection & grid systems" },
+  { name: "Easun Reyrolle", src: "/clients/easun-reyrolle.png", note: "Protection relays" },
+  { name: "Adani Renewables", src: "/clients/adani-renewables.png", note: "Renewable energy client" },
+  { name: "NLC India Ltd", src: "/clients/nlc-india.png", note: "Utility client" },
 ];
 
 
