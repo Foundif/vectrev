@@ -133,6 +133,7 @@ function RootComponent() {
         </main>
         {!isAdminArea && <SiteFooter />}
         {!isAdminArea && <StickyCTA />}
+        {!isAdminArea && <ChatWidget />}
       </div>
     </QueryClientProvider>
   );
