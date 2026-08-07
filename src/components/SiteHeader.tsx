@@ -188,7 +188,7 @@ export function SiteHeader() {
               <Link
                 key={l.to}
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{ className: "text-accent-brand bg-accent/10" }}
                 activeProps={{ className: "text-accent-brand bg-accent/10" }}
                 inactiveProps={{ className: "text-foreground/75 hover:text-foreground hover:bg-secondary" }}
                 className="px-3.5 py-2 rounded-full text-sm font-medium transition"
