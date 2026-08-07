@@ -84,6 +84,14 @@ const partnerLogos = [
   { name: "BHEL", src: "/clients/bhel.png", note: "EPC / Integration Partner" },
   { name: "Areva", src: "/clients/areva.png", note: "EPC / Integration Partner" },
   { name: "Petron Engineering", src: "/clients/petron.png", note: "EPC / Integration Partner" },
+  { name: "ABB", src: "/clients/abb.png", note: "OEM equipment & relays" },
+  { name: "Schneider Electric", src: "/clients/schneider.png", note: "OEM switchgear & automation" },
+  { name: "OMICRON", src: "/clients/omicron.png", note: "Relay test equipment" },
+  { name: "Megger", src: "/clients/megger.png", note: "Test & measurement" },
+  { name: "GE Grid Solutions", src: "/clients/ge-grid.png", note: "Protection & grid systems" },
+  { name: "Easun Reyrolle", src: "/clients/easun-reyrolle.png", note: "Protection relays" },
+  { name: "Adani Renewables", src: "/clients/adani-renewables.png", note: "Renewable energy client" },
+  { name: "NLC India Ltd", src: "/clients/nlc-india.png", note: "Utility client" },
 ];
 
 
@@ -276,22 +284,25 @@ function ClientsMarquee() {
           delivering pre-commissioning, protection studies and HV field testing.
         </p>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {partnerLogos.map((p) => (
-            <div
-              key={p.name}
-              className="group relative rounded-2xl bg-card border border-border p-6 flex flex-col items-center justify-center h-32 shadow-card-premium hover:-translate-y-0.5 transition"
-              title={`${p.name} — ${p.note}`}
-            >
-              <img
-                src={p.src}
-                alt={p.name}
-                loading="lazy"
-                className="max-h-14 max-w-[80%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
-              />
-            </div>
-          ))}
+        <div className="mt-12 overflow-hidden relative [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-4 w-max marquee-slow">
+            {[...partnerLogos, ...partnerLogos].map((p, i) => (
+              <div
+                key={`${p.name}-${i}`}
+                className="group relative w-44 shrink-0 rounded-2xl bg-card border border-border p-6 flex items-center justify-center h-32 shadow-card-premium"
+                title={`${p.name} — ${p.note}`}
+              >
+                <img
+                  src={p.src}
+                  alt={`${p.name} logo`}
+                  loading="lazy"
+                  className="max-h-14 max-w-[80%] object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition"
+                />
+              </div>
+            ))}
+          </div>
         </div>
+
 
         {/* Consultants & utilities — text marquee */}
         <div className="mt-14 pt-10 border-t border-border">

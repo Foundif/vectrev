@@ -5,18 +5,16 @@ const brands = [
   { name: "Areva", logo: "/clients/areva.png" },
   { name: "Kusam-Meco", logo: "/clients/kusam-meco.png" },
   { name: "Petron", logo: "/clients/petron.png" },
+  { name: "ABB", logo: "/clients/abb.png" },
+  { name: "Schneider Electric", logo: "/clients/schneider.png" },
+  { name: "OMICRON", logo: "/clients/omicron.png" },
+  { name: "Megger", logo: "/clients/megger.png" },
+  { name: "GE Grid Solutions", logo: "/clients/ge-grid.png" },
+  { name: "Easun Reyrolle", logo: "/clients/easun-reyrolle.png" },
+  { name: "Adani Renewables", logo: "/clients/adani-renewables.png" },
+  { name: "NLC India Ltd", logo: "/clients/nlc-india.png" },
 ];
 
-const textBrands = [
-  "ABB",
-  "Schneider Electric",
-  "OMICRON",
-  "Megger",
-  "GE Grid Solutions",
-  "Easun Reyrolle",
-  "Adani Renewables",
-  "NLC India Ltd",
-];
 
 export function OemBrands({
   eyebrow = "OEM & technology partners",
@@ -49,16 +47,8 @@ export function OemBrands({
           ))}
         </div>
 
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {textBrands.map((t) => (
-            <div
-              key={t}
-              className="rounded-xl border border-border bg-secondary/60 h-16 flex items-center justify-center text-sm font-semibold tracking-tight text-foreground/75"
-            >
-              {t}
-            </div>
-          ))}
-        </div>
+
+
 
         <p className="mt-6 text-sm text-muted-foreground max-w-2xl">
           Brand names and logos are the property of their respective owners and are shown to indicate

@@ -8,29 +8,32 @@ import { services, serviceCategories } from "@/data/services";
 
 const links = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
   { to: "/products", label: "Products" },
+  { to: "/services", label: "Services" },
+  { to: "/about", label: "About" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
   { to: "/industries", label: "Industries" },
   { to: "/case-studies", label: "Case Studies" },
-  { to: "/blog", label: "Blog" },
   { to: "/resources", label: "Resources" },
   { to: "/company-profile", label: "Company Profile" },
   { to: "/gallery", label: "Gallery" },
   { to: "/branches", label: "Branches" },
-  { to: "/contact", label: "Contact" },
 ] as const;
 
-const desktopLinks = [
+const desktopLinksBefore = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
   { to: "/products", label: "Products" },
-  { to: "/industries", label: "Industries" },
+] as const;
+
+const desktopLinksAfter = [
+  { to: "/about", label: "About" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const moreLinks = [
+  { to: "/industries", label: "Industries", desc: "Sectors we serve", icon: FileText },
   { to: "/case-studies", label: "Case Studies", desc: "Proven project outcomes", icon: FileText },
   { to: "/resources", label: "Resources", desc: "PDF checklists & guides", icon: FileText },
   { to: "/company-profile", label: "Company Profile", desc: "Download the 2025 PDF", icon: FileText },
@@ -101,6 +104,18 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1 mx-4">
+            {desktopLinksBefore.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{ className: "text-accent-brand bg-accent/10" }}
+                inactiveProps={{ className: "text-foreground/75 hover:text-foreground hover:bg-secondary" }}
+                className="px-3.5 py-2 rounded-full text-sm font-medium transition"
+              >
+                {l.label}
+              </Link>
+            ))}
             <div ref={megaRef} className="relative">
               <button
                 onClick={() => { setMegaOpen((v) => !v); setMoreOpen(false); }}
@@ -169,11 +184,10 @@ export function SiteHeader() {
                 )}
               </AnimatePresence>
             </div>
-            {desktopLinks.map((l) => (
+            {desktopLinksAfter.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-accent-brand bg-accent/10" }}
                 inactiveProps={{ className: "text-foreground/75 hover:text-foreground hover:bg-secondary" }}
                 className="px-3.5 py-2 rounded-full text-sm font-medium transition"

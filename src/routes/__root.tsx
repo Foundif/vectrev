@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyCTA } from "@/components/StickyCTA";
+import { ChatWidget } from "@/components/ChatWidget";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,7 @@ function RootComponent() {
         </main>
         {!isAdminArea && <SiteFooter />}
         {!isAdminArea && <StickyCTA />}
+        {!isAdminArea && <ChatWidget />}
       </div>
     </QueryClientProvider>
   );
