@@ -1,8 +1,5 @@
 import controlPanel from "@/assets/control-panel.webp";
 import blogPanels from "@/assets/blog-panels.jpg";
-import testKit from "@/assets/test-kit.webp";
-import relay from "@/assets/relay.webp";
-import cables from "@/assets/cables.webp";
 
 export type ProductGroup = {
   slug: string;
@@ -10,9 +7,51 @@ export type ProductGroup = {
   blurb: string;
   image: string;
   items: string[];
+  photos?: { src: string; caption: string }[];
+};
+
+export const KUSAM_MECO = {
+  title: "Authorised KUSAM-MECO Dealer",
+  blurb:
+    "VECTREV Engineering Solutions Pvt Ltd is an authorised stockist for KUSAM-MECO electronic test and measuring instruments. Genuine instruments, manufacturer warranty, calibration support and on-site application guidance from practising commissioning engineers.",
+  certificate: "/site/kusam-meco-authorisation.jpg",
+  certificateNote:
+    "Certificate of authorisation — authorised stockists for KUSAM-MECO electronic test & measuring instruments, financial year 2026-2027.",
 };
 
 export const productGroups: ProductGroup[] = [
+  {
+    slug: "kusam-meco-instruments",
+    title: "KUSAM-MECO Test & Measuring Instruments",
+    blurb:
+      "As authorised KUSAM-MECO dealers we supply the complete range of electronic test and measuring instruments — from field multimeters to high-voltage diagnostic sets.",
+    image: "/site/km-digital-multimeter.jpg",
+    items: [
+      "Professional grade digital multimeters",
+      "Basic digital multimeters",
+      "LCR meters",
+      "Digital insulation resistance testers",
+      "High voltage measuring instruments",
+      "Discharge rod",
+      "Digital micro ohm meter",
+      "CT-PT analyser",
+      "Infrared thermometers",
+      "Cable fault pre-locator",
+      "Calibrators",
+      "Portable thermal imaging camera",
+      "Power clampmeters",
+      "Power measurement & control instruments",
+      "Power transducers",
+    ],
+    photos: [
+      { src: "/site/km-digital-multimeter.jpg", caption: "Professional digital multimeter" },
+      { src: "/site/km-clamp-meter.jpg", caption: "KM 2775 digital clamp meter" },
+      { src: "/site/km-earth-resistance-tester.jpg", caption: "Earth resistance & soil resistivity tester" },
+      { src: "/site/km-insulation-tester-kit.jpg", caption: "Insulation tester kit" },
+      { src: "/site/km-ohm-6501e.jpg", caption: "KM OHM 6501E insulation tester" },
+      { src: "/site/km-5213in-10kv.jpg", caption: "KM 5213IN 10 kV insulation tester" },
+    ],
+  },
   {
     slug: "lv-mv-panels",
     title: "LV & MV Electrical Panels",
@@ -46,8 +85,8 @@ export const productGroups: ProductGroup[] = [
   {
     slug: "primary-test-instruments",
     title: "Primary Testing Instruments",
-    blurb: "Calibrated primary injection and diagnostic instruments deployed on every HV assignment.",
-    image: testKit,
+    blurb: "Calibrated primary testing and diagnostic instruments deployed on every HV assignment.",
+    image: "/site/primary-injection-test.jpg",
     items: [
       "CPC 100 — Omicron",
       "CP TD1 — Omicron",
@@ -56,20 +95,25 @@ export const productGroups: ProductGroup[] = [
       "Circuit Breaker Analyzer EGIL 200 — Megger",
       "Winding resistance measurement kit",
       "High potential (HiPot) testing set",
+      "Primary test instruments — KUSAM-MECO (authorised dealer)",
     ],
   },
   {
     slug: "secondary-test-instruments",
     title: "Secondary Testing Instruments",
     blurb: "Relay and scheme proving instruments for protection commissioning and AMC.",
-    image: relay,
-    items: ["CPC 356 — Omicron", "Sverker 750 — Megger", "Secondary injection kit — Sudharsan"],
+    image: "/site/secondary-injection.jpg",
+    items: [
+      "CPC 356 — Omicron",
+      "Sverker 750 — Megger",
+      "Secondary test instruments — KUSAM-MECO (authorised dealer)",
+    ],
   },
   {
     slug: "basic-test-instruments",
     title: "Basic Testing Instruments",
     blurb: "Field measurement and diagnostic instruments carried by every commissioning team.",
-    image: cables,
+    image: "/site/switchgear-testing.jpg",
     items: [
       "Digital earth resistance tester",
       "Digital multimeter",
@@ -78,6 +122,25 @@ export const productGroups: ProductGroup[] = [
       "Insulation tester 5 kV and 1 kV",
       "Oil bath (BDV) kit",
       "Multifunction process calibrator",
+    ],
+  },
+  {
+    slug: "electrical-safety-products",
+    title: "Electrical Safety Products",
+    blurb:
+      "Personal protective equipment and insulation products for live-line work and switching operations.",
+    image: "/site/safety-gloves.jpg",
+    items: [
+      "Electrical insulating gloves",
+      "Electrical insulating matting",
+      "Arc flash protection suits",
+      "Discharge rods and earthing sets",
+      "Panel-front safety signage and PPE kits",
+    ],
+    photos: [
+      { src: "/site/safety-gloves.jpg", caption: "Electrical insulating gloves" },
+      { src: "/site/insulating-mat.jpg", caption: "Electrical insulating matting" },
+      { src: "/site/arc-flash-suit.jpg", caption: "Arc flash protection suit" },
     ],
   },
 ];
