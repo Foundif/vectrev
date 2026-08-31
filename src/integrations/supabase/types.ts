@@ -132,6 +132,30 @@ export type Database = {
         }
         Relationships: []
       }
+      site_content: {
+        Row: {
+          image_url: string | null
+          key: string
+          updated_at: string
+          updated_by: string | null
+          value: string | null
+        }
+        Insert: {
+          image_url?: string | null
+          key: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: string | null
+        }
+        Update: {
+          image_url?: string | null
+          key?: string
+          updated_at?: string
+          updated_by?: string | null
+          value?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
