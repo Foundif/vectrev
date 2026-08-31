@@ -9,31 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompanyProfileRouteImport } from './routes/company-profile'
-import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
 
-const ResourcesRoute = ResourcesRouteImport.update({
-  id: '/resources',
-  path: '/resources',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -42,11 +32,6 @@ const ProductsRoute = ProductsRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndustriesRoute = IndustriesRouteImport.update({
-  id: '/industries',
-  path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -62,11 +47,6 @@ const ContactRoute = ContactRouteImport.update({
 const CompanyProfileRoute = CompanyProfileRouteImport.update({
   id: '/company-profile',
   path: '/company-profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CaseStudiesRoute = CaseStudiesRouteImport.update({
-  id: '/case-studies',
-  path: '/case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BranchesRoute = BranchesRouteImport.update({
@@ -94,11 +74,6 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -107,11 +82,6 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
@@ -130,40 +100,30 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/branches': typeof BranchesRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
-  '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/products': typeof ProductsRoute
-  '/resources': typeof ResourcesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/api/chat': typeof ApiChatRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin/': typeof AdminIndexRoute
-  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/branches': typeof BranchesRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
-  '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/products': typeof ProductsRoute
-  '/resources': typeof ResourcesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/api/chat': typeof ApiChatRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin': typeof AdminIndexRoute
-  '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -172,20 +132,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/branches': typeof BranchesRoute
-  '/case-studies': typeof CaseStudiesRoute
   '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
-  '/industries': typeof IndustriesRoute
   '/login': typeof LoginRoute
   '/products': typeof ProductsRoute
-  '/resources': typeof ResourcesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/api/chat': typeof ApiChatRoute
-  '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/admin/': typeof AdminIndexRoute
-  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -195,40 +150,30 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/branches'
-    | '/case-studies'
     | '/company-profile'
     | '/contact'
     | '/gallery'
-    | '/industries'
     | '/login'
     | '/products'
-    | '/resources'
     | '/admin/leads'
     | '/api/chat'
-    | '/blog/$slug'
     | '/services/$slug'
     | '/admin/'
-    | '/blog/'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/branches'
-    | '/case-studies'
     | '/company-profile'
     | '/contact'
     | '/gallery'
-    | '/industries'
     | '/login'
     | '/products'
-    | '/resources'
     | '/admin/leads'
     | '/api/chat'
-    | '/blog/$slug'
     | '/services/$slug'
     | '/admin'
-    | '/blog'
     | '/services'
   id:
     | '__root__'
@@ -236,20 +181,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/branches'
-    | '/case-studies'
     | '/company-profile'
     | '/contact'
     | '/gallery'
-    | '/industries'
     | '/login'
     | '/products'
-    | '/resources'
     | '/admin/leads'
     | '/api/chat'
-    | '/blog/$slug'
     | '/services/$slug'
     | '/admin/'
-    | '/blog/'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -258,30 +198,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   BranchesRoute: typeof BranchesRoute
-  CaseStudiesRoute: typeof CaseStudiesRoute
   CompanyProfileRoute: typeof CompanyProfileRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
-  IndustriesRoute: typeof IndustriesRoute
   LoginRoute: typeof LoginRoute
   ProductsRoute: typeof ProductsRoute
-  ResourcesRoute: typeof ResourcesRoute
   ApiChatRoute: typeof ApiChatRoute
-  BlogSlugRoute: typeof BlogSlugRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
-  BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/resources': {
-      id: '/resources'
-      path: '/resources'
-      fullPath: '/resources'
-      preLoaderRoute: typeof ResourcesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -294,13 +222,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/industries': {
-      id: '/industries'
-      path: '/industries'
-      fullPath: '/industries'
-      preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -322,13 +243,6 @@ declare module '@tanstack/react-router' {
       path: '/company-profile'
       fullPath: '/company-profile'
       preLoaderRoute: typeof CompanyProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/case-studies': {
-      id: '/case-studies'
-      path: '/case-studies'
-      fullPath: '/case-studies'
-      preLoaderRoute: typeof CaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/branches': {
@@ -366,13 +280,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/admin/': {
       id: '/admin/'
       path: '/'
@@ -385,13 +292,6 @@ declare module '@tanstack/react-router' {
       path: '/services/$slug'
       fullPath: '/services/$slug'
       preLoaderRoute: typeof ServicesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/chat': {
@@ -428,18 +328,13 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   BranchesRoute: BranchesRoute,
-  CaseStudiesRoute: CaseStudiesRoute,
   CompanyProfileRoute: CompanyProfileRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
-  IndustriesRoute: IndustriesRoute,
   LoginRoute: LoginRoute,
   ProductsRoute: ProductsRoute,
-  ResourcesRoute: ResourcesRoute,
   ApiChatRoute: ApiChatRoute,
-  BlogSlugRoute: BlogSlugRoute,
   ServicesSlugRoute: ServicesSlugRoute,
-  BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
