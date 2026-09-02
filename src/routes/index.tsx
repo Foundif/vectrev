@@ -24,6 +24,7 @@ import {
 import { CTAStrip } from "@/components/CTAStrip";
 import { OemBrands } from "@/components/OemBrands";
 import { ProfileTeaser } from "@/components/ProfileTeaser";
+import { useSiteContent } from "@/lib/site-content";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
 import technician from "@/assets/technician.webp";
@@ -110,22 +111,23 @@ const consultantPartners = [
   "ORC · Oman",
 ];
 
-const heroSlides = [
-  { src: controlPanel, label: "Control & Protection · LV / MV", badge: "70 kV AC / 80 kV DC", tag: "HV Testing" },
-  { src: substation, label: "Substation Commissioning", badge: "33 / 11 kV", tag: "Switchyard" },
-  { src: technician, label: "On-Site Engineering", badge: "24×7", tag: "Field Team" },
-  { src: testKit, label: "Omicron & Megger Kits", badge: "CPC 100 · SFRA", tag: "Diagnostics" },
-  { src: relay, label: "Protection Relays", badge: "ABB · Siemens", tag: "Numerical" },
-  { src: cables, label: "HV Cable Terminations", badge: "Up to 33 kV", tag: "Jointing" },
-  { src: hvTest, label: "High-Potential Testing", badge: "AC / DC Hi-Pot", tag: "Insulation" },
+const heroSlideMeta = [
+  { key: "home.hero.image1", label: "Switchgear Testing", badge: "LV / MV / HV", tag: "Field Testing" },
+  { key: "home.hero.image2", label: "Substation Commissioning", badge: "Up to 225 kV", tag: "Switchyard" },
+  { key: "home.hero.image3", label: "Protection & C&R Panels", badge: "ABB · Siemens", tag: "Numerical" },
+  { key: "home.hero.image4", label: "Primary Injection Testing", badge: "KUSAM-MECO", tag: "Diagnostics" },
+  { key: "home.hero.image5", label: "Secondary Injection", badge: "Scheme Proving", tag: "Relays" },
+  { key: "home.hero.image6", label: "Renewable Substations", badge: "Wind · Solar", tag: "Energisation" },
 ];
 
 function Hero() {
+  const { t, img } = useSiteContent();
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % heroSlides.length), 3800);
-    return () => clearInterval(t);
+    const i = setInterval(() => setIdx((v) => (v + 1) % heroSlideMeta.length), 3800);
+    return () => clearInterval(i);
   }, []);
+  const heroSlides = heroSlideMeta.map((m) => ({ ...m, src: img(m.key) }));
   const slide = heroSlides[idx];
   return (
     <section className="relative px-5 sm:px-8 pt-8 md:pt-14 pb-6">
@@ -141,21 +143,23 @@ function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent-brand text-xs font-semibold tracking-wider uppercase"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            Thoothukudi · Est. 2025
+            {t("home.hero.eyebrow")}
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
             className="mt-6 text-[2.4rem] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
           >
-            <span className="block">Engineering</span>
-            <span className="block"><span className="text-accent-brand">Reliability</span> Into</span>
-            <span className="block">Every Plant.</span>
+            <span className="block">{t("home.hero.title_line1")}</span>
+            <span className="block">
+              <span className="text-accent-brand">{t("home.hero.title_accent")}</span>{" "}
+              {t("home.hero.title_line2")}
+            </span>
+            <span className="block">{t("home.hero.title_line3")}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Industrial T&C, engineering consultancy and safety-compliant
-            execution — for operations that can't afford downtime.
+            {t("home.hero.subtitle")}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
@@ -163,23 +167,23 @@ function Hero() {
               to="/contact"
               className="glow-ink inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
             >
-              Get a Quote
+              {t("home.hero.cta_primary")}
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
             </Link>
             <Link
               to="/services"
               className="inline-flex items-center justify-center gap-2 border border-foreground/20 px-5 sm:px-7 py-3.5 sm:py-4 rounded-full text-foreground hover:bg-secondary transition text-sm sm:text-base"
             >
-              Our Services
+              {t("home.hero.cta_secondary")}
             </Link>
           </motion.div>
 
 
           <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
             {[
-              ["50+", "Sites Commissioned"],
-              ["5.0", "Client Rating"],
-              ["24h", "Response Time"],
+              [t("home.hero.stat1_value"), t("home.hero.stat1_label")],
+              [t("home.hero.stat2_value"), t("home.hero.stat2_label")],
+              [t("home.hero.stat3_value"), t("home.hero.stat3_label")],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">{n}</div>

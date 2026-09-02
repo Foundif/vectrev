@@ -13,7 +13,8 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyCTA } from "@/components/StickyCTA";
-import { ChatWidget } from "@/components/ChatWidget";
+import { ChatGate } from "@/components/ChatGate";
+import { SiteContentProvider } from "@/lib/site-content";
 
 function NotFoundComponent() {
   return (
@@ -127,15 +128,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col bg-background text-foreground">
-        {!isAdminArea && <SiteHeader />}
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        {!isAdminArea && <SiteFooter />}
-        {!isAdminArea && <StickyCTA />}
-        {!isAdminArea && <ChatWidget />}
-      </div>
+      <SiteContentProvider>
+        <div className="min-h-screen flex flex-col bg-background text-foreground">
+          {!isAdminArea && <SiteHeader />}
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          {!isAdminArea && <SiteFooter />}
+          {!isAdminArea && <StickyCTA />}
+          {!isAdminArea && <ChatGate />}
+        </div>
+      </SiteContentProvider>
     </QueryClientProvider>
   );
 }

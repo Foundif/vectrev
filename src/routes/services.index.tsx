@@ -95,7 +95,7 @@ function ServicesIndex() {
       <CTAStrip
         eyebrow="Scope your project"
         title="Tell us what you need. We'll come back with a plan."
-        subtitle="Share the scope and we'll respond within 24 hours."
+        subtitle="Share the scope and we'll respond promptly."
       />
     </>
   );
