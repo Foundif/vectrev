@@ -38,14 +38,10 @@ export function SiteFooter() {
             <ul className="mt-5 space-y-3 text-white/80">
               {[
                 ["/about", "About"],
-                ["/services", "Services"],
                 ["/products", "Products"],
-                ["/industries", "Industries"],
-                ["/case-studies", "Case Studies"],
-                ["/blog", "Blog"],
-                ["/resources", "Resources"],
-                ["/company-profile", "Company Profile"],
+                ["/services", "Services"],
                 ["/gallery", "Gallery"],
+                ["/company-profile", "Company Profile"],
                 ["/branches", "Branches"],
                 ["/contact", "Contact"],
               ].map(([to, label]) => (
