@@ -8,36 +8,28 @@ import { services, serviceCategories } from "@/data/services";
 
 const links = [
   { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
   { to: "/products", label: "Products" },
   { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/blog", label: "Blog" },
-  { to: "/contact", label: "Contact" },
-  { to: "/industries", label: "Industries" },
-  { to: "/case-studies", label: "Case Studies" },
-  { to: "/resources", label: "Resources" },
-  { to: "/company-profile", label: "Company Profile" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/company-profile", label: "Company Profile" },
   { to: "/branches", label: "Branches" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 const desktopLinksBefore = [
   { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
   { to: "/products", label: "Products" },
 ] as const;
 
 const desktopLinksAfter = [
-  { to: "/about", label: "About" },
-  { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 const moreLinks = [
-  { to: "/industries", label: "Industries", desc: "Sectors we serve", icon: FileText },
-  { to: "/case-studies", label: "Case Studies", desc: "Proven project outcomes", icon: FileText },
-  { to: "/resources", label: "Resources", desc: "PDF checklists & guides", icon: FileText },
-  { to: "/company-profile", label: "Company Profile", desc: "Download the 2025 PDF", icon: FileText },
   { to: "/gallery", label: "Gallery", desc: "Field & project photos", icon: ImageIcon },
+  { to: "/company-profile", label: "Company Profile", desc: "Download the 2025 PDF", icon: FileText },
   { to: "/branches", label: "Branches", desc: "Offices & deployment", icon: ImageIcon },
 ] as const;
 
