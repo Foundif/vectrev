@@ -24,6 +24,7 @@ import {
 import { CTAStrip } from "@/components/CTAStrip";
 import { OemBrands } from "@/components/OemBrands";
 import { ProfileTeaser } from "@/components/ProfileTeaser";
+import { useSiteContent } from "@/lib/site-content";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
 import technician from "@/assets/technician.webp";
