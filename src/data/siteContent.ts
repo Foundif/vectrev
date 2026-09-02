@@ -52,7 +52,7 @@ export const contentGroups: ContentGroup[] = [
       { key: "home.hero.stat1_label", label: "Stat 1 label", type: "text", value: "Sites Commissioned" },
       { key: "home.hero.stat2_value", label: "Stat 2 value", type: "text", value: "5.0" },
       { key: "home.hero.stat2_label", label: "Stat 2 label", type: "text", value: "Client Rating" },
-      { key: "home.hero.stat3_value", label: "Stat 3 value", type: "text", value: "24h" },
+      { key: "home.hero.stat3_value", label: "Stat 3 value", type: "text", value: "Prompt" },
       { key: "home.hero.stat3_label", label: "Stat 3 label", type: "text", value: "Response Time" },
       {
         key: "home.hero.quote",
