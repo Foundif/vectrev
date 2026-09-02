@@ -128,15 +128,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col bg-background text-foreground">
-        {!isAdminArea && <SiteHeader />}
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        {!isAdminArea && <SiteFooter />}
-        {!isAdminArea && <StickyCTA />}
-        {!isAdminArea && <ChatWidget />}
-      </div>
+      <SiteContentProvider>
+        <div className="min-h-screen flex flex-col bg-background text-foreground">
+          {!isAdminArea && <SiteHeader />}
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          {!isAdminArea && <SiteFooter />}
+          {!isAdminArea && <StickyCTA />}
+          {!isAdminArea && <ChatGate />}
+        </div>
+      </SiteContentProvider>
     </QueryClientProvider>
   );
 }
