@@ -8,9 +8,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact VECTREV Engineering Solutions — Thoothukudi" },
-      { name: "description", content: "Talk to a VECTREV engineer. Share your project scope and get a clear plan and quote within 24 hours." },
+      { name: "description", content: "Talk to a VECTREV engineer. Share your project scope and get a clear plan and a prompt quote." },
       { property: "og:title", content: "Contact VECTREV Engineering Solutions" },
-      { property: "og:description", content: "An engineer — not a salesperson — responds within 24 hours." },
+      { property: "og:description", content: "An engineer — not a salesperson — responds promptly." },
     ],
   }),
   component: Contact,
@@ -76,7 +76,7 @@ function Contact() {
         "",
         ...CHECKLIST.map((q, i) => `${i + 1}. ${q}:`),
         "",
-        "(Reply against each line so an engineer can come back within 24 hours.)",
+        "(Reply against each line so an engineer can come back to you promptly.)",
       ].join("\n");
       window.open(
         `https://wa.me/916379608428?text=${encodeURIComponent(followUp)}`,
@@ -98,7 +98,7 @@ function Contact() {
             Let's discuss your <span className="text-accent-brand">project.</span>
           </>
         }
-        subtitle="Share a few details about your site or scope. An engineer — not a salesperson — will respond within 24 hours."
+        subtitle="Share a few details about your site or scope. An engineer — not a salesperson — will respond promptly."
       />
 
       <section className="px-5 sm:px-8 pb-20">
@@ -188,7 +188,7 @@ function Contact() {
               <>
                 <div className="relative">
                   <div className="text-xs uppercase tracking-[0.22em] text-white/60">Lead form</div>
-                  <h2 className="mt-3 text-2xl md:text-3xl font-extrabold">Get a quote in 24 hours</h2>
+                  <h2 className="mt-3 text-2xl md:text-3xl font-extrabold">Get a prompt quote</h2>
                   <p className="mt-2 text-white/60 text-sm">
                     Submitting sends an intake message to our engineers on WhatsApp,
                     then automatically follows up with the project checklist they need from you.
@@ -237,7 +237,7 @@ function Contact() {
                 <p className="mt-3 text-white/70 max-w-md mx-auto">
                   We've opened WhatsApp twice — once with your intake message, and once with
                   the required-info checklist our engineers need to come back with a clear plan.
-                  Reply against each line and an engineer will respond within 24 hours.
+                  Reply against each line and an engineer will respond promptly.
                 </p>
                 <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
                   <a

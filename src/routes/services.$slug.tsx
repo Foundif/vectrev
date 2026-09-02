@@ -170,7 +170,7 @@ function ServiceDetail() {
       <CTAStrip
         eyebrow="Next step"
         title="Send us the drawings. We'll send back a scope."
-        subtitle="Typical response within 24 hours, including instrument list and manpower plan."
+        subtitle="Prompt response with instrument list and manpower plan."
       />
     </>
   );
