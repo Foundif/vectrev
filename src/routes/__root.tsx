@@ -13,7 +13,8 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { StickyCTA } from "@/components/StickyCTA";
-import { ChatWidget } from "@/components/ChatWidget";
+import { ChatGate } from "@/components/ChatGate";
+import { SiteContentProvider } from "@/lib/site-content";
 
 function NotFoundComponent() {
   return (
