@@ -110,22 +110,23 @@ const consultantPartners = [
   "ORC · Oman",
 ];
 
-const heroSlides = [
-  { src: controlPanel, label: "Control & Protection · LV / MV", badge: "70 kV AC / 80 kV DC", tag: "HV Testing" },
-  { src: substation, label: "Substation Commissioning", badge: "33 / 11 kV", tag: "Switchyard" },
-  { src: technician, label: "On-Site Engineering", badge: "24×7", tag: "Field Team" },
-  { src: testKit, label: "Omicron & Megger Kits", badge: "CPC 100 · SFRA", tag: "Diagnostics" },
-  { src: relay, label: "Protection Relays", badge: "ABB · Siemens", tag: "Numerical" },
-  { src: cables, label: "HV Cable Terminations", badge: "Up to 33 kV", tag: "Jointing" },
-  { src: hvTest, label: "High-Potential Testing", badge: "AC / DC Hi-Pot", tag: "Insulation" },
+const heroSlideMeta = [
+  { key: "home.hero.image1", label: "Switchgear Testing", badge: "LV / MV / HV", tag: "Field Testing" },
+  { key: "home.hero.image2", label: "Substation Commissioning", badge: "Up to 225 kV", tag: "Switchyard" },
+  { key: "home.hero.image3", label: "Protection & C&R Panels", badge: "ABB · Siemens", tag: "Numerical" },
+  { key: "home.hero.image4", label: "Primary Injection Testing", badge: "KUSAM-MECO", tag: "Diagnostics" },
+  { key: "home.hero.image5", label: "Secondary Injection", badge: "Scheme Proving", tag: "Relays" },
+  { key: "home.hero.image6", label: "Renewable Substations", badge: "Wind · Solar", tag: "Energisation" },
 ];
 
 function Hero() {
+  const { t, img } = useSiteContent();
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % heroSlides.length), 3800);
-    return () => clearInterval(t);
+    const i = setInterval(() => setIdx((v) => (v + 1) % heroSlideMeta.length), 3800);
+    return () => clearInterval(i);
   }, []);
+  const heroSlides = heroSlideMeta.map((m) => ({ ...m, src: img(m.key) }));
   const slide = heroSlides[idx];
   return (
     <section className="relative px-5 sm:px-8 pt-8 md:pt-14 pb-6">
