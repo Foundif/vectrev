@@ -176,22 +176,11 @@ export function SiteHeader() {
                 )}
               </AnimatePresence>
             </div>
-            {desktopLinksAfter.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                activeProps={{ className: "text-accent-brand bg-accent/10" }}
-                inactiveProps={{ className: "text-foreground/75 hover:text-foreground hover:bg-secondary" }}
-                className="px-3.5 py-2 rounded-full text-sm font-medium transition"
-              >
-                {l.label}
-              </Link>
-            ))}
             <div ref={moreRef} className="relative">
               <button
                 onClick={() => setMoreOpen((v) => !v)}
                 className={`px-3.5 py-2 rounded-full text-sm font-medium transition inline-flex items-center gap-1 ${
-                  moreOpen || pathname === "/resources" || pathname === "/gallery"
+                  moreOpen || pathname === "/company-profile" || pathname === "/branches" || pathname === "/gallery"
                     ? "text-accent-brand bg-accent/10"
                     : "text-foreground/75 hover:text-foreground hover:bg-secondary"
                 }`}
