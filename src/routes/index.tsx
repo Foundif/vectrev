@@ -143,21 +143,23 @@ function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent-brand text-xs font-semibold tracking-wider uppercase"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-            Thoothukudi · Est. 2025
+            {t("home.hero.eyebrow")}
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
             className="mt-6 text-[2.4rem] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
           >
-            <span className="block">Engineering</span>
-            <span className="block"><span className="text-accent-brand">Reliability</span> Into</span>
-            <span className="block">Every Plant.</span>
+            <span className="block">{t("home.hero.title_line1")}</span>
+            <span className="block">
+              <span className="text-accent-brand">{t("home.hero.title_accent")}</span>{" "}
+              {t("home.hero.title_line2")}
+            </span>
+            <span className="block">{t("home.hero.title_line3")}</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="mt-6 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Industrial T&C, engineering consultancy and safety-compliant
-            execution — for operations that can't afford downtime.
+            {t("home.hero.subtitle")}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8 grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center gap-3">
@@ -165,23 +167,23 @@ function Hero() {
               to="/contact"
               className="glow-ink inline-flex items-center justify-center gap-2 bg-foreground text-background font-semibold px-5 sm:px-7 py-3.5 sm:py-4 rounded-full hover:bg-accent transition group text-sm sm:text-base"
             >
-              Get a Quote
+              {t("home.hero.cta_primary")}
               <ArrowUpRight className="h-4 w-4 group-hover:rotate-45 transition" />
             </Link>
             <Link
               to="/services"
               className="inline-flex items-center justify-center gap-2 border border-foreground/20 px-5 sm:px-7 py-3.5 sm:py-4 rounded-full text-foreground hover:bg-secondary transition text-sm sm:text-base"
             >
-              Our Services
+              {t("home.hero.cta_secondary")}
             </Link>
           </motion.div>
 
 
           <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
             {[
-              ["50+", "Sites Commissioned"],
-              ["5.0", "Client Rating"],
-              ["24h", "Response Time"],
+              [t("home.hero.stat1_value"), t("home.hero.stat1_label")],
+              [t("home.hero.stat2_value"), t("home.hero.stat2_label")],
+              [t("home.hero.stat3_value"), t("home.hero.stat3_label")],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">{n}</div>
