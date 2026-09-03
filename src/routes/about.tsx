@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
 import technician from "@/assets/technician.webp";
 import substation from "@/assets/substation.webp";
+import { useSiteContent } from "@/lib/site-content";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -26,16 +27,17 @@ const values = [
 ];
 
 function About() {
+  const { t, img } = useSiteContent();
   return (
     <>
       <PageHero
-        eyebrow="About VECTREV"
+        eyebrow={t("about.hero.eyebrow")}
         title={
           <>
-            Built to be the engineering partner <span className="text-accent-brand">Indian industry deserves.</span>
+            {t("about.hero.title")} <span className="text-accent-brand">{t("about.hero.accent")}</span>
           </>
         }
-        subtitle="VECTREV Engineering Solutions Pvt Ltd is an independent industrial engineering company based in Thoothukudi, Tamil Nadu — focused on electrical Testing & Commissioning, consultancy and safety-compliant execution."
+        subtitle={t("about.hero.subtitle")}
       />
 
       {/* Registered highlight — CIN & GSTIN prominent */}
@@ -59,19 +61,17 @@ function About() {
       <section className="px-5 sm:px-8 py-12">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-[2rem] overflow-hidden shadow-soft">
-            <img src={technician} alt="VECTREV engineer at work" className="w-full h-[520px] object-cover" />
+            <img src={img("about.intro.image", technician)} alt="VECTREV engineer at work" className="w-full h-[520px] object-cover" />
           </motion.div>
           <div>
-            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">Why we exist</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">{t("about.intro.eyebrow")}</div>
             <h2 className="mt-4 text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
-              Indian plants don't fail because of equipment. They fail because of how that equipment is commissioned.
+              {t("about.intro.title")}
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              We started VECTREV after seeing the same patterns again and again — incomplete tests, missing
-              protection coordination, undocumented protocols, and shortcuts that cost lakhs months later.
-              Our promise is simple: every job we sign off on is done the way the standards require, with the
-              paperwork to prove it.
+              {t("about.intro.body")}
             </p>
+            <p className="mt-4 text-foreground font-semibold leading-relaxed">{t("about.intro.body2")}</p>
             <dl className="mt-8 grid grid-cols-3 gap-6 max-w-md">
               {[
                 ["50+", "Sites commissioned"],
@@ -91,7 +91,7 @@ function About() {
       <section className="px-5 sm:px-8 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">What we stand for</div>
-          <h2 className="mt-3 text-3xl md:text-5xl font-extrabold text-foreground max-w-2xl">Our values, on every site.</h2>
+          <h2 className="mt-3 text-3xl md:text-5xl font-extrabold text-foreground max-w-2xl">{t("about.values.title")}</h2>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map((v) => (
               <div key={v.title} className="rounded-2xl bg-card border border-border p-6 shadow-card-premium">

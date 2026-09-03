@@ -99,21 +99,6 @@ function ServiceDetail() {
               ))}
             </ul>
 
-            {service.equipment && (
-              <>
-                <h3 className="mt-10 text-xl font-extrabold text-foreground">Equipment covered</h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {service.equipment.map((e) => (
-                    <span
-                      key={e}
-                      className="text-xs px-3 py-1.5 rounded-full bg-secondary text-foreground/80 border border-border"
-                    >
-                      {e}
-                    </span>
-                  ))}
-                </div>
-              </>
-            )}
           </div>
 
           <div className="lg:col-span-5 space-y-6">
