@@ -16,7 +16,6 @@ export type Service = {
   image: string;
   intro: string;
   scope: string[];
-  equipment?: string[];
   outcomes: string[];
   faqs: { q: string; a: string }[];
 };
