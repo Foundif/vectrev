@@ -36,18 +36,6 @@ export const services: Service[] = [
       "Testing and commissioning of DC systems, battery banks and UPS",
       "Energisation support, load trials and punch-list closure",
     ],
-    equipment: [
-      "Isolator / disconnecting switch",
-      "Circuit breaker",
-      "Current transformer",
-      "Capacitor voltage / potential transformer",
-      "Surge arrestor",
-      "Power, auxiliary and special transformers",
-      "Generators and motors",
-      "DC charger, battery bank and UPS",
-      "Power and control cables",
-      "System earthing",
-    ],
     outcomes: [
       "First-time-right energisation with no rework at charging",
       "Complete test record pack accepted by consultants and inspectorate",
