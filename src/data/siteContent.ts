@@ -52,10 +52,8 @@ export const contentGroups: ContentGroup[] = [
       { key: "home.hero.cta_secondary", label: "Secondary button", type: "text", value: "Our Services" },
       { key: "home.hero.stat1_value", label: "Stat 1 value", type: "text", value: "50+" },
       { key: "home.hero.stat1_label", label: "Stat 1 label", type: "text", value: "Sites Commissioned" },
-      { key: "home.hero.stat2_value", label: "Stat 2 value", type: "text", value: "5.0" },
-      { key: "home.hero.stat2_label", label: "Stat 2 label", type: "text", value: "Client Rating" },
-      { key: "home.hero.stat3_value", label: "Stat 3 value", type: "text", value: "Prompt" },
-      { key: "home.hero.stat3_label", label: "Stat 3 label", type: "text", value: "Response Time" },
+      { key: "home.hero.stat2_value", label: "Stat 2 value", type: "text", value: "2" },
+      { key: "home.hero.stat2_label", label: "Stat 2 label", type: "text", value: "Countries Served" },
       {
         key: "home.hero.quote",
         label: "Review card quote",
@@ -193,23 +191,23 @@ export const contentGroups: ContentGroup[] = [
     group: "Products page",
     fields: [
       { key: "products.hero.title", label: "Headline", type: "text", value: "Panels we build." },
-      { key: "products.hero.accent", label: "Headline accent", type: "text", value: "Instruments we supply." },
+      { key: "products.hero.accent", label: "Headline accent", type: "text", value: "Safety products we supply." },
       {
         key: "products.hero.subtitle",
         label: "Sub-headline",
         type: "textarea",
         value:
-          "Authorised KUSAM-MECO dealers for electronic test and measuring instruments — plus end-to-end design and supply of LV and MV electrical panels for industrial, commercial and infrastructure projects.",
+          "End-to-end design and supply of LV and MV electrical panels and electrical safety products for industrial, commercial and infrastructure projects.",
       },
-      { key: "products.dealer.title", label: "Dealer banner heading", type: "text", value: "Authorised KUSAM-MECO Dealers" },
+      { key: "products.dealer.title", label: "Product banner heading", type: "text", value: "Panel & Safety Solutions" },
       {
         key: "products.dealer.body",
         label: "Dealer banner text",
         type: "textarea",
         value:
-          "VECTREV Engineering Solutions Pvt Ltd is an authorised stockist for KUSAM-MECO electronic test and measuring instruments. Genuine instruments, manufacturer warranty, calibration support and on-site application guidance from practising commissioning engineers.",
+          "Practical electrical products designed to support safe, reliable and well-documented project execution.",
       },
-      { key: "products.dealer.image", label: "Authorisation certificate", type: "image", image: "/site/kusam-meco-authorisation.jpg" },
+      { key: "products.dealer.image", label: "Product image", type: "image", image: "/site/panel-testing-workshop.jpg" },
     ],
   },
   {
