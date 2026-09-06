@@ -19,7 +19,6 @@ export type Service = {
   intro: string;
   scope: string[];
   outcomes: string[];
-  faqs?: { q: string; a: string }[];
 };
 
 export const services: Service[] = [
@@ -45,9 +44,7 @@ export const services: Service[] = [
       "Complete Test Records - Structured documentation for easy review and approval.",
       "Proven Performance - Systems verified for safe and reliable operation.",
     ],
-    faqs: [],
   },
-
   {
     slug: "protection-relays-and-cr-panels",
     title: "Protection Relays, Control & Relay Panels",
@@ -69,9 +66,7 @@ export const services: Service[] = [
       "Every trip path proven end to end",
       "Signed function-test records per bay",
     ],
-    faqs: [],
   },
-
   {
     slug: "retrofitting-and-refurbishment",
     title: "Retrofitting & Refurbishment",
@@ -93,9 +88,7 @@ export const services: Service[] = [
       "Outage windows respected",
       "As-built drawings updated and handed over",
     ],
-    faqs: [],
   },
-
   {
     slug: "substation-automation-systems",
     title: "Substation Automation System (SAS) Commissioning",
@@ -121,9 +114,7 @@ export const services: Service[] = [
       "Time-synchronised, reliable SCADA data",
       "Clean handover to O&M teams",
     ],
-    faqs: [],
   },
-
   {
     slug: "power-system-studies",
     title: "Design & Power System Studies",
@@ -146,14 +137,11 @@ export const services: Service[] = [
       "Coordinated, selective protection settings",
       "Arc flash labels and safe working boundaries",
     ],
-    faqs: [],
   },
-
   {
     slug: "engineering-documentation",
     title: "Engineering Document Preparation",
-    short:
-      "Sizing calculations, cable schedules, layouts and SLDs.",
+    short: "Sizing calculations, cable schedules, layouts and SLDs.",
     category: "Engineering & Studies",
     image: hvTest,
     intro:
@@ -170,9 +158,7 @@ export const services: Service[] = [
       "Consistent, drawing-controlled documentation",
       "Faster consultant and inspectorate sign-off",
     ],
-    faqs: [],
   },
-
   {
     slug: "electrical-panel-solutions",
     title: "Electrical Panel Solutions",
@@ -194,9 +180,7 @@ export const services: Service[] = [
       "Documented compliance to IS/IEC",
       "Single point of responsibility from design to commissioning",
     ],
-    faqs: [],
   },
-
   {
     slug: "annual-maintenance-and-testing",
     title: "Annual Maintenance & Testing",
@@ -218,9 +202,7 @@ export const services: Service[] = [
       "Year-on-year trend data on asset condition",
       "Compliance evidence for audits and insurance",
     ],
-    faqs: [],
   },
-
   {
     slug: "consultancy-and-site-supervision",
     title: "Consultancy & Site Supervision",
@@ -242,7 +224,6 @@ export const services: Service[] = [
       "Fewer interface gaps between contractors",
       "Statutory approvals achieved without rework",
     ],
-    faqs: [],
   },
 ];
 
