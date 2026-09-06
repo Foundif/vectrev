@@ -11,7 +11,7 @@ export type ContentField = {
   image?: string;
 };
 
-import standardBlueSite from "@/assets/vectrev-standard-blue-site.png.asset.json";
+import vectrevStaffSite from "@/assets/vectrev-staff-panel-testing.png.asset.json";
 
 export type ContentGroup = { group: string; fields: ContentField[] };
 
@@ -119,7 +119,7 @@ export const contentGroups: ContentGroup[] = [
       { key: "home.solution.bullet2", label: "Bullet 2", type: "text", value: "Complete test records — structured documentation for easy review" },
       { key: "home.solution.bullet3", label: "Bullet 3", type: "text", value: "Proven performance — systems verified for safe, reliable operation" },
       { key: "home.solution.bullet4", label: "Bullet 4", type: "text", value: "Compliance with IS / IEC / CEA standards" },
-      { key: "home.solution.image", label: "Section image", type: "image", image: standardBlueSite.url },
+      { key: "home.solution.image", label: "Section image", type: "image", image: vectrevStaffSite.url },
     ],
   },
   {
