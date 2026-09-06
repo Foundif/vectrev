@@ -9,8 +9,6 @@ import {
   Star,
   ArrowUpRight,
   CheckCircle2,
-  AlertTriangle,
-  Clock,
   Gauge,
   ChevronLeft,
   ChevronRight,
@@ -27,7 +25,6 @@ import { ProfileTeaser } from "@/components/ProfileTeaser";
 import { useSiteContent } from "@/lib/site-content";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
-import technician from "@/assets/technician.webp";
 import testKit from "@/assets/test-kit.webp";
 import relay from "@/assets/relay.webp";
 import cables from "@/assets/cables.webp";
@@ -179,11 +176,10 @@ function Hero() {
           </motion.div>
 
 
-          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-3 max-w-lg gap-6">
+          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-2 max-w-lg gap-6">
             {[
               [t("home.hero.stat1_value"), t("home.hero.stat1_label")],
               [t("home.hero.stat2_value"), t("home.hero.stat2_label")],
-              [t("home.hero.stat3_value"), t("home.hero.stat3_label")],
             ].map(([n, l]) => (
               <div key={l}>
                 <div className="text-2xl sm:text-3xl font-extrabold text-foreground">{n}</div>
@@ -330,65 +326,22 @@ function ClientsMarquee() {
   );
 }
 
-const problems = [
-  { icon: Clock, title: "Project delays", desc: "Slipping commissioning dates that cascade into revenue loss.", image: substation, stat: "42%", statLabel: "of outages trace back to poor T&C" },
-  { icon: AlertTriangle, title: "Safety risks", desc: "Non-compliant work that endangers people and equipment.", image: hvTest, stat: "1 in 3", statLabel: "sites fail first inspection" },
-  { icon: HardHat, title: "Low-quality vendors", desc: "Poor execution, missing documents, costly rework.", image: cables, stat: "3×", statLabel: "cost of rework vs. doing it right" },
-];
-
-function Problem() {
+function PromiseBand() {
+  const { t } = useSiteContent();
   return (
-    <section className="px-5 sm:px-8 py-20">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8">
-            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The reality on site</div>
-            <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-[1.1]">
-              Most plant problems aren't equipment failures.{" "}
-              <span className="text-accent-brand">They're execution failures.</span>
-            </h2>
-          </div>
-          <div className="lg:col-span-4">
-            <p className="text-muted-foreground leading-relaxed">
-              One missed test, one undocumented protocol, one safety shortcut —
-              and you're staring at a tripped substation, a regulator notice,
-              or a six-figure outage.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {problems.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={fadeUp}
-              transition={{ delay: i * 0.08 }}
-              className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card-premium hover:-translate-y-1 transition"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-                <div className="absolute top-4 left-4 h-11 w-11 rounded-xl bg-white/95 flex items-center justify-center">
-                  <p.icon className="h-5 w-5 text-accent-brand" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="text-3xl font-extrabold text-white leading-none">{p.stat}</div>
-                  <div className="text-xs text-white/80 mt-1">{p.statLabel}</div>
-                </div>
+    <section className="px-5 sm:px-8 py-16">
+      <div className="max-w-7xl mx-auto rounded-[2rem] bg-dark text-dark-foreground px-8 py-10 md:px-12 md:py-14">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          <h2 className="lg:col-span-7 text-2xl md:text-4xl font-extrabold leading-tight">
+            {t("home.promise.title")}
+          </h2>
+          <div className="lg:col-span-5 grid sm:grid-cols-3 gap-4 text-sm font-semibold text-white/75">
+            {["home.promise.line1", "home.promise.line2", "home.promise.line3"].map((key) => (
+              <div key={key} className="border-l-2 border-accent pl-3">
+                {t(key)}
               </div>
-              <div className="p-5">
-                <h3 className="font-bold text-foreground text-lg">{p.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-              </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -396,6 +349,7 @@ function Problem() {
 }
 
 function Solution() {
+  const { t, img } = useSiteContent();
   const outcomes = [
     "Zero-defect handover with full test reports",
     "Compliance with IS / IEC / CEA standards",
@@ -412,24 +366,21 @@ function Solution() {
           transition={{ duration: 0.7 }}
           className="relative rounded-[2rem] overflow-hidden shadow-soft"
         >
-          <img src={technician} alt="VECTREV technician on site" className="w-full h-[500px] object-cover" />
+          <img src={img("home.solution.image")} alt="VECTREV engineering team on site" className="w-full h-[500px] object-cover" />
         </motion.div>
         <div>
-          <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">The VECTREV standard</div>
+          <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">{t("home.solution.eyebrow")}</div>
           <h2 className="mt-4 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
-            An engineering partner that owns the outcome — not just the scope.
+            {t("home.solution.title")}
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            From pre-commissioning checks to final energisation, our engineers
-            stay on site until your system runs the way it was designed to.
-            Every test instrumented. Every protocol followed. Every reading
-            documented.
+            {t("home.solution.body")}
           </p>
           <ul className="mt-8 space-y-3">
-            {outcomes.map((o) => (
-              <li key={o} className="flex items-start gap-3">
+            {["home.solution.bullet1", "home.solution.bullet2", "home.solution.bullet3", "home.solution.bullet4"].map((key) => (
+              <li key={key} className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-accent-brand flex-shrink-0 mt-0.5" />
-                <span className="text-foreground font-medium">{o}</span>
+                <span className="text-foreground font-medium">{t(key)}</span>
               </li>
             ))}
           </ul>
@@ -805,7 +756,7 @@ function Home() {
       <ClientsMarquee />
       <OemBrands />
       <ProfileTeaser />
-      <Problem />
+      <PromiseBand />
       <div className="relative">
         <img src={substation} alt="" aria-hidden="true" className="absolute -z-10 inset-0 w-full h-full object-cover opacity-[0.04]" />
         <Solution />
