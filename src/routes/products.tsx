@@ -61,7 +61,7 @@ function Products() {
       <PageHero
         eyebrow="Products"
         title={<>Products we supply. <br /><span className="text-accent-brand">Built for dependable work.</span></>}
-        subtitle="Authorised KUSAM-MECO dealer and electrical panel supplier for industrial, commercial and infrastructure projects."
+        subtitle="We specialise in clampmeters, power measurement & control instruments, and power transducers. VECTREV is an authorised Kusam-Meco dealer serving project teams across the globe."
       />
 
       <section aria-labelledby="kusam-meco-heading" className="bg-background px-5 py-10 sm:px-8 sm:py-14">
@@ -91,11 +91,11 @@ function Products() {
               ))}
             </ul>
           </div>
-          <figure className="min-h-72 bg-[#f5f1eb] p-4 sm:p-6">
+          <figure className="flex min-h-72 items-center justify-center bg-[#f5f1eb] p-6 sm:p-8">
             <img
               src={KUSAM_MECO.certificate}
               alt={KUSAM_MECO.certificateNote}
-              className="size-full object-contain"
+              className="h-auto max-h-72 w-auto max-w-full object-contain sm:max-h-80 lg:max-h-96"
               loading="lazy"
             />
           </figure>
