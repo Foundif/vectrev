@@ -8,7 +8,9 @@ import { captureLead } from "@/lib/leadCapture";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact VECTREV Engineering Solutions — Thoothukudi" },
+      {
+        title: "Contact VECTREV Engineering Solutions — Thoothukudi",
+      },
       {
         name: "description",
         content:
@@ -52,7 +54,7 @@ function Contact() {
 
     if (!name || !phone || !requirement) return;
 
-    // Save lead to CRM without blocking the user experience
+    // Save lead to CRM
     void captureLead({
       name,
       phone,
@@ -97,11 +99,11 @@ function Contact() {
 
       <section className="px-5 sm:px-8 pb-20">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8">
-
-          {/* Contact Information */}
+          
+          {/* LEFT SIDE - CONTACT INFORMATION */}
           <div className="lg:col-span-5 space-y-4">
 
-            {/* Phone */}
+            {/* PHONE */}
             <a
               href="tel:+916379608428"
               className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group"
@@ -129,7 +131,7 @@ function Contact() {
               </div>
             </a>
 
-            {/* Email */}
+            {/* EMAIL */}
             <a
               href="mailto:info@vectrev.in"
               className="block rounded-2xl bg-card border border-border p-6 shadow-card-premium hover:-translate-y-0.5 transition group"
@@ -157,7 +159,7 @@ function Contact() {
               </div>
             </a>
 
-            {/* Office Location */}
+            {/* OFFICE */}
             <div className="rounded-2xl bg-card border border-border p-6 shadow-card-premium">
               <div className="flex items-start gap-4">
                 <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center">
@@ -188,7 +190,7 @@ function Contact() {
                 </div>
               </div>
 
-              {/* Google Map */}
+              {/* GOOGLE MAP */}
               <div className="mt-5 rounded-xl overflow-hidden border border-border">
                 <iframe
                   title="VECTREV Engineering Solutions — Thoothukudi office location"
@@ -212,7 +214,7 @@ function Contact() {
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
 
-              {/* Registered Office */}
+              {/* REGISTERED OFFICE */}
               <div className="mt-5 pt-4 border-t border-border">
                 <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
                   Registered Office
@@ -227,15 +229,16 @@ function Contact() {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* RIGHT SIDE - CONTACT FORM */}
           <form
             onSubmit={handleSubmit}
-            className="lg:col-span-7 rounded-[2rem] bg-dark text-dark-foreground p-8 md:p-10 space-y-5 relative overflow-hidden"
+            className="lg:col-span-7 self-start rounded-[2rem] bg-dark text-dark-foreground p-8 md:p-10 space-y-5 relative overflow-hidden"
           >
             <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
 
             {!submitted ? (
               <>
+                {/* FORM HEADER */}
                 <div className="relative">
                   <div className="text-xs uppercase tracking-[0.22em] text-white/60">
                     Lead Form
@@ -251,7 +254,7 @@ function Contact() {
                   </p>
                 </div>
 
-                {/* Name and Phone */}
+                {/* NAME + PHONE */}
                 <div className="relative grid sm:grid-cols-2 gap-4">
                   <label className="block">
                     <span className="text-[11px] uppercase tracking-widest text-white/60">
@@ -284,7 +287,7 @@ function Contact() {
                   </label>
                 </div>
 
-                {/* Requirement */}
+                {/* REQUIREMENT */}
                 <label className="relative block">
                   <span className="text-[11px] uppercase tracking-widest text-white/60">
                     Requirement
@@ -300,7 +303,7 @@ function Contact() {
                   />
                 </label>
 
-                {/* Submit Button */}
+                {/* SEND BUTTON */}
                 <button
                   type="submit"
                   className="relative w-full inline-flex items-center justify-center gap-2 bg-gradient-accent text-accent-foreground font-semibold px-6 py-4 rounded-full shadow-accent hover:opacity-95 transition group"
