@@ -1,4 +1,4 @@
-```tsx
+
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
@@ -339,4 +339,3 @@ function Contact() {
     </>
   );
 }
-```
