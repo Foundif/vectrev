@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { BadgeCheck, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
 import { Button } from "@/components/ui/button";
-import { catalogProducts, productGroups } from "@/data/products";
+import { catalogProducts, KUSAM_MECO, productGroups } from "@/data/products";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -63,6 +63,44 @@ function Products() {
         title={<>Products we supply. <br /><span className="text-accent-brand">Built for dependable work.</span></>}
         subtitle="Authorised KUSAM-MECO dealer and electrical panel supplier for industrial, commercial and infrastructure projects."
       />
+
+      <section aria-labelledby="kusam-meco-heading" className="bg-background px-5 py-10 sm:px-8 sm:py-14">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-[#061426] lg:grid-cols-2">
+          <div className="p-8 sm:p-12 lg:p-14">
+            <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-red-500">
+              <BadgeCheck className="size-4" aria-hidden="true" />
+              {KUSAM_MECO.title}
+            </p>
+            <h2 id="kusam-meco-heading" className="mt-6 max-w-xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+              Kusam-Meco products, <span className="text-accent-brand">supplied with confidence.</span>
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+              From selection to delivery, we help you choose the right product category for testing, measurement and control work.
+            </p>
+            <ul className="mt-8 grid gap-4 text-sm font-medium text-white sm:grid-cols-2 sm:text-base">
+              {[
+                "Authorised Kusam-Meco dealership",
+                "Product guidance for project needs",
+                "Prompt response for enquiries",
+                "Supply support across the globe",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <BadgeCheck className="mt-0.5 size-5 shrink-0 text-red-500" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <figure className="min-h-72 bg-[#f5f1eb] p-4 sm:p-6">
+            <img
+              src={KUSAM_MECO.certificate}
+              alt={KUSAM_MECO.certificateNote}
+              className="size-full object-contain"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
 
       <section aria-labelledby="product-categories" className="border-y border-border bg-secondary/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
