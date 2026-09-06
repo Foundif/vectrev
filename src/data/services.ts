@@ -26,9 +26,9 @@ export const services: Service[] = [
     short: "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
     category: "Testing & Commissioning",
     image: testKit,
-    legacyIntro:
+    /* legacyIntro:
       "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to 225 kV switchyards. Every test is executed with calibrated Omicron and Megger instruments and closed out with traceable, audit-ready reports.",
-    intro:
+    */ intro:
       "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards to high-voltage switchyards. Every test is performed using calibrated instruments.",
     scope: [
       "Testing and commissioning of switchgear equipment (LV / MV / HV)",
@@ -59,9 +59,9 @@ export const services: Service[] = [
     short: "Relay configuration, secondary injection, scheme checking and function testing.",
     category: "Testing & Commissioning",
     image: relay,
-    legacyIntro:
+    /* legacyIntro:
       "Protection is where commissioning projects are won or lost. We verify the panel against the BOM, check the scheme end to end, configure and test the protection devices, and prove every trip and interlock before energisation.",
-    intro:
+    */ intro:
       "We bring precision to protection commissioning—verifying every scheme, validating every function, and proving every trip and interlock for reliable operation.",
     scope: [
       "BOM verification of the panels",
