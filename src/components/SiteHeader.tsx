@@ -73,8 +73,18 @@ export function SiteHeader() {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
       if (megaRef.current && !megaRef.current.contains(e.target as Node)) setMegaOpen(false);
     };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMoreOpen(false);
+        setMegaOpen(false);
+      }
+    };
     window.addEventListener("mousedown", onClick);
-    return () => window.removeEventListener("mousedown", onClick);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("mousedown", onClick);
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
   useEffect(() => {
@@ -139,6 +149,8 @@ export function SiteHeader() {
                     ? "text-accent-brand bg-accent/10"
                     : "text-foreground/75 hover:text-foreground hover:bg-secondary"
                 }`}
+                aria-expanded={megaOpen}
+                aria-controls="services-mega-menu"
               >
                 Services
                 <ChevronDown className={`h-3.5 w-3.5 transition ${megaOpen ? "rotate-180" : ""}`} />
@@ -146,11 +158,12 @@ export function SiteHeader() {
               <AnimatePresence>
                 {megaOpen && (
                   <motion.div
+                    id="services-mega-menu"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-3 w-[860px] max-w-[90vw] bg-card border border-border rounded-3xl shadow-card-premium p-6 z-50 grid grid-cols-3 gap-6"
+                    className="absolute top-full left-1/2 z-50 mt-3 grid max-h-[calc(100vh-7rem)] w-[860px] max-w-[calc(100vw-2rem)] -translate-x-1/2 grid-cols-3 gap-6 overflow-y-auto rounded-3xl border border-border bg-card p-6 shadow-card-premium"
                   >
                     {serviceCategories.map((cat) => (
                       <div key={cat}>
