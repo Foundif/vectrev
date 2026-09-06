@@ -27,7 +27,7 @@ export const services: Service[] = [
     category: "Testing & Commissioning",
     image: testKit,
     intro:
-      "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to 225 kV switchyards. Every test is executed with calibrated Omicron and Megger instruments and closed out with traceable, audit-ready reports.",
+      "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to high-voltage switchyards. Every test is performed using calibrated instruments.",
     scope: [
       "Testing and commissioning of switchgear equipment (LV / MV / HV)",
       "Testing and commissioning of AIS switchyard primary components",
@@ -36,9 +36,9 @@ export const services: Service[] = [
       "Energisation support, load trials and punch-list closure",
     ],
     outcomes: [
-      "First-time-right energisation with no rework at charging",
-      "Complete test record pack accepted by consultants and inspectorate",
-      "Defects caught at pre-commissioning, not at load",
+      "Ready for Energization - Tested and prepared for a smooth start up.",
+      "Complete Test Records - Structured documentation for easy review and approval.",
+      "Proven Performance - Systems verified for safe and reliable operation.",
     ],
     faqs: [
       {
@@ -58,7 +58,7 @@ export const services: Service[] = [
     category: "Testing & Commissioning",
     image: relay,
     intro:
-      "Protection is where commissioning projects are won or lost. We verify the panel against the BOM, check the scheme end to end, configure and test the protection devices, and prove every trip and interlock before energisation.",
+      "We bring the precision to protection commissioning - verifying every scheme, validating every function, and providing every tripand interlock for reliable operation.",
     scope: [
       "BOM verification of the panels",
       "Scheme checking against approved drawings",
