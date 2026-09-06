@@ -7,11 +7,6 @@ import controlPanel from "@/assets/control-panel.webp";
 import blogSas from "@/assets/blog-sas.jpg";
 import blogStudies from "@/assets/blog-power-studies.jpg";
 
-export type Outcome = {
-  text: string;
-  bold?: boolean;
-};
-
 export type Service = {
   slug: string;
   title: string;
@@ -23,7 +18,7 @@ export type Service = {
   image: string;
   intro: string;
   scope: string[];
-  outcomes: Outcome[];
+  outcomes: string[];
   faqs?: { q: string; a: string }[];
 };
 
@@ -45,20 +40,12 @@ export const services: Service[] = [
       "Energisation support, load trials and punch-list closure",
     ],
     outcomes: [
-      {
-        text: "Confident Energization. Verified Performance. Complete Assurance.",
-        bold: true,
-      },
-      {
-        text: "Ready for Energization - Tested and prepared for a smooth start up.",
-      },
-      {
-        text: "Complete Test Records - Structured documentation for easy review and approval.",
-      },
-      {
-        text: "Proven Performance - Systems verified for safe and reliable operation.",
-      },
+      "<strong>Confident Energization. Verified Performance. Complete Assurance.</strong>",
+      "Ready for Energization - Tested and prepared for a smooth start up.",
+      "Complete Test Records - Structured documentation for easy review and approval.",
+      "Proven Performance - Systems verified for safe and reliable operation.",
     ],
+    faqs: [],
   },
 
   {
@@ -78,16 +65,11 @@ export const services: Service[] = [
       "Function check of the complete panel",
     ],
     outcomes: [
-      {
-        text: "Verified protection settings and coordination",
-      },
-      {
-        text: "Every trip path proven end to end",
-      },
-      {
-        text: "Signed function-test records per bay",
-      },
+      "Verified protection settings and coordination",
+      "Every trip path proven end to end",
+      "Signed function-test records per bay",
     ],
+    faqs: [],
   },
 
   {
@@ -107,16 +89,11 @@ export const services: Service[] = [
       "New device testing and commissioning",
     ],
     outcomes: [
-      {
-        text: "Modern numerical protection on existing panels",
-      },
-      {
-        text: "Outage windows respected",
-      },
-      {
-        text: "As-built drawings updated and handed over",
-      },
+      "Modern numerical protection on existing panels",
+      "Outage windows respected",
+      "As-built drawings updated and handed over",
     ],
+    faqs: [],
   },
 
   {
@@ -140,16 +117,11 @@ export const services: Service[] = [
       "Point-to-point testing",
     ],
     outcomes: [
-      {
-        text: "Every point verified point-to-point from field to HMI",
-      },
-      {
-        text: "Time-synchronised, reliable SCADA data",
-      },
-      {
-        text: "Clean handover to O&M teams",
-      },
+      "Every point verified point-to-point from field to HMI",
+      "Time-synchronised, reliable SCADA data",
+      "Clean handover to O&M teams",
     ],
+    faqs: [],
   },
 
   {
@@ -170,16 +142,11 @@ export const services: Service[] = [
       "Design software tools — ETAP Power Station",
     ],
     outcomes: [
-      {
-        text: "Correctly rated equipment and cable sizes",
-      },
-      {
-        text: "Coordinated, selective protection settings",
-      },
-      {
-        text: "Arc flash labels and safe working boundaries",
-      },
+      "Correctly rated equipment and cable sizes",
+      "Coordinated, selective protection settings",
+      "Arc flash labels and safe working boundaries",
     ],
+    faqs: [],
   },
 
   {
@@ -199,16 +166,11 @@ export const services: Service[] = [
       "Layout drawings and SLD preparations",
     ],
     outcomes: [
-      {
-        text: "Approval-ready calculation sets",
-      },
-      {
-        text: "Consistent, drawing-controlled documentation",
-      },
-      {
-        text: "Faster consultant and inspectorate sign-off",
-      },
+      "Approval-ready calculation sets",
+      "Consistent, drawing-controlled documentation",
+      "Faster consultant and inspectorate sign-off",
     ],
+    faqs: [],
   },
 
   {
@@ -228,16 +190,11 @@ export const services: Service[] = [
       "Quality checks and compliance as per IS/IEC standards",
     ],
     outcomes: [
-      {
-        text: "Panels that pass routine tests first time",
-      },
-      {
-        text: "Documented compliance to IS/IEC",
-      },
-      {
-        text: "Single point of responsibility from design to commissioning",
-      },
+      "Panels that pass routine tests first time",
+      "Documented compliance to IS/IEC",
+      "Single point of responsibility from design to commissioning",
     ],
+    faqs: [],
   },
 
   {
@@ -257,16 +214,11 @@ export const services: Service[] = [
       "Thermography surveys and defect reporting",
     ],
     outcomes: [
-      {
-        text: "Fewer unplanned trips and outages",
-      },
-      {
-        text: "Year-on-year trend data on asset condition",
-      },
-      {
-        text: "Compliance evidence for audits and insurance",
-      },
+      "Fewer unplanned trips and outages",
+      "Year-on-year trend data on asset condition",
+      "Compliance evidence for audits and insurance",
     ],
+    faqs: [],
   },
 
   {
@@ -286,16 +238,11 @@ export const services: Service[] = [
       "Statutory liaison and compliance support",
     ],
     outcomes: [
-      {
-        text: "Progress visibility with daily reporting",
-      },
-      {
-        text: "Fewer interface gaps between contractors",
-      },
-      {
-        text: "Statutory approvals achieved without rework",
-      },
+      "Progress visibility with daily reporting",
+      "Fewer interface gaps between contractors",
+      "Statutory approvals achieved without rework",
     ],
+    faqs: [],
   },
 ];
 
