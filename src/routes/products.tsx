@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { BadgeCheck, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { type PointerEvent, useCallback, useEffect, useRef, useState } from "react";
+import { BadgeCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
-import { Button } from "@/components/ui/button";
-import { catalogProducts, KUSAM_MECO, productGroups } from "@/data/products";
+import { KUSAM_MECO, productGroups } from "@/data/products";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -28,9 +27,9 @@ export const Route = createFileRoute("/products")({
 });
 
 function Products() {
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
   const railRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{ startX: number; scrollLeft: number } | null>(null);
 
   const moveRail = useCallback((direction: 1 | -1) => {
     const rail = railRef.current;
@@ -51,10 +50,28 @@ function Products() {
   }, []);
 
   useEffect(() => {
-    if (!isAutoPlaying || isInteracting) return;
+    if (isInteracting) return;
     const timer = window.setInterval(() => moveRail(1), 4500);
     return () => window.clearInterval(timer);
-  }, [isAutoPlaying, isInteracting, moveRail]);
+  }, [isInteracting, moveRail]);
+
+  const startDrag = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
+    dragRef.current = { startX: event.clientX, scrollLeft: event.currentTarget.scrollLeft };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsInteracting(true);
+  };
+
+  const drag = (event: PointerEvent<HTMLDivElement>) => {
+    const dragState = dragRef.current;
+    if (!dragState) return;
+    event.currentTarget.scrollLeft = dragState.scrollLeft - (event.clientX - dragState.startX);
+  };
+
+  const endDrag = () => {
+    dragRef.current = null;
+    setIsInteracting(false);
+  };
 
   return (
     <>
@@ -102,49 +119,25 @@ function Products() {
         </div>
       </section>
 
-      <section aria-labelledby="product-categories" className="border-y border-border bg-secondary/40 py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-brand">Our range</p>
-          <h2 id="product-categories" className="mt-3 text-3xl font-extrabold text-foreground">Electrical products for every stage of the job</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {productGroups.map((group) => (
-              <article key={group.slug} className="overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
-                <div className="h-40 bg-background p-4"><img src={group.image} alt={group.title} loading="lazy" className="h-full w-full object-contain" /></div>
-                <div className="p-5"><h3 className="text-lg font-bold text-foreground">{group.title}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{group.blurb}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="product-catalog" className="w-full overflow-hidden py-14 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div><p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-brand">Product catalogue</p><h2 id="product-catalog" className="mt-3 text-3xl font-extrabold text-foreground">KUSAM-MECO and VECTREV supply</h2></div>
-            <div className="flex items-center gap-2">
-              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(-1)} aria-label="Previous products"><ChevronLeft /></Button>
-              <Button type="button" variant="outline" size="icon" onClick={() => setIsAutoPlaying((value) => !value)} aria-label={isAutoPlaying ? "Pause product carousel" : "Play product carousel"}>{isAutoPlaying ? <Pause /> : <Play />}</Button>
-              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(1)} aria-label="Next products"><ChevronRight /></Button>
-            </div>
-          </div>
-          <div
-            ref={railRef}
-            onMouseEnter={() => setIsInteracting(true)}
-            onMouseLeave={() => setIsInteracting(false)}
-            onTouchStart={() => setIsInteracting(true)}
-            onTouchEnd={() => setIsInteracting(false)}
-            onFocus={() => setIsInteracting(true)}
-            onBlur={() => setIsInteracting(false)}
-            className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {catalogProducts.map((product) => (
-              <article data-product-card key={product.slug} className="w-[min(78vw,300px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
-                <div className="flex h-56 items-center justify-center bg-background p-5"><img src={product.image} alt={product.title} loading="lazy" className="h-full w-full object-contain" /></div>
-                <div className="min-h-32 p-5"><p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent-brand">{product.category}</p><h3 className="mt-2 text-base font-bold leading-snug text-foreground">{product.title}</h3></div>
-              </article>
-            ))}
-          </div>
-          <p className="mt-2 text-sm text-muted-foreground">Swipe or drag to browse the complete range.</p>
+      <section aria-label="Product categories" className="w-full overflow-hidden py-12 sm:py-16">
+        <div
+          ref={railRef}
+          onMouseEnter={() => setIsInteracting(true)}
+          onMouseLeave={endDrag}
+          onPointerDown={startDrag}
+          onPointerMove={drag}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+          onTouchStart={() => setIsInteracting(true)}
+          onTouchEnd={endDrag}
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-5 pr-5 select-none [scrollbar-width:none] sm:px-8 [&::-webkit-scrollbar]:hidden"
+        >
+          {productGroups.map((group) => (
+            <article data-product-card key={group.slug} className="w-[min(84vw,360px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
+              <div className="flex h-52 items-center justify-center bg-background p-5"><img src={group.image} alt={group.title} loading="lazy" draggable="false" className="h-full w-full object-contain" /></div>
+              <div className="min-h-40 p-5"><h2 className="text-lg font-bold text-foreground">{group.title}</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{group.blurb}</p></div>
+            </article>
+          ))}
         </div>
       </section>
 
