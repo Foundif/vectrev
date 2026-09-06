@@ -1,3 +1,4 @@
+
 import testKit from "@/assets/test-kit.webp";
 import relay from "@/assets/relay.webp";
 import cables from "@/assets/cables.webp";
@@ -45,6 +46,7 @@ export const services: Service[] = [
       "Proven Performance - Systems verified for safe and reliable operation.",
     ],
   },
+
   {
     slug: "protection-relays-and-cr-panels",
     title: "Protection Relays, Control & Relay Panels",
@@ -67,6 +69,7 @@ export const services: Service[] = [
       "Signed function-test records per bay",
     ],
   },
+
   {
     slug: "retrofitting-and-refurbishment",
     title: "Retrofitting & Refurbishment",
@@ -89,6 +92,7 @@ export const services: Service[] = [
       "As-built drawings updated and handed over",
     ],
   },
+
   {
     slug: "substation-automation-systems",
     title: "Substation Automation System (SAS) Commissioning",
@@ -115,6 +119,7 @@ export const services: Service[] = [
       "Clean handover to O&M teams",
     ],
   },
+
   {
     slug: "power-system-studies",
     title: "Design & Power System Studies",
@@ -138,6 +143,7 @@ export const services: Service[] = [
       "Arc flash labels and safe working boundaries",
     ],
   },
+
   {
     slug: "engineering-documentation",
     title: "Engineering Document Preparation",
@@ -159,6 +165,7 @@ export const services: Service[] = [
       "Faster consultant and inspectorate sign-off",
     ],
   },
+
   {
     slug: "electrical-panel-solutions",
     title: "Electrical Panel Solutions",
@@ -181,6 +188,7 @@ export const services: Service[] = [
       "Single point of responsibility from design to commissioning",
     ],
   },
+
   {
     slug: "annual-maintenance-and-testing",
     title: "Annual Maintenance & Testing",
@@ -203,6 +211,7 @@ export const services: Service[] = [
       "Compliance evidence for audits and insurance",
     ],
   },
+
   {
     slug: "consultancy-and-site-supervision",
     title: "Consultancy & Site Supervision",
@@ -233,5 +242,6 @@ export const serviceCategories = [
   "Products & Support",
 ] as const;
 
-export const getService = (slug: string) =>
-  services.find((s) => s.slug === slug);
+export const getService = (slug: string) => {
+  return services.find((service) => service.slug === slug);
+};
