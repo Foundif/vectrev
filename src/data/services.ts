@@ -43,16 +43,7 @@ export const services: Service[] = [
       "Complete Test Records - Structured documentation for easy review and approval.",
       "Proven Performance - Systems verified for safe and reliable operation.",
     ],
-    faqs: [
-      {
-        q: "Which voltage levels do you cover?",
-        a: "LV distribution through to 225 kV switchyards, including GIS. Our overseas projects include 225/90/33 kV substations in Cameroon.",
-      },
-      {
-        q: "Are your instruments calibrated?",
-        a: "Yes. We use Omicron CPC 100, CP TD1, CT Analyzer, SFRA, Megger EGIL 200 circuit breaker analysers and calibrated 5 kV / 1 kV insulation testers, with valid calibration certificates supplied on request.",
-      },
-    ],
+   
   },
   {
     slug: "protection-relays-and-cr-panels",
@@ -74,12 +65,7 @@ export const services: Service[] = [
       "Every trip path proven end to end",
       "Signed function-test records per bay",
     ],
-    faqs: [
-      {
-        q: "Which relay makes do you work with?",
-        a: "ABB, Siemens, Schneider, GE and Easun make numerical relays, tested with Omicron CPC 356 and Megger Sverker 750 kits.",
-      },
-    ],
+  
   },
   {
     slug: "retrofitting-and-refurbishment",
@@ -101,12 +87,7 @@ export const services: Service[] = [
       "Outage windows respected",
       "As-built drawings updated and handed over",
     ],
-    faqs: [
-      {
-        q: "Can you work inside a short shutdown?",
-        a: "Yes. Scheme engineering and configuration are completed offline so that only the physical swap and proving happen during the outage.",
-      },
-    ],
+   
   },
   {
     slug: "substation-automation-systems",
@@ -132,12 +113,7 @@ export const services: Service[] = [
       "Time-synchronised, reliable SCADA data",
       "Clean handover to O&M teams",
     ],
-    faqs: [
-      {
-        q: "Do you handle IEC 61850 systems?",
-        a: "Yes — IED integration, GOOSE verification, gateway mapping and point-to-point proving are part of our standard SAS scope.",
-      },
-    ],
+   
   },
   {
     slug: "power-system-studies",
@@ -160,12 +136,7 @@ export const services: Service[] = [
       "Coordinated, selective protection settings",
       "Arc flash labels and safe working boundaries",
     ],
-    faqs: [
-      {
-        q: "What inputs do you need to start a study?",
-        a: "Single line diagram, equipment ratings, cable schedule and utility fault level. We can also build the model from a site survey where drawings are missing.",
-      },
-    ],
+   
   },
   {
     slug: "engineering-documentation",
@@ -187,12 +158,7 @@ export const services: Service[] = [
       "Consistent, drawing-controlled documentation",
       "Faster consultant and inspectorate sign-off",
     ],
-    faqs: [
-      {
-        q: "Do you provide as-built documentation after commissioning?",
-        a: "Yes. Red-lined field changes are incorporated and issued as as-built drawings with the final test report pack.",
-      },
-    ],
+   
   },
   {
     slug: "electrical-panel-solutions",
@@ -214,12 +180,7 @@ export const services: Service[] = [
       "Documented compliance to IS/IEC",
       "Single point of responsibility from design to commissioning",
     ],
-    faqs: [
-      {
-        q: "Do you supply custom-built panels?",
-        a: "Yes. Share the SLD and load list and we will engineer, build and test a panel to your exact requirement.",
-      },
-    ],
+   
   },
   {
     slug: "annual-maintenance-and-testing",
@@ -241,12 +202,7 @@ export const services: Service[] = [
       "Year-on-year trend data on asset condition",
       "Compliance evidence for audits and insurance",
     ],
-    faqs: [
-      {
-        q: "Do you offer multi-site AMC?",
-        a: "Yes. We run AMC contracts across multiple plants with a shared reporting format and scheduled visit calendar.",
-      },
-    ],
+   
   },
   {
     slug: "consultancy-and-site-supervision",
@@ -268,12 +224,7 @@ export const services: Service[] = [
       "Fewer interface gaps between contractors",
       "Statutory approvals achieved without rework",
     ],
-    faqs: [
-      {
-        q: "Can you deploy engineers outside Tamil Nadu?",
-        a: "Yes. We have executed supervision and commissioning assignments across India and in Cameroon, Central Africa.",
-      },
-    ],
+   
   },
 ];
 
