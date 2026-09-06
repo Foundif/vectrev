@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
@@ -27,41 +27,34 @@ export const Route = createFileRoute("/products")({
   component: Products,
 });
 
-
-export const Route = createFileRoute("/products")({
-  head: () => ({
-    meta: [
-      { title: "Kusam-Meco Products | VECTREV Engineering Solutions" },
-      { name: "description", content: "VECTREV is an authorised Kusam-Meco dealer supplying precision electrical measurement and control products across the globe." },
-      { property: "og:title", content: "Authorised Kusam-Meco Dealer | VECTREV" },
-      { property: "og:description", content: "Explore Kusam-Meco measurement, testing and control product categories supplied by VECTREV." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Products,
-});
-
 function Products() {
-  const [paused, setPaused] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isInteracting, setIsInteracting] = useState(false);
   const railRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const moveRail = useCallback((direction: 1 | -1) => {
     const rail = railRef.current;
-    if (!rail || paused) return;
-    const timer = window.setInterval(() => {
-      if (rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2) {
-        rail.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        rail.scrollBy({ left: 2, behavior: "auto" });
-      }
-    }, 30);
-    return () => window.clearInterval(timer);
-  }, [paused]);
+    const card = rail?.querySelector<HTMLElement>("[data-product-card]");
+    if (!rail || !card) return;
 
-  const moveRail = (direction: number) => {
-    railRef.current?.scrollBy({ left: direction * 360, behavior: "smooth" });
-  };
+    const gap = Number.parseFloat(window.getComputedStyle(rail).gap) || 0;
+    const step = card.offsetWidth + gap;
+    const maxScrollLeft = rail.scrollWidth - rail.clientWidth;
+    const isAtStart = rail.scrollLeft <= 1;
+    const isAtEnd = rail.scrollLeft >= maxScrollLeft - 1;
+
+    const left = direction === 1
+      ? (isAtEnd ? 0 : Math.min(rail.scrollLeft + step, maxScrollLeft))
+      : (isAtStart ? maxScrollLeft : Math.max(rail.scrollLeft - step, 0));
+
+    rail.scrollTo({ left, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlaying || isInteracting) return;
+    const timer = window.setInterval(() => moveRail(1), 4500);
+    return () => window.clearInterval(timer);
+  }, [isAutoPlaying, isInteracting, moveRail]);
 
   return (
     <>
@@ -91,14 +84,23 @@ function Products() {
           <div className="flex flex-wrap items-end justify-between gap-5">
             <div><p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-brand">Product catalogue</p><h2 id="product-catalog" className="mt-3 text-3xl font-extrabold text-foreground">KUSAM-MECO and VECTREV supply</h2></div>
             <div className="flex items-center gap-2">
-              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(-1)} aria-label="Scroll products left"><ChevronLeft /></Button>
-              <Button type="button" variant="outline" size="icon" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Play product carousel" : "Pause product carousel"}>{paused ? <Play /> : <Pause />}</Button>
-              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(1)} aria-label="Scroll products right"><ChevronRight /></Button>
+              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(-1)} aria-label="Previous products"><ChevronLeft /></Button>
+              <Button type="button" variant="outline" size="icon" onClick={() => setIsAutoPlaying((value) => !value)} aria-label={isAutoPlaying ? "Pause product carousel" : "Play product carousel"}>{isAutoPlaying ? <Pause /> : <Play />}</Button>
+              <Button type="button" variant="outline" size="icon" onClick={() => moveRail(1)} aria-label="Next products"><ChevronRight /></Button>
             </div>
           </div>
-          <div ref={railRef} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            ref={railRef}
+            onMouseEnter={() => setIsInteracting(true)}
+            onMouseLeave={() => setIsInteracting(false)}
+            onTouchStart={() => setIsInteracting(true)}
+            onTouchEnd={() => setIsInteracting(false)}
+            onFocus={() => setIsInteracting(true)}
+            onBlur={() => setIsInteracting(false)}
+            className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {catalogProducts.map((product) => (
-              <article key={product.slug} className="w-[min(78vw,300px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
+              <article data-product-card key={product.slug} className="w-[min(78vw,300px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
                 <div className="flex h-56 items-center justify-center bg-background p-5"><img src={product.image} alt={product.title} loading="lazy" className="h-full w-full object-contain" /></div>
                 <div className="min-h-32 p-5"><p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-accent-brand">{product.category}</p><h3 className="mt-2 text-base font-bold leading-snug text-foreground">{product.title}</h3></div>
               </article>

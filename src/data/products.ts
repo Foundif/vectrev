@@ -2,13 +2,6 @@ import controlPanel from "@/assets/control-panel.webp";
 import blogPanels from "@/assets/blog-panels.jpg";
 import lcrCalibrator from "@/assets/product-catalog/lcr-calibrator.jpg";
 import primaryTesting from "@/assets/product-catalog/primary-testing.jpg";
-import digitalMultimeter from "@/assets/product-catalog/digital-multimeter.jpg.asset.json";
-import professionalMultimeter from "@/assets/product-catalog/professional-multimeter.jpg.asset.json";
-import digitalMicroOhmMeter from "@/assets/product-catalog/digital-micro-ohm-meter.jpg.asset.json";
-import powerClampmeter from "@/assets/product-catalog/power-clampmeter.gif.asset.json";
-import arcFlashSuit from "@/assets/product-catalog/arc-flash-suit.jpg.asset.json";
-import insulatingMat from "@/assets/product-catalog/insulating-mat.jpg.asset.json";
-import insulatingGloves from "@/assets/product-catalog/insulating-gloves.jpg.asset.json";
 
 export type ProductGroup = {
   slug: string;
@@ -16,6 +9,7 @@ export type ProductGroup = {
   blurb: string;
   image: string;
   items: string[];
+  photos?: { src: string; caption: string }[];
 };
 
 export type CatalogProduct = {
@@ -164,19 +158,19 @@ export const productGroups: ProductGroup[] = [
 
 
 export const catalogProducts: CatalogProduct[] = [
-  { slug: "professional-grade-digital-multimeters", title: "Professional Grade Digital Multimeters", category: "KUSAM-MECO Test & Measuring Instruments", image: professionalMultimeter.url },
-  { slug: "basic-digital-multimeters", title: "Basic Digital Multimeters", category: "KUSAM-MECO Test & Measuring Instruments", image: digitalMultimeter.url },
+  { slug: "professional-grade-digital-multimeters", title: "Professional Grade Digital Multimeters", category: "KUSAM-MECO Test & Measuring Instruments", image: "/site/km-digital-multimeter.jpg" },
+  { slug: "basic-digital-multimeters", title: "Basic Digital Multimeters", category: "KUSAM-MECO Test & Measuring Instruments", image: "/site/km-digital-multimeter.jpg" },
   { slug: "lcr-meters", title: "LCR Meters", category: "Basic Testing Instruments", image: lcrCalibrator },
-  { slug: "digital-insulation-resistance-testers", title: "Digital Insulation Resistance Testers", category: "KUSAM-MECO Test & Measuring Instruments", image: digitalMultimeter.url },
+  { slug: "digital-insulation-resistance-testers", title: "Digital Insulation Resistance Testers", category: "KUSAM-MECO Test & Measuring Instruments", image: "/site/km-insulation-tester-kit.jpg" },
   { slug: "high-voltage-measuring-instruments", title: "High Voltage Measuring Instruments", category: "Primary Testing Instruments", image: primaryTesting },
-  { slug: "discharge-rod", title: "Discharge Rod", category: "Electrical Safety Products", image: arcFlashSuit.url },
-  { slug: "digital-micro-ohm-meter", title: "Digital Micro Ohm Meter", category: "KUSAM-MECO Test & Measuring Instruments", image: digitalMicroOhmMeter.url },
+  { slug: "discharge-rod", title: "Discharge Rod", category: "Electrical Safety Products", image: "/site/arc-flash-suit.jpg" },
+  { slug: "digital-micro-ohm-meter", title: "Digital Micro Ohm Meter", category: "KUSAM-MECO Test & Measuring Instruments", image: "/site/km-ohm-6501e.jpg" },
   { slug: "ct-pt-analyser", title: "CT-PT Analyser", category: "Primary Testing Instruments", image: primaryTesting },
   { slug: "infrared-thermometers", title: "Infrared Thermometers", category: "Basic Testing Instruments", image: lcrCalibrator },
   { slug: "cable-fault-pre-locator", title: "Cable Fault Pre-Locator", category: "Primary Testing Instruments", image: primaryTesting },
   { slug: "calibrators", title: "Calibrators", category: "Secondary Testing Instruments", image: lcrCalibrator },
   { slug: "portable-thermal-imaging-camera", title: "Portable Thermal Imaging Camera", category: "KUSAM-MECO Test & Measuring Instruments", image: lcrCalibrator },
-  { slug: "power-clampmeters", title: "Power Clampmeters", category: "Basic Testing Instruments", image: powerClampmeter.url },
+  { slug: "power-clampmeters", title: "Power Clampmeters", category: "Basic Testing Instruments", image: "/site/km-clamp-meter.jpg" },
   { slug: "power-measurement-control", title: "Power Measurement & Control Instruments", category: "Secondary Testing Instruments", image: lcrCalibrator },
   { slug: "power-transducers", title: "Power Transducers", category: "Secondary Testing Instruments", image: lcrCalibrator },
 ];
