@@ -11,7 +11,6 @@ export type ContentField = {
   image?: string;
 };
 
-import standardBlueSite from "@/assets/vectrev-standard-blue-site.png.asset.json";
 import vectrevStaffSite from "@/assets/vectrev-staff-panel-testing.png.asset.json";
 
 export type ContentGroup = { group: string; fields: ContentField[] };
