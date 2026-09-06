@@ -1,4 +1,3 @@
-
 import testKit from "@/assets/test-kit.webp";
 import relay from "@/assets/relay.webp";
 import cables from "@/assets/cables.webp";
@@ -12,26 +11,23 @@ export type Service = {
   slug: string;
   title: string;
   short: string;
-  category:
-    | "Testing & Commissioning"
-    | "Engineering & Studies"
-    | "Products & Support";
+  category: "Testing & Commissioning" | "Engineering & Studies" | "Products & Support";
   image: string;
   intro: string;
   scope: string[];
   outcomes: string[];
+  faqs: { q: string; a: string }[];
 };
 
 export const services: Service[] = [
   {
     slug: "hv-lv-testing-commissioning",
     title: "Testing & Commissioning of HV & LV Equipment",
-    short:
-      "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
+    short: "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
     category: "Testing & Commissioning",
     image: testKit,
     intro:
-      "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to high-voltage switchyards. Every test is performed using calibrated instruments.",
+      "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to 225 kV switchyards. Every test is executed with calibrated Omicron and Megger instruments and closed out with traceable, audit-ready reports.",
     scope: [
       "Testing and commissioning of switchgear equipment (LV / MV / HV)",
       "Testing and commissioning of AIS switchyard primary components",
@@ -40,22 +36,29 @@ export const services: Service[] = [
       "Energisation support, load trials and punch-list closure",
     ],
     outcomes: [
-      "Confident Energization. Verified Performance. Complete Assurance.",
-      "Ready for Energization - Tested and prepared for a smooth start up.",
-      "Complete Test Records - Structured documentation for easy review and approval.",
-      "Proven Performance - Systems verified for safe and reliable operation.",
+      "First-time-right energisation with no rework at charging",
+      "Complete test record pack accepted by consultants and inspectorate",
+      "Defects caught at pre-commissioning, not at load",
+    ],
+    faqs: [
+      {
+        q: "Which voltage levels do you cover?",
+        a: "LV distribution through to 225 kV switchyards, including GIS. Our overseas projects include 225/90/33 kV substations in Cameroon.",
+      },
+      {
+        q: "Are your instruments calibrated?",
+        a: "Yes. We use Omicron CPC 100, CP TD1, CT Analyzer, SFRA, Megger EGIL 200 circuit breaker analysers and calibrated 5 kV / 1 kV insulation testers, with valid calibration certificates supplied on request.",
+      },
     ],
   },
-
   {
     slug: "protection-relays-and-cr-panels",
     title: "Protection Relays, Control & Relay Panels",
-    short:
-      "Relay configuration, secondary injection, scheme checking and function testing.",
+    short: "Relay configuration, secondary injection, scheme checking and function testing.",
     category: "Testing & Commissioning",
     image: relay,
     intro:
-      "We bring the precision to protection commissioning - verifying every scheme, validating every function, and providing every trip and interlock for reliable operation.",
+      "Protection is where commissioning projects are won or lost. We verify the panel against the BOM, check the scheme end to end, configure and test the protection devices, and prove every trip and interlock before energisation.",
     scope: [
       "BOM verification of the panels",
       "Scheme checking against approved drawings",
@@ -68,13 +71,17 @@ export const services: Service[] = [
       "Every trip path proven end to end",
       "Signed function-test records per bay",
     ],
+    faqs: [
+      {
+        q: "Which relay makes do you work with?",
+        a: "ABB, Siemens, Schneider, GE and Easun make numerical relays, tested with Omicron CPC 356 and Megger Sverker 750 kits.",
+      },
+    ],
   },
-
   {
     slug: "retrofitting-and-refurbishment",
     title: "Retrofitting & Refurbishment",
-    short:
-      "Upgrade legacy protection and control schemes with minimum outage time.",
+    short: "Upgrade legacy protection and control schemes with minimum outage time.",
     category: "Testing & Commissioning",
     image: cables,
     intro:
@@ -91,13 +98,17 @@ export const services: Service[] = [
       "Outage windows respected",
       "As-built drawings updated and handed over",
     ],
+    faqs: [
+      {
+        q: "Can you work inside a short shutdown?",
+        a: "Yes. Scheme engineering and configuration are completed offline so that only the physical swap and proving happen during the outage.",
+      },
+    ],
   },
-
   {
     slug: "substation-automation-systems",
     title: "Substation Automation System (SAS) Commissioning",
-    short:
-      "Database, IED integration, HMI, gateway and load despatch communication.",
+    short: "Database, IED integration, HMI, gateway and load despatch communication.",
     category: "Testing & Commissioning",
     image: blogSas,
     intro:
@@ -118,13 +129,17 @@ export const services: Service[] = [
       "Time-synchronised, reliable SCADA data",
       "Clean handover to O&M teams",
     ],
+    faqs: [
+      {
+        q: "Do you handle IEC 61850 systems?",
+        a: "Yes — IED integration, GOOSE verification, gateway mapping and point-to-point proving are part of our standard SAS scope.",
+      },
+    ],
   },
-
   {
     slug: "power-system-studies",
     title: "Design & Power System Studies",
-    short:
-      "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
+    short: "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
     category: "Engineering & Studies",
     image: blogStudies,
     intro:
@@ -142,8 +157,13 @@ export const services: Service[] = [
       "Coordinated, selective protection settings",
       "Arc flash labels and safe working boundaries",
     ],
+    faqs: [
+      {
+        q: "What inputs do you need to start a study?",
+        a: "Single line diagram, equipment ratings, cable schedule and utility fault level. We can also build the model from a site survey where drawings are missing.",
+      },
+    ],
   },
-
   {
     slug: "engineering-documentation",
     title: "Engineering Document Preparation",
@@ -164,13 +184,17 @@ export const services: Service[] = [
       "Consistent, drawing-controlled documentation",
       "Faster consultant and inspectorate sign-off",
     ],
+    faqs: [
+      {
+        q: "Do you provide as-built documentation after commissioning?",
+        a: "Yes. Red-lined field changes are incorporated and issued as as-built drawings with the final test report pack.",
+      },
+    ],
   },
-
   {
     slug: "electrical-panel-solutions",
     title: "Electrical Panel Solutions",
-    short:
-      "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
+    short: "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
     category: "Products & Support",
     image: controlPanel,
     intro:
@@ -187,13 +211,17 @@ export const services: Service[] = [
       "Documented compliance to IS/IEC",
       "Single point of responsibility from design to commissioning",
     ],
+    faqs: [
+      {
+        q: "Do you supply custom-built panels?",
+        a: "Yes. Share the SLD and load list and we will engineer, build and test a panel to your exact requirement.",
+      },
+    ],
   },
-
   {
     slug: "annual-maintenance-and-testing",
     title: "Annual Maintenance & Testing",
-    short:
-      "Planned preventive testing contracts for substations and plants.",
+    short: "Planned preventive testing contracts for substations and plants.",
     category: "Products & Support",
     image: substation,
     intro:
@@ -210,13 +238,17 @@ export const services: Service[] = [
       "Year-on-year trend data on asset condition",
       "Compliance evidence for audits and insurance",
     ],
+    faqs: [
+      {
+        q: "Do you offer multi-site AMC?",
+        a: "Yes. We run AMC contracts across multiple plants with a shared reporting format and scheduled visit calendar.",
+      },
+    ],
   },
-
   {
     slug: "consultancy-and-site-supervision",
     title: "Consultancy & Site Supervision",
-    short:
-      "Independent technical review and daily on-ground engineering supervision.",
+    short: "Independent technical review and daily on-ground engineering supervision.",
     category: "Products & Support",
     image: "/site/vectrev-technician-ppe.jpg",
     intro:
@@ -233,6 +265,12 @@ export const services: Service[] = [
       "Fewer interface gaps between contractors",
       "Statutory approvals achieved without rework",
     ],
+    faqs: [
+      {
+        q: "Can you deploy engineers outside Tamil Nadu?",
+        a: "Yes. We have executed supervision and commissioning assignments across India and in Cameroon, Central Africa.",
+      },
+    ],
   },
 ];
 
@@ -242,6 +280,4 @@ export const serviceCategories = [
   "Products & Support",
 ] as const;
 
-export const getService = (slug: string) => {
-  return services.find((service) => service.slug === slug);
-};
+export const getService = (slug: string) => services.find((s) => s.slug === slug);
