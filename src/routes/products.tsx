@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { type PointerEvent, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { BadgeCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
-import { KUSAM_MECO, productGroups } from "@/data/products";
+import { catalogProducts, KUSAM_MECO, productGroups } from "@/data/products";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -27,72 +27,64 @@ export const Route = createFileRoute("/products")({
 });
 
 function Products() {
-  const [isInteracting, setIsInteracting] = useState(false);
-  const railRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef<{ startX: number; scrollLeft: number } | null>(null);
+  const [isProductRailPaused, setIsProductRailPaused] = useState(false);
+  const productRailRef = useRef<HTMLDivElement>(null);
 
-  const moveRail = useCallback((direction: 1 | -1) => {
-    const rail = railRef.current;
-    const card = rail?.querySelector<HTMLElement>("[data-product-card]");
-    if (!rail || !card) return;
+  const moveProductRail = useCallback(() => {
+    const rail = productRailRef.current;
+    const image = rail?.querySelector<HTMLElement>("[data-product-image]");
+    if (!rail || !image) return;
 
     const gap = Number.parseFloat(window.getComputedStyle(rail).gap) || 0;
-    const step = card.offsetWidth + gap;
+    const step = image.offsetWidth + gap;
     const maxScrollLeft = rail.scrollWidth - rail.clientWidth;
-    const isAtStart = rail.scrollLeft <= 1;
     const isAtEnd = rail.scrollLeft >= maxScrollLeft - 1;
 
-    const left = direction === 1
-      ? (isAtEnd ? 0 : Math.min(rail.scrollLeft + step, maxScrollLeft))
-      : (isAtStart ? maxScrollLeft : Math.max(rail.scrollLeft - step, 0));
-
-    rail.scrollTo({ left, behavior: "smooth" });
+    rail.scrollTo({
+      left: isAtEnd ? 0 : Math.min(rail.scrollLeft + step, maxScrollLeft),
+      behavior: "smooth",
+    });
   }, []);
 
   useEffect(() => {
-    if (isInteracting) return;
-    const timer = window.setInterval(() => moveRail(1), 4500);
+    if (isProductRailPaused) return;
+    const timer = window.setInterval(moveProductRail, 4000);
     return () => window.clearInterval(timer);
-  }, [isInteracting, moveRail]);
-
-  const startDrag = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "touch") return;
-    dragRef.current = { startX: event.clientX, scrollLeft: event.currentTarget.scrollLeft };
-    event.currentTarget.setPointerCapture(event.pointerId);
-    setIsInteracting(true);
-  };
-
-  const drag = (event: PointerEvent<HTMLDivElement>) => {
-    const dragState = dragRef.current;
-    if (!dragState) return;
-    event.currentTarget.scrollLeft = dragState.scrollLeft - (event.clientX - dragState.startX);
-  };
-
-  const endDrag = () => {
-    dragRef.current = null;
-    setIsInteracting(false);
-  };
+  }, [isProductRailPaused, moveProductRail]);
 
   return (
     <>
       <PageHero
         eyebrow="Products"
-        title={<>Products we supply. <br /><span className="text-accent-brand">Built for dependable work.</span></>}
+        title={
+          <>
+            Products we supply. <br />
+            <span className="text-accent-brand">Built for dependable work.</span>
+          </>
+        }
         subtitle="We specialise in clampmeters, power measurement & control instruments, and power transducers. VECTREV is an authorised Kusam-Meco dealer serving project teams across the globe."
       />
 
-      <section aria-labelledby="kusam-meco-heading" className="bg-background px-5 py-10 sm:px-8 sm:py-14">
+      <section
+        aria-labelledby="kusam-meco-heading"
+        className="bg-background px-5 py-10 sm:px-8 sm:py-14"
+      >
         <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-[#061426] lg:grid-cols-2">
           <div className="p-8 sm:p-12 lg:p-14">
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-red-500">
               <BadgeCheck className="size-4" aria-hidden="true" />
               {KUSAM_MECO.title}
             </p>
-            <h2 id="kusam-meco-heading" className="mt-6 max-w-xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-              Kusam-Meco products, <span className="text-accent-brand">supplied with confidence.</span>
+            <h2
+              id="kusam-meco-heading"
+              className="mt-6 max-w-xl text-4xl font-extrabold leading-tight text-white sm:text-5xl"
+            >
+              Kusam-Meco products,{" "}
+              <span className="text-accent-brand">supplied with confidence.</span>
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-              From selection to delivery, we help you choose the right product category for testing, measurement and control work.
+              From selection to delivery, we help you choose the right product category for testing,
+              measurement and control work.
             </p>
             <ul className="mt-8 grid gap-4 text-sm font-medium text-white sm:grid-cols-2 sm:text-base">
               {[
@@ -119,26 +111,89 @@ function Products() {
         </div>
       </section>
 
-      <section aria-label="Product categories" className="w-full overflow-hidden py-12 sm:py-16">
-        <div
-          ref={railRef}
-          onMouseEnter={() => setIsInteracting(true)}
-          onMouseLeave={endDrag}
-          onPointerDown={startDrag}
-          onPointerMove={drag}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
-          onTouchStart={() => setIsInteracting(true)}
-          onTouchEnd={endDrag}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-5 pr-5 select-none [scrollbar-width:none] sm:px-8 [&::-webkit-scrollbar]:hidden"
-        >
-          {productGroups.map((group) => (
-            <article data-product-card key={group.slug} className="w-[min(84vw,360px)] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-card-premium">
-              <div className="flex h-52 items-center justify-center bg-background p-5"><img src={group.image} alt={group.title} loading="lazy" draggable="false" className="h-full w-full object-contain" /></div>
-              <div className="min-h-40 p-5"><h2 className="text-lg font-bold text-foreground">{group.title}</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{group.blurb}</p></div>
+      <section aria-label="Product categories" className="bg-[#f8f5f0] px-5 py-12 sm:px-8 sm:py-16">
+        <div className="mx-auto max-w-6xl space-y-4 sm:space-y-5">
+          {productGroups.map((group, index) => (
+            <article
+              key={group.slug}
+              className="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_22px_rgba(15,23,42,0.08)] md:min-h-64 md:grid-cols-2"
+            >
+              <div
+                className={`relative min-h-56 overflow-hidden md:min-h-full ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}
+              >
+                <img
+                  src={group.image}
+                  alt={group.title}
+                  loading="lazy"
+                  draggable="false"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+              <div className={`p-6 sm:p-8 ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-accent-brand">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-3 text-xl font-extrabold leading-tight text-foreground sm:text-2xl">
+                  {group.title}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{group.blurb}</p>
+                <ul className="mt-4 grid gap-x-5 gap-y-2 text-xs leading-snug text-slate-600 sm:grid-cols-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span
+                        className="mt-1 size-1.5 shrink-0 rounded-full bg-accent-brand"
+                        aria-hidden="true"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-xs font-semibold text-accent-brand">
+                  Explore our full range &rarr;
+                </p>
+              </div>
             </article>
           ))}
         </div>
+      </section>
+
+      <section
+        aria-labelledby="product-images-heading"
+        className="overflow-hidden bg-background py-12 sm:py-16"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-brand">
+            Product gallery
+          </p>
+          <h2 id="product-images-heading" className="mt-3 text-3xl font-extrabold text-foreground">
+            Products we supply
+          </h2>
+        </div>
+        <div
+          ref={productRailRef}
+          onMouseEnter={() => setIsProductRailPaused(true)}
+          onMouseLeave={() => setIsProductRailPaused(false)}
+          className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] sm:px-8 [&::-webkit-scrollbar]:hidden"
+        >
+          {catalogProducts.map((product) => (
+            <figure
+              data-product-image
+              key={product.slug}
+              className="w-[min(86vw,680px)] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#f4f6f8]"
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                loading="lazy"
+                draggable="false"
+                className="h-72 w-full object-contain p-7 sm:h-96 sm:p-10"
+              />
+            </figure>
+          ))}
+        </div>
+        <p className="mx-auto mt-2 max-w-7xl px-5 text-sm text-muted-foreground sm:px-8">
+          Swipe to browse. Auto-scroll pauses while you hover.
+        </p>
       </section>
 
       <CTAStrip
