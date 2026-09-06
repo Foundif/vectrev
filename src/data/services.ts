@@ -7,23 +7,32 @@ import controlPanel from "@/assets/control-panel.webp";
 import blogSas from "@/assets/blog-sas.jpg";
 import blogStudies from "@/assets/blog-power-studies.jpg";
 
+export type Outcome = {
+  text: string;
+  bold?: boolean;
+};
+
 export type Service = {
   slug: string;
   title: string;
   short: string;
-  category: "Testing & Commissioning" | "Engineering & Studies" | "Products & Support";
+  category:
+    | "Testing & Commissioning"
+    | "Engineering & Studies"
+    | "Products & Support";
   image: string;
   intro: string;
   scope: string[];
-  outcomes: string[];
-  faqs: { q: string; a: string }[];
+  outcomes: Outcome[];
+  faqs?: { q: string; a: string }[];
 };
 
 export const services: Service[] = [
   {
     slug: "hv-lv-testing-commissioning",
     title: "Testing & Commissioning of HV & LV Equipment",
-    short: "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
+    short:
+      "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
     category: "Testing & Commissioning",
     image: testKit,
     intro:
@@ -36,23 +45,31 @@ export const services: Service[] = [
       "Energisation support, load trials and punch-list closure",
     ],
     outcomes: [
-     <strong key="confidence">
-    Confident Energization. Verified Performance. Complete Assurance.
-  </strong>,
-      "Ready for Energization - Tested and prepared for a smooth start up.",
-      "Complete Test Records - Structured documentation for easy review and approval.",
-      "Proven Performance - Systems verified for safe and reliable operation.",
+      {
+        text: "Confident Energization. Verified Performance. Complete Assurance.",
+        bold: true,
+      },
+      {
+        text: "Ready for Energization - Tested and prepared for a smooth start up.",
+      },
+      {
+        text: "Complete Test Records - Structured documentation for easy review and approval.",
+      },
+      {
+        text: "Proven Performance - Systems verified for safe and reliable operation.",
+      },
     ],
-   
   },
+
   {
     slug: "protection-relays-and-cr-panels",
     title: "Protection Relays, Control & Relay Panels",
-    short: "Relay configuration, secondary injection, scheme checking and function testing.",
+    short:
+      "Relay configuration, secondary injection, scheme checking and function testing.",
     category: "Testing & Commissioning",
     image: relay,
     intro:
-      "We bring the precision to protection commissioning - verifying every scheme, validating every function, and providing every tripand interlock for reliable operation.",
+      "We bring the precision to protection commissioning - verifying every scheme, validating every function, and providing every trip and interlock for reliable operation.",
     scope: [
       "BOM verification of the panels",
       "Scheme checking against approved drawings",
@@ -61,16 +78,23 @@ export const services: Service[] = [
       "Function check of the complete panel",
     ],
     outcomes: [
-      "Verified protection settings and coordination",
-      "Every trip path proven end to end",
-      "Signed function-test records per bay",
+      {
+        text: "Verified protection settings and coordination",
+      },
+      {
+        text: "Every trip path proven end to end",
+      },
+      {
+        text: "Signed function-test records per bay",
+      },
     ],
-  
   },
+
   {
     slug: "retrofitting-and-refurbishment",
     title: "Retrofitting & Refurbishment",
-    short: "Upgrade legacy protection and control schemes with minimum outage time.",
+    short:
+      "Upgrade legacy protection and control schemes with minimum outage time.",
     category: "Testing & Commissioning",
     image: cables,
     intro:
@@ -83,16 +107,23 @@ export const services: Service[] = [
       "New device testing and commissioning",
     ],
     outcomes: [
-      "Modern numerical protection on existing panels",
-      "Outage windows respected",
-      "As-built drawings updated and handed over",
+      {
+        text: "Modern numerical protection on existing panels",
+      },
+      {
+        text: "Outage windows respected",
+      },
+      {
+        text: "As-built drawings updated and handed over",
+      },
     ],
-   
   },
+
   {
     slug: "substation-automation-systems",
     title: "Substation Automation System (SAS) Commissioning",
-    short: "Database, IED integration, HMI, gateway and load despatch communication.",
+    short:
+      "Database, IED integration, HMI, gateway and load despatch communication.",
     category: "Testing & Commissioning",
     image: blogSas,
     intro:
@@ -109,16 +140,23 @@ export const services: Service[] = [
       "Point-to-point testing",
     ],
     outcomes: [
-      "Every point verified point-to-point from field to HMI",
-      "Time-synchronised, reliable SCADA data",
-      "Clean handover to O&M teams",
+      {
+        text: "Every point verified point-to-point from field to HMI",
+      },
+      {
+        text: "Time-synchronised, reliable SCADA data",
+      },
+      {
+        text: "Clean handover to O&M teams",
+      },
     ],
-   
   },
+
   {
     slug: "power-system-studies",
     title: "Design & Power System Studies",
-    short: "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
+    short:
+      "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
     category: "Engineering & Studies",
     image: blogStudies,
     intro:
@@ -132,16 +170,23 @@ export const services: Service[] = [
       "Design software tools — ETAP Power Station",
     ],
     outcomes: [
-      "Correctly rated equipment and cable sizes",
-      "Coordinated, selective protection settings",
-      "Arc flash labels and safe working boundaries",
+      {
+        text: "Correctly rated equipment and cable sizes",
+      },
+      {
+        text: "Coordinated, selective protection settings",
+      },
+      {
+        text: "Arc flash labels and safe working boundaries",
+      },
     ],
-   
   },
+
   {
     slug: "engineering-documentation",
     title: "Engineering Document Preparation",
-    short: "Sizing calculations, cable schedules, layouts and SLDs.",
+    short:
+      "Sizing calculations, cable schedules, layouts and SLDs.",
     category: "Engineering & Studies",
     image: hvTest,
     intro:
@@ -154,16 +199,23 @@ export const services: Service[] = [
       "Layout drawings and SLD preparations",
     ],
     outcomes: [
-      "Approval-ready calculation sets",
-      "Consistent, drawing-controlled documentation",
-      "Faster consultant and inspectorate sign-off",
+      {
+        text: "Approval-ready calculation sets",
+      },
+      {
+        text: "Consistent, drawing-controlled documentation",
+      },
+      {
+        text: "Faster consultant and inspectorate sign-off",
+      },
     ],
-   
   },
+
   {
     slug: "electrical-panel-solutions",
     title: "Electrical Panel Solutions",
-    short: "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
+    short:
+      "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
     category: "Products & Support",
     image: controlPanel,
     intro:
@@ -176,16 +228,23 @@ export const services: Service[] = [
       "Quality checks and compliance as per IS/IEC standards",
     ],
     outcomes: [
-      "Panels that pass routine tests first time",
-      "Documented compliance to IS/IEC",
-      "Single point of responsibility from design to commissioning",
+      {
+        text: "Panels that pass routine tests first time",
+      },
+      {
+        text: "Documented compliance to IS/IEC",
+      },
+      {
+        text: "Single point of responsibility from design to commissioning",
+      },
     ],
-   
   },
+
   {
     slug: "annual-maintenance-and-testing",
     title: "Annual Maintenance & Testing",
-    short: "Planned preventive testing contracts for substations and plants.",
+    short:
+      "Planned preventive testing contracts for substations and plants.",
     category: "Products & Support",
     image: substation,
     intro:
@@ -198,16 +257,23 @@ export const services: Service[] = [
       "Thermography surveys and defect reporting",
     ],
     outcomes: [
-      "Fewer unplanned trips and outages",
-      "Year-on-year trend data on asset condition",
-      "Compliance evidence for audits and insurance",
+      {
+        text: "Fewer unplanned trips and outages",
+      },
+      {
+        text: "Year-on-year trend data on asset condition",
+      },
+      {
+        text: "Compliance evidence for audits and insurance",
+      },
     ],
-   
   },
+
   {
     slug: "consultancy-and-site-supervision",
     title: "Consultancy & Site Supervision",
-    short: "Independent technical review and daily on-ground engineering supervision.",
+    short:
+      "Independent technical review and daily on-ground engineering supervision.",
     category: "Products & Support",
     image: "/site/vectrev-technician-ppe.jpg",
     intro:
@@ -220,11 +286,16 @@ export const services: Service[] = [
       "Statutory liaison and compliance support",
     ],
     outcomes: [
-      "Progress visibility with daily reporting",
-      "Fewer interface gaps between contractors",
-      "Statutory approvals achieved without rework",
+      {
+        text: "Progress visibility with daily reporting",
+      },
+      {
+        text: "Fewer interface gaps between contractors",
+      },
+      {
+        text: "Statutory approvals achieved without rework",
+      },
     ],
-   
   },
 ];
 
@@ -234,4 +305,5 @@ export const serviceCategories = [
   "Products & Support",
 ] as const;
 
-export const getService = (slug: string) => services.find((s) => s.slug === slug);
+export const getService = (slug: string) =>
+  services.find((s) => s.slug === slug);
