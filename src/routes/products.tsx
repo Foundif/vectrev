@@ -49,7 +49,7 @@ function Products() {
       const rail = productRailRef.current;
       if (rail && !isProductRailPaused) {
         const loopPoint = rail.scrollWidth / 2;
-        rail.scrollLeft = rail.scrollLeft >= loopPoint ? 0 : rail.scrollLeft + 0.4;
+        rail.scrollLeft = rail.scrollLeft >= loopPoint ? 0 : rail.scrollLeft + 1;
       }
       frameId = window.requestAnimationFrame(scroll);
     };
@@ -203,9 +203,6 @@ function Products() {
             </figure>
           ))}
         </div>
-        <p className="mx-auto mt-2 max-w-7xl px-5 text-sm text-muted-foreground sm:px-8">
-          Swipe to browse. Auto-scroll pauses while you hover.
-        </p>
       </section>
 
       <CTAStrip
