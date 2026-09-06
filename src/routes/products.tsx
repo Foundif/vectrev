@@ -1,9 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { BadgeCheck } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { BadgeCheck, CircleCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
-import { catalogProducts, KUSAM_MECO, productGroups } from "@/data/products";
+import { KUSAM_MECO, productGroups } from "@/data/products";
+
+const productGallery = [
+  { src: "/site/arc-flash-suit.jpg", name: "Arc flash suit" },
+  { src: "/site/insulating-mat.jpg", name: "Insulating mat" },
+  { src: "/site/km-5213in-10kv.jpg", name: "KM 5213IN 10 kV insulation tester" },
+  { src: "/site/km-clamp-meter.jpg", name: "KM clamp meter" },
+  { src: "/site/km-digital-multimeter.jpg", name: "KM digital multimeter" },
+  { src: "/site/km-earth-resistance-tester.jpg", name: "Earth resistance tester" },
+  { src: "/site/km-insulation-tester-kit.jpg", name: "Insulation tester kit" },
+  { src: "/site/km-ohm-6501e.jpg", name: "KM OHM 6501E insulation tester" },
+  { src: "/site/safety-gloves.jpg", name: "Electrical safety gloves" },
+];
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -30,27 +42,21 @@ function Products() {
   const [isProductRailPaused, setIsProductRailPaused] = useState(false);
   const productRailRef = useRef<HTMLDivElement>(null);
 
-  const moveProductRail = useCallback(() => {
-    const rail = productRailRef.current;
-    const image = rail?.querySelector<HTMLElement>("[data-product-image]");
-    if (!rail || !image) return;
-
-    const gap = Number.parseFloat(window.getComputedStyle(rail).gap) || 0;
-    const step = image.offsetWidth + gap;
-    const maxScrollLeft = rail.scrollWidth - rail.clientWidth;
-    const isAtEnd = rail.scrollLeft >= maxScrollLeft - 1;
-
-    rail.scrollTo({
-      left: isAtEnd ? 0 : Math.min(rail.scrollLeft + step, maxScrollLeft),
-      behavior: "smooth",
-    });
-  }, []);
-
   useEffect(() => {
-    if (isProductRailPaused) return;
-    const timer = window.setInterval(moveProductRail, 4000);
-    return () => window.clearInterval(timer);
-  }, [isProductRailPaused, moveProductRail]);
+    let frameId: number;
+
+    const scroll = () => {
+      const rail = productRailRef.current;
+      if (rail && !isProductRailPaused) {
+        const loopPoint = rail.scrollWidth / 2;
+        rail.scrollLeft = rail.scrollLeft >= loopPoint ? 0 : rail.scrollLeft + 0.4;
+      }
+      frameId = window.requestAnimationFrame(scroll);
+    };
+
+    frameId = window.requestAnimationFrame(scroll);
+    return () => window.cancelAnimationFrame(frameId);
+  }, [isProductRailPaused]);
 
   return (
     <>
@@ -138,19 +144,22 @@ function Products() {
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{group.blurb}</p>
                 <ul className="mt-4 grid gap-x-5 gap-y-2 text-xs leading-snug text-slate-600 sm:grid-cols-2">
-                  {group.items.map((item) => (
+                  {group.items.slice(0, index === 0 ? 6 : group.items.length).map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span
-                        className="mt-1 size-1.5 shrink-0 rounded-full bg-accent-brand"
+                      <CircleCheck
+                        className="mt-0.5 size-3.5 shrink-0 text-red-500"
                         aria-hidden="true"
                       />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-xs font-semibold text-accent-brand">
-                  Explore our full range &rarr;
-                </p>
+                <Link
+                  to="/contact"
+                  className="mt-5 inline-flex text-xs font-semibold text-red-500 hover:underline"
+                >
+                  Enquire about this range &rarr;
+                </Link>
               </div>
             </article>
           ))}
@@ -173,21 +182,24 @@ function Products() {
           ref={productRailRef}
           onMouseEnter={() => setIsProductRailPaused(true)}
           onMouseLeave={() => setIsProductRailPaused(false)}
-          className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] sm:px-8 [&::-webkit-scrollbar]:hidden"
+          className="mt-8 flex gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] sm:gap-5 sm:px-8 [&::-webkit-scrollbar]:hidden"
         >
-          {catalogProducts.map((product) => (
+          {[...productGallery, ...productGallery].map((product, index) => (
             <figure
               data-product-image
-              key={product.slug}
-              className="w-[min(86vw,680px)] shrink-0 snap-start overflow-hidden rounded-2xl bg-[#f4f6f8]"
+              key={`${product.src}-${index}`}
+              className="w-[calc((100vw-3.5rem)/2)] shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-[#f4f6f8] sm:w-[calc((100vw-6rem)/3)] lg:w-[calc((100vw-9rem)/5)]"
             >
               <img
-                src={product.image}
-                alt={product.title}
+                src={product.src}
+                alt={product.name}
                 loading="lazy"
                 draggable="false"
-                className="h-72 w-full object-contain p-7 sm:h-96 sm:p-10"
+                className="aspect-square w-full object-contain p-3 sm:p-4"
               />
+              <figcaption className="border-t border-slate-100 bg-white px-3 py-2 text-center text-xs font-medium text-foreground sm:px-4">
+                {product.name}
+              </figcaption>
             </figure>
           ))}
         </div>
