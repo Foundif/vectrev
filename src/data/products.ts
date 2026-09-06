@@ -26,6 +26,16 @@ export type CatalogProduct = {
 };
 
 
+export const KUSAM_MECO = {
+  title: "Authorised KUSAM-MECO Dealer",
+  blurb:
+    "VECTREV Engineering Solutions Pvt Ltd is an authorised stockist for KUSAM-MECO electronic test and measuring instruments. Genuine instruments, manufacturer warranty, calibration support and on-site application guidance from practising commissioning engineers.",
+  certificate: "/site/kusam-meco-authorisation.jpg",
+  certificateNote:
+    "Certificate of authorisation — authorised stockists for KUSAM-MECO electronic test & measuring instruments, financial year 2026-2027.",
+};
+
+
 export const productGroups: ProductGroup[] = [
   {
     slug: "kusam-meco-instruments",
