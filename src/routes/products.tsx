@@ -27,6 +27,21 @@ export const Route = createFileRoute("/products")({
   component: Products,
 });
 
+
+export const Route = createFileRoute("/products")({
+  head: () => ({
+    meta: [
+      { title: "Kusam-Meco Products | VECTREV Engineering Solutions" },
+      { name: "description", content: "VECTREV is an authorised Kusam-Meco dealer supplying precision electrical measurement and control products across the globe." },
+      { property: "og:title", content: "Authorised Kusam-Meco Dealer | VECTREV" },
+      { property: "og:description", content: "Explore Kusam-Meco measurement, testing and control product categories supplied by VECTREV." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Products,
+});
+
 function Products() {
   const [paused, setPaused] = useState(false);
   const railRef = useRef<HTMLDivElement>(null);
