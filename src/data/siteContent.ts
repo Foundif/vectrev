@@ -143,26 +143,6 @@ export const contentGroups: ContentGroup[] = [
     ],
   },
   {
-    group: "Home — Promise band",
-    fields: [
-      {
-        key: "home.promise.title",
-        label: "Promise headline",
-        type: "textarea",
-        value:
-          "From testing to energisation, we ensure every system performs as designed—with confidence.",
-      },
-      {
-        key: "home.promise.line1",
-        label: "Pillar 1",
-        type: "text",
-        value: "Precision in testing.",
-      },
-      { key: "home.promise.line2", label: "Pillar 2", type: "text", value: "Proven procedures." },
-      { key: "home.promise.line3", label: "Pillar 3", type: "text", value: "Reliable results." },
-    ],
-  },
-  {
     group: "Home — Clients & partners",
     fields: [
       { key: "home.clients.eyebrow", label: "Eyebrow", type: "text", value: "Clients & Partners" },
@@ -194,7 +174,8 @@ export const contentGroups: ContentGroup[] = [
         key: "home.solution.title",
         label: "Heading",
         type: "text",
-        value: "An engineering partner that owns the outcome — not just the scope.",
+        value:
+          "From testing to energisation, we ensure every system performs as designed—with confidence.",
       },
       {
         key: "home.solution.body",
@@ -202,6 +183,24 @@ export const contentGroups: ContentGroup[] = [
         type: "textarea",
         value:
           "Confidence begins long before energisation — with engineering excellence, technical precision and proven expertise. Our engineers stay on site until your system runs the way it was designed to.",
+      },
+      {
+        key: "home.solution.principle1",
+        label: "Principle 1",
+        type: "text",
+        value: "Precision in testing.",
+      },
+      {
+        key: "home.solution.principle2",
+        label: "Principle 2",
+        type: "text",
+        value: "Proven procedures.",
+      },
+      {
+        key: "home.solution.principle3",
+        label: "Principle 3",
+        type: "text",
+        value: "Reliable results.",
       },
       {
         key: "home.solution.bullet1",
