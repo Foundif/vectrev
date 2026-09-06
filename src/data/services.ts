@@ -4,7 +4,6 @@ import cables from "@/assets/cables.webp";
 import hvTest from "@/assets/hv-test.webp";
 import substation from "@/assets/substation.webp";
 import controlPanel from "@/assets/control-panel.webp";
-import technician from "@/assets/technician.webp";
 import blogSas from "@/assets/blog-sas.jpg";
 import blogStudies from "@/assets/blog-power-studies.jpg";
 
@@ -251,7 +250,7 @@ export const services: Service[] = [
     title: "Consultancy & Site Supervision",
     short: "Independent technical review and daily on-ground engineering supervision.",
     category: "Products & Support",
-    image: technician,
+    image: "/site/vectrev-technician-ppe.jpg",
     intro:
       "Where projects need technical depth on the ground, our engineers supervise installation and commissioning activities, coordinate OEMs and keep the schedule honest.",
     scope: [
