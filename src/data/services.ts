@@ -36,6 +36,7 @@ export const services: Service[] = [
       "Energisation support, load trials and punch-list closure",
     ],
     outcomes: [
+      <strong>" Confident Energization. Verified Performance. Complete Assurance.",</strong>
       "Ready for Energization - Tested and prepared for a smooth start up.",
       "Complete Test Records - Structured documentation for easy review and approval.",
       "Proven Performance - Systems verified for safe and reliable operation.",
