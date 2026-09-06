@@ -35,10 +35,10 @@ export const contentGroups: ContentGroup[] = [
     group: "Home — Hero",
     fields: [
       { key: "home.hero.eyebrow", label: "Eyebrow", type: "text", value: "Thoothukudi · Est. 2025" },
-      { key: "home.hero.title_line1", label: "Headline line 1", type: "text", value: "Engineering" },
-      { key: "home.hero.title_accent", label: "Headline accent word", type: "text", value: "Reliability" },
-      { key: "home.hero.title_line2", label: "Headline line 2 (after accent)", type: "text", value: "Into" },
-      { key: "home.hero.title_line3", label: "Headline line 3", type: "text", value: "Every Plant." },
+      { key: "home.hero.title_line1", label: "Headline line 1", type: "text", value: "Energizing" },
+      { key: "home.hero.title_accent", label: "Headline accent word", type: "text", value: "Infrastructure" },
+      { key: "home.hero.title_line2", label: "Headline line 2 (after accent)", type: "text", value: "with" },
+      { key: "home.hero.title_line3", label: "Headline line 3", type: "text", value: "Intelligent Solutions." },
       {
         key: "home.hero.subtitle",
         label: "Sub-headline",
