@@ -7,11 +7,11 @@ import relayFieldTest from "@/assets/relay-field-test.jpg";
 import cables from "@/assets/cables.webp";
 import retrofitPanelInspection from "@/assets/retrofit-panel-inspection.jpg";
 import retrofitPanelWiring from "@/assets/retrofit-panel-wiring.jpg";
-import hvTest from "@/assets/hv-test.webp";
+import engineeringDocPrep from "@/assets/engineering-doc-prep.jpg";
 import substation from "@/assets/substation.webp";
 import controlPanel from "@/assets/control-panel.webp";
 import blogSas from "@/assets/blog-sas.jpg";
-import blogStudies from "@/assets/blog-power-studies.jpg";
+import powerSystemDesign from "@/assets/power-system-design.jpg";
 
 export type Service = {
   slug: string;
@@ -155,7 +155,7 @@ export const services: Service[] = [
     title: "Design & Power System Studies",
     short: "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
     category: "Engineering & Studies",
-    image: blogStudies,
+    image: powerSystemDesign,
     intro:
       "Design decisions become expensive once steel is in the ground. Our studies team models the network in ETAP and gives you defendable numbers before procurement and after commissioning.",
     scope: [
@@ -183,7 +183,7 @@ export const services: Service[] = [
     title: "Engineering Document Preparation",
     short: "Sizing calculations, cable schedules, layouts and SLDs.",
     category: "Engineering & Studies",
-    image: hvTest,
+    image: engineeringDocPrep,
     intro:
       "Documentation is a deliverable, not an afterthought. We prepare the calculations and drawings that consultants, OEMs and statutory authorities need to approve your installation.",
     scope: [
