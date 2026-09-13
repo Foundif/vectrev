@@ -1,4 +1,6 @@
 import testKit from "@/assets/test-kit.webp";
+import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
+import lvTestingField from "@/assets/lv-testing-field.jpg";
 import relay from "@/assets/relay.webp";
 import cables from "@/assets/cables.webp";
 import hvTest from "@/assets/hv-test.webp";
@@ -13,6 +15,7 @@ export type Service = {
   short: string;
   category: "Testing & Commissioning" | "Engineering & Studies" | "Products & Support";
   image: string;
+  images?: string[];
   intro: string;
   scope: string[];
   outcomes: string[];
@@ -26,6 +29,7 @@ export const services: Service[] = [
     short: "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
     category: "Testing & Commissioning",
     image: testKit,
+    images: [lvTestingPanel, lvTestingField],
     /* legacyIntro:
       "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to 225 kV switchyards. Every test is executed with calibrated Omicron and Megger instruments and closed out with traceable, audit-ready reports.",
     */ intro:
