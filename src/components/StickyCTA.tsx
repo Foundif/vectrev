@@ -22,14 +22,14 @@ export function StickyCTA() {
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp"
-        className="h-14 w-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-soft hover:scale-105 transition"
+        className="h-14 w-14 rounded-full bg-[#25D366] text-white border-2 border-white flex items-center justify-center shadow-soft hover:scale-105 transition"
       >
         <WhatsAppIcon className="h-7 w-7" />
       </a>
       <a
         href="tel:+916379608428"
         aria-label="Call"
-        className="h-14 w-14 rounded-full bg-gradient-accent text-accent-foreground flex items-center justify-center shadow-accent hover:scale-105 transition"
+        className="h-14 w-14 rounded-full bg-gradient-accent text-accent-foreground border-2 border-white flex items-center justify-center shadow-accent hover:scale-105 transition"
       >
         <Phone className="h-6 w-6" />
       </a>

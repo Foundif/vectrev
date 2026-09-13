@@ -14,7 +14,7 @@ export function SiteFooter() {
                 <div className="font-extrabold text-2xl md:text-3xl tracking-tight uppercase">
                   VEC<span className="text-accent-brand">TREV</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-white/70 font-semibold">
+                <div className="mt-1 text-[9px] leading-snug uppercase tracking-[0.1em] text-white/70 font-semibold max-w-[150px]">
                   Energizing infrastructure with intelligent solutions
                 </div>
               </div>
