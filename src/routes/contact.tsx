@@ -80,6 +80,19 @@ function Contact() {
       "noopener"
     );
 
+    // Email enquiry to both inboxes
+    const mailSubject = `New website enquiry — ${name}`;
+    const mailBody = [
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      "",
+      "Requirement:",
+      requirement,
+    ].join("\n");
+    window.location.href = `mailto:foundifinnovations@gmail.com,info@vectrev.in?subject=${encodeURIComponent(
+      mailSubject
+    )}&body=${encodeURIComponent(mailBody)}`;
+
     setSubmitted({ name, phone });
     e.currentTarget.reset();
   };
