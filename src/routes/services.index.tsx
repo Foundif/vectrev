@@ -62,7 +62,7 @@ function ServicesIndex() {
                     >
                       <div className="relative h-44">
                         <img
-                          src={s.image}
+                          src={s.images?.[0] ?? s.image}
                           alt={s.title}
                           loading="lazy"
                           className="absolute inset-0 h-full w-full object-cover"
