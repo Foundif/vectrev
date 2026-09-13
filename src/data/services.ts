@@ -8,8 +8,12 @@ import cables from "@/assets/cables.webp";
 import retrofitPanelInspection from "@/assets/retrofit-panel-inspection.jpg";
 import retrofitPanelWiring from "@/assets/retrofit-panel-wiring.jpg";
 import engineeringDocPrep from "@/assets/engineering-doc-prep.jpg";
-import substation from "@/assets/substation.webp";
 import controlPanel from "@/assets/control-panel.webp";
+import panelLvMvFront from "@/assets/panel-lv-mv-front.jpg";
+import panelMvSwitchgear from "@/assets/panel-mv-switchgear.jpg";
+import panelFeederBank from "@/assets/panel-feeder-bank.jpg";
+import panelMccBank from "@/assets/panel-mcc-bank.jpg";
+import amcSwitchyardWorker from "@/assets/amc-switchyard-worker.jpg";
 import blogSas from "@/assets/blog-sas.jpg";
 import powerSystemDesign from "@/assets/power-system-design.jpg";
 
@@ -211,6 +215,7 @@ export const services: Service[] = [
     short: "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
     category: "Products & Support",
     image: controlPanel,
+    images: [panelLvMvFront, panelMvSwitchgear, panelFeederBank, panelMccBank],
     intro:
       "We provide end-to-end design and supply of electrical panels tailored for industrial, commercial and infrastructure projects, built and tested to IS/IEC standards.",
     scope: [
@@ -237,7 +242,7 @@ export const services: Service[] = [
     title: "Annual Maintenance & Testing",
     short: "Planned preventive testing contracts for substations and plants.",
     category: "Products & Support",
-    image: substation,
+    image: amcSwitchyardWorker,
     intro:
       "Scheduled testing keeps protection dependable and insurers satisfied. We run annual maintenance testing contracts covering relays, transformers, breakers, earthing and DC systems.",
     scope: [
