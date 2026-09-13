@@ -34,8 +34,7 @@ const highlights = [
   "Substation Automation System (SAS) commissioning",
   "ETAP load flow, short circuit and coordination studies",
   "LV & MV panel design and supply — PCC, MCC, PMCC, APFC",
-  "225 kV substation projects executed in Cameroon",
-  "Export orders processed to Gabon, Central Africa",
+  "International T&C experience across Central Africa and the Middle East",
 ];
 
 function CompanyProfile() {
@@ -49,7 +48,7 @@ function CompanyProfile() {
             <span className="text-accent-brand">with intelligent solutions.</span>
           </>
         }
-        subtitle="The complete VECTREV Engineering Solutions Pvt Ltd profile — capability, instruments, completed projects and 2026 plans. Read it here or download the PDF."
+        subtitle="The complete VECTREV Engineering Solutions Pvt Ltd profile — capability, instruments, completed projects and 2026 plans, in a single downloadable PDF."
       />
 
       <section className="px-5 sm:px-8 pb-6">
@@ -80,71 +79,49 @@ function CompanyProfile() {
       </section>
 
       <section className="px-5 sm:px-8 py-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-8 rounded-[2rem] overflow-hidden border border-border bg-card shadow-card-premium">
-            <object
-              data={PROFILE_URL}
-              type="application/pdf"
-              className="w-full h-[70vh] min-h-[520px]"
-            >
-              <div className="p-10 text-center">
-                <p className="text-muted-foreground">Your browser can't display the PDF inline.</p>
-                <a
-                  href={PROFILE_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-accent-brand font-semibold"
-                >
-                  <Download className="h-4 w-4" /> Open the company profile
-                </a>
-              </div>
-            </object>
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-6">
+          <div className="rounded-[2rem] bg-dark text-dark-foreground p-8">
+            <div className="text-xs uppercase tracking-[0.22em] text-white/50">
+              Inside the profile
+            </div>
+            <ul className="mt-5 space-y-3">
+              {highlights.map((h) => (
+                <li key={h} className="flex items-start gap-2 text-sm text-white/85">
+                  <CheckCircle2 className="h-4 w-4 text-accent-brand mt-0.5 flex-shrink-0" />
+                  {h}
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <aside className="lg:col-span-4 space-y-6">
-            <div className="rounded-[2rem] bg-dark text-dark-foreground p-8">
-              <div className="text-xs uppercase tracking-[0.22em] text-white/50">
-                Inside the profile
-              </div>
-              <ul className="mt-5 space-y-3">
-                {highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2 text-sm text-white/85">
-                    <CheckCircle2 className="h-4 w-4 text-accent-brand mt-0.5 flex-shrink-0" />
-                    {h}
-                  </li>
-                ))}
-              </ul>
+          <div className="rounded-[2rem] bg-card border border-border p-8 shadow-card-premium">
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">
+              Company details
             </div>
-            <div className="rounded-[2rem] bg-card border border-border p-8 shadow-card-premium">
-              <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">
-                Company details
+            <dl className="mt-5 space-y-3 text-sm">
+              <div>
+                <dt className="text-muted-foreground">Entity</dt>
+                <dd className="font-semibold text-foreground">
+                  VECTREV Engineering Solutions Private Limited
+                </dd>
               </div>
-              <dl className="mt-5 space-y-3 text-sm">
-                <div>
-                  <dt className="text-muted-foreground">Entity</dt>
-                  <dd className="font-semibold text-foreground">
-                    VECTREV Engineering Solutions Private Limited
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground">CIN</dt>
-                  <dd className="font-semibold text-foreground">U71200TN2025PTC180169</dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground">GSTIN</dt>
-                  <dd className="font-semibold text-foreground">33AALCV0745P1ZU</dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground">Email</dt>
-                  <dd className="font-semibold text-foreground">info@vectrev.in</dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground">Phone</dt>
-                  <dd className="font-semibold text-foreground">+91 96004 49144</dd>
-                </div>
-              </dl>
-            </div>
-          </aside>
+              <div>
+                <dt className="text-muted-foreground">CIN</dt>
+                <dd className="font-semibold text-foreground">U71200TN2025PTC180169</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">GSTIN</dt>
+                <dd className="font-semibold text-foreground">33AALCV0745P1ZU</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Email</dt>
+                <dd className="font-semibold text-foreground">info@vectrev.in</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Phone</dt>
+                <dd className="font-semibold text-foreground">+91 96004 49144</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
