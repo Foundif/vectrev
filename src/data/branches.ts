@@ -43,11 +43,28 @@ export const branches: Branch[] = [
     mapQuery: "India",
   },
   {
-    name: "Overseas — Central & West Africa",
+    name: "Kudankulam — Site Office",
+    type: "Project site office",
+    address:
+      "New Complex, Kudankulam Main Road, Opposite Kudankulam Main Gate, Kudankulam – 627106, Tamil Nadu, India",
+    phones: [],
+    email: "info@vectrev.in",
+    mapQuery: "Kudankulam Main Road, Kudankulam 627106, Tamil Nadu",
+  },
+  {
+    name: "Dubai — VECTREV Contracting LLC",
+    type: "Middle East operations",
+    address: "201-452, King Shamsah Mohammed Ibrahim Al Suwaidi, Al Murar, Deira, Dubai, UAE",
+    phones: ["+971-50-928-2314"],
+    email: "info@vectrev.in",
+    mapQuery: "Al Murar, Deira, Dubai, UAE",
+  },
+  {
+    name: "Overseas — Middle East",
     type: "International T&C assignments",
-    address: "Executed 225 kV switching station and substation projects in Cameroon; exports to Gabon",
+    address: "International T&C assignments across the Middle East region",
     phones: ["+91 96004 49144"],
     email: "info@vectrev.in",
-    mapQuery: "Yaounde, Cameroon",
+    mapQuery: "Dubai, UAE",
   },
 ];
