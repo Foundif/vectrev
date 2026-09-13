@@ -16,6 +16,7 @@ import panelMccBank from "@/assets/panel-mcc-bank.jpg";
 import amcSwitchyardWorker from "@/assets/amc-switchyard-worker.jpg";
 import blogSas from "@/assets/blog-sas.jpg";
 import powerSystemDesign from "@/assets/power-system-design.jpg";
+import consultancyReview from "@/assets/consultancy-review.jpg";
 
 export type Service = {
   slug: string;
@@ -269,7 +270,7 @@ export const services: Service[] = [
     title: "Consultancy & Site Supervision",
     short: "Independent technical review and daily on-ground engineering supervision.",
     category: "Products & Support",
-    image: "/site/vectrev-technician-ppe.jpg",
+    image: consultancyReview,
     intro:
       "Where projects need technical depth on the ground, our engineers supervise installation and commissioning activities, coordinate OEMs and keep the schedule honest.",
     scope: [

@@ -25,10 +25,10 @@ import { ProfileTeaser } from "@/components/ProfileTeaser";
 import { useSiteContent } from "@/lib/site-content";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
-import testKit from "@/assets/test-kit.webp";
-import relay from "@/assets/relay.webp";
-import cables from "@/assets/cables.webp";
-import hvTest from "@/assets/hv-test.webp";
+import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
+import consultancyReview from "@/assets/consultancy-review.jpg";
+import projectExecutionSite from "@/assets/project-execution-site.jpg";
+import expertiseSafetyCompliance from "@/assets/expertise-safety-compliance.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -436,25 +436,25 @@ const services = [
     icon: Zap,
     title: "Electrical T&C",
     desc: "Pre-commissioning, relay & HV testing.",
-    image: testKit,
+    image: lvTestingPanel,
   },
   {
     icon: ClipboardCheck,
     title: "Consultancy",
     desc: "Protection studies, SLDs, BOQs.",
-    image: relay,
+    image: consultancyReview,
   },
   {
     icon: HardHat,
     title: "Project Execution",
     desc: "On-site supervision & OEM coordination.",
-    image: cables,
+    image: projectExecutionSite,
   },
   {
     icon: ShieldCheck,
     title: "Safety Compliance",
     desc: "CEA / Electrical Inspectorate ready.",
-    image: hvTest,
+    image: expertiseSafetyCompliance,
   },
 ];
 
