@@ -5,6 +5,8 @@ import relay from "@/assets/relay.webp";
 import relayPanelLaptop from "@/assets/relay-panel-laptop.jpg";
 import relayFieldTest from "@/assets/relay-field-test.jpg";
 import cables from "@/assets/cables.webp";
+import retrofitPanelInspection from "@/assets/retrofit-panel-inspection.jpg";
+import retrofitPanelWiring from "@/assets/retrofit-panel-wiring.jpg";
 import hvTest from "@/assets/hv-test.webp";
 import substation from "@/assets/substation.webp";
 import controlPanel from "@/assets/control-panel.webp";
@@ -95,6 +97,7 @@ export const services: Service[] = [
     short: "Upgrade legacy protection and control schemes with minimum outage time.",
     category: "Testing & Commissioning",
     image: cables,
+    images: [retrofitPanelInspection, retrofitPanelWiring],
     intro:
       "Ageing electromechanical protection can be modernised without replacing the whole panel. We engineer the upgraded scheme, swap the device and re-commission the bay inside a planned shutdown window.",
     scope: [
