@@ -2,6 +2,8 @@ import testKit from "@/assets/test-kit.webp";
 import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
 import lvTestingField from "@/assets/lv-testing-field.jpg";
 import relay from "@/assets/relay.webp";
+import relayPanelLaptop from "@/assets/relay-panel-laptop.jpg";
+import relayFieldTest from "@/assets/relay-field-test.jpg";
 import cables from "@/assets/cables.webp";
 import hvTest from "@/assets/hv-test.webp";
 import substation from "@/assets/substation.webp";
@@ -63,6 +65,7 @@ export const services: Service[] = [
     short: "Relay configuration, secondary injection, scheme checking and function testing.",
     category: "Testing & Commissioning",
     image: relay,
+    images: [relayPanelLaptop, relayFieldTest],
     /* legacyIntro:
       "Protection is where commissioning projects are won or lost. We verify the panel against the BOM, check the scheme end to end, configure and test the protection devices, and prove every trip and interlock before energisation.",
     */ intro:

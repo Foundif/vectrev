@@ -257,10 +257,6 @@ function Hero() {
               <Gauge className="h-3.5 w-3.5 text-accent-brand" />
               {slide.label}
             </div>
-            <div className="absolute top-5 right-5 bg-gradient-accent text-accent-foreground rounded-2xl px-4 py-3 text-right shadow-accent">
-              <div className="text-[10px] uppercase tracking-widest opacity-80">{slide.tag}</div>
-              <div className="text-base font-extrabold leading-tight mt-1">{slide.badge}</div>
-            </div>
 
             {/* Carousel controls */}
             <div className="absolute inset-x-0 bottom-4 flex items-center justify-between px-4">
