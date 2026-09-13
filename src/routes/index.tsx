@@ -28,7 +28,7 @@ import substation from "@/assets/substation.webp";
 import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
 import consultancyReview from "@/assets/consultancy-review.jpg";
 import projectExecutionSite from "@/assets/project-execution-site.jpg";
-import expertiseSafetyCompliance from "@/assets/expertise-safety-compliance.jpg";
+import expertiseSafetyCompliance from "@/assets/safety-illustration.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
