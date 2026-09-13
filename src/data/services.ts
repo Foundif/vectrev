@@ -1,11 +1,22 @@
 import testKit from "@/assets/test-kit.webp";
+import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
+import lvTestingField from "@/assets/lv-testing-field.jpg";
 import relay from "@/assets/relay.webp";
+import relayPanelLaptop from "@/assets/relay-panel-laptop.jpg";
+import relayFieldTest from "@/assets/relay-field-test.jpg";
 import cables from "@/assets/cables.webp";
-import hvTest from "@/assets/hv-test.webp";
-import substation from "@/assets/substation.webp";
+import retrofitPanelInspection from "@/assets/retrofit-panel-inspection.jpg";
+import retrofitPanelWiring from "@/assets/retrofit-panel-wiring.jpg";
+import engineeringDocPrep from "@/assets/engineering-doc-prep.jpg";
 import controlPanel from "@/assets/control-panel.webp";
+import panelLvMvFront from "@/assets/panel-lv-mv-front.jpg";
+import panelMvSwitchgear from "@/assets/panel-mv-switchgear.jpg";
+import panelFeederBank from "@/assets/panel-feeder-bank.jpg";
+import panelMccBank from "@/assets/panel-mcc-bank.jpg";
+import amcSwitchyardWorker from "@/assets/amc-switchyard-worker.jpg";
 import blogSas from "@/assets/blog-sas.jpg";
-import blogStudies from "@/assets/blog-power-studies.jpg";
+import powerSystemDesign from "@/assets/power-system-design.jpg";
+import consultancyReview from "@/assets/consultancy-review.jpg";
 
 export type Service = {
   slug: string;
@@ -13,6 +24,7 @@ export type Service = {
   short: string;
   category: "Testing & Commissioning" | "Engineering & Studies" | "Products & Support";
   image: string;
+  images?: string[];
   intro: string;
   scope: string[];
   outcomes: string[];
@@ -26,6 +38,7 @@ export const services: Service[] = [
     short: "Pre-commissioning and commissioning of switchgear, switchyard, GIS and DC systems.",
     category: "Testing & Commissioning",
     image: testKit,
+    images: [lvTestingPanel, lvTestingField],
     /* legacyIntro:
       "We specialise in pre-commissioning testing and commissioning of electrical systems — from LV distribution boards right up to 225 kV switchyards. Every test is executed with calibrated Omicron and Megger instruments and closed out with traceable, audit-ready reports.",
     */ intro:
@@ -59,6 +72,7 @@ export const services: Service[] = [
     short: "Relay configuration, secondary injection, scheme checking and function testing.",
     category: "Testing & Commissioning",
     image: relay,
+    images: [relayPanelLaptop, relayFieldTest],
     /* legacyIntro:
       "Protection is where commissioning projects are won or lost. We verify the panel against the BOM, check the scheme end to end, configure and test the protection devices, and prove every trip and interlock before energisation.",
     */ intro:
@@ -88,6 +102,7 @@ export const services: Service[] = [
     short: "Upgrade legacy protection and control schemes with minimum outage time.",
     category: "Testing & Commissioning",
     image: cables,
+    images: [retrofitPanelInspection, retrofitPanelWiring],
     intro:
       "Ageing electromechanical protection can be modernised without replacing the whole panel. We engineer the upgraded scheme, swap the device and re-commission the bay inside a planned shutdown window.",
     scope: [
@@ -145,7 +160,7 @@ export const services: Service[] = [
     title: "Design & Power System Studies",
     short: "Load flow, short circuit, harmonics, coordination and arc flash using ETAP.",
     category: "Engineering & Studies",
-    image: blogStudies,
+    image: powerSystemDesign,
     intro:
       "Design decisions become expensive once steel is in the ground. Our studies team models the network in ETAP and gives you defendable numbers before procurement and after commissioning.",
     scope: [
@@ -173,7 +188,7 @@ export const services: Service[] = [
     title: "Engineering Document Preparation",
     short: "Sizing calculations, cable schedules, layouts and SLDs.",
     category: "Engineering & Studies",
-    image: hvTest,
+    image: engineeringDocPrep,
     intro:
       "Documentation is a deliverable, not an afterthought. We prepare the calculations and drawings that consultants, OEMs and statutory authorities need to approve your installation.",
     scope: [
@@ -201,6 +216,7 @@ export const services: Service[] = [
     short: "Design and supply of LV & MV panels — PCC, MCC, PMCC, APFC, LDB, PDB.",
     category: "Products & Support",
     image: controlPanel,
+    images: [panelLvMvFront, panelMvSwitchgear, panelFeederBank, panelMccBank],
     intro:
       "We provide end-to-end design and supply of electrical panels tailored for industrial, commercial and infrastructure projects, built and tested to IS/IEC standards.",
     scope: [
@@ -227,7 +243,7 @@ export const services: Service[] = [
     title: "Annual Maintenance & Testing",
     short: "Planned preventive testing contracts for substations and plants.",
     category: "Products & Support",
-    image: substation,
+    image: amcSwitchyardWorker,
     intro:
       "Scheduled testing keeps protection dependable and insurers satisfied. We run annual maintenance testing contracts covering relays, transformers, breakers, earthing and DC systems.",
     scope: [
@@ -254,7 +270,7 @@ export const services: Service[] = [
     title: "Consultancy & Site Supervision",
     short: "Independent technical review and daily on-ground engineering supervision.",
     category: "Products & Support",
-    image: "/site/vectrev-technician-ppe.jpg",
+    image: consultancyReview,
     intro:
       "Where projects need technical depth on the ground, our engineers supervise installation and commissioning activities, coordinate OEMs and keep the schedule honest.",
     scope: [

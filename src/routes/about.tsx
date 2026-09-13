@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Target, Users, Award } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
-import substation from "@/assets/substation.webp";
+import aboutRegisteredBanner from "@/assets/about-registered-banner.jpg";
 import { useSiteContent } from "@/lib/site-content";
 
 export const Route = createFileRoute("/about")({
@@ -151,14 +151,16 @@ function About() {
       <section className="px-5 sm:px-8 py-12">
         <div className="max-w-7xl mx-auto rounded-[2rem] overflow-hidden relative h-72 md:h-96">
           <img
-            src={substation}
-            alt="Substation site"
+            src={aboutRegisteredBanner}
+            alt="Substation and renewable energy site"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-dark/70" />
-          <div className="relative h-full flex flex-col justify-end p-8 md:p-12 text-dark-foreground">
-            <div className="text-xs uppercase tracking-[0.22em] text-white/60">Registered</div>
-            <p className="mt-2 text-2xl md:text-3xl font-extrabold max-w-3xl leading-tight">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
+          <div className="relative h-full flex flex-col justify-end p-8 md:p-12 text-white">
+            <div className="text-xs uppercase tracking-[0.22em] text-accent-brand font-semibold">
+              Registered
+            </div>
+            <p className="mt-2 text-xl md:text-3xl font-extrabold max-w-3xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               VECTREV Engineering Solutions Private Limited · CIN U71200TN2025PTC180169 · GSTIN
               33AALCV0745P1ZU
             </p>

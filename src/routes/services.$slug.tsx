@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { CheckCircle2, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { CTAStrip } from "@/components/CTAStrip";
+import { ImageSlideshow } from "@/components/ImageSlideshow";
 import { getService, services } from "@/data/services";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -74,12 +75,10 @@ function ServiceDetail() {
               </Link>
             </div>
             <div className="lg:col-span-5">
-              <img
-                src={service.image}
+              <ImageSlideshow
+                images={service.images ?? [service.image]}
                 alt={service.title}
-                width={1280}
-                height={720}
-                className="rounded-3xl w-full h-[320px] object-cover shadow-card-premium"
+                className="rounded-3xl w-full h-[320px] shadow-card-premium"
               />
             </div>
           </div>

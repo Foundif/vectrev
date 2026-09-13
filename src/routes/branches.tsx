@@ -12,7 +12,7 @@ export const Route = createFileRoute("/branches")({
       {
         name: "description",
         content:
-          "VECTREV offices and deployment locations — Thoothukudi operating and registered offices, Chennai project desk, pan-India mobile teams and overseas assignments in Cameroon.",
+          "VECTREV offices and deployment locations — Thoothukudi operating and registered offices, Chennai project desk, Kudankulam site office, Dubai (UAE) branch, pan-India mobile teams and Middle East assignments.",
       },
       { property: "og:title", content: "VECTREV Branches & Locations" },
       { property: "og:description", content: "Where our engineering teams are based and deployed." },

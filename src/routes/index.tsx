@@ -25,10 +25,10 @@ import { ProfileTeaser } from "@/components/ProfileTeaser";
 import { useSiteContent } from "@/lib/site-content";
 import controlPanel from "@/assets/control-panel.webp";
 import substation from "@/assets/substation.webp";
-import testKit from "@/assets/test-kit.webp";
-import relay from "@/assets/relay.webp";
-import cables from "@/assets/cables.webp";
-import hvTest from "@/assets/hv-test.webp";
+import lvTestingPanel from "@/assets/lv-testing-panel.jpg";
+import consultancyReview from "@/assets/consultancy-review.jpg";
+import projectExecutionSite from "@/assets/project-execution-site.jpg";
+import expertiseSafetyCompliance from "@/assets/safety-illustration.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -257,10 +257,6 @@ function Hero() {
               <Gauge className="h-3.5 w-3.5 text-accent-brand" />
               {slide.label}
             </div>
-            <div className="absolute top-5 right-5 bg-gradient-accent text-accent-foreground rounded-2xl px-4 py-3 text-right shadow-accent">
-              <div className="text-[10px] uppercase tracking-widest opacity-80">{slide.tag}</div>
-              <div className="text-base font-extrabold leading-tight mt-1">{slide.badge}</div>
-            </div>
 
             {/* Carousel controls */}
             <div className="absolute inset-x-0 bottom-4 flex items-center justify-between px-4">
@@ -440,25 +436,25 @@ const services = [
     icon: Zap,
     title: "Electrical T&C",
     desc: "Pre-commissioning, relay & HV testing.",
-    image: testKit,
+    image: lvTestingPanel,
   },
   {
     icon: ClipboardCheck,
     title: "Consultancy",
     desc: "Protection studies, SLDs, BOQs.",
-    image: relay,
+    image: consultancyReview,
   },
   {
     icon: HardHat,
     title: "Project Execution",
     desc: "On-site supervision & OEM coordination.",
-    image: cables,
+    image: projectExecutionSite,
   },
   {
     icon: ShieldCheck,
     title: "Safety Compliance",
     desc: "CEA / Electrical Inspectorate ready.",
-    image: hvTest,
+    image: expertiseSafetyCompliance,
   },
 ];
 
