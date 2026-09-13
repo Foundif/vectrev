@@ -79,7 +79,7 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close chat" : "Chat with VECTREV"}
-        className="fixed bottom-5 left-5 z-[60] h-14 w-14 rounded-full bg-foreground text-background shadow-card-premium flex items-center justify-center hover:bg-accent transition"
+        className="fixed bottom-44 right-5 z-[60] h-14 w-14 rounded-full bg-foreground text-background shadow-card-premium flex items-center justify-center hover:bg-accent transition"
         style={{ marginBottom: "env(safe-area-inset-bottom)" }}
       >
         {open ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
@@ -93,7 +93,7 @@ export function ChatWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             transition={{ duration: 0.18 }}
             className="fixed z-[60] bg-card border border-border rounded-3xl shadow-card-premium overflow-hidden flex flex-col
-                       inset-x-3 bottom-24 top-20 sm:inset-x-auto sm:top-auto sm:left-5 sm:bottom-24 sm:w-[380px] sm:h-[560px]"
+                       inset-x-3 bottom-24 top-20 sm:inset-x-auto sm:top-auto sm:right-5 sm:bottom-44 sm:w-[380px] sm:h-[560px]"
           >
             <div className="flex items-center gap-3 px-4 py-3 bg-dark text-dark-foreground">
               {view === "book" && (

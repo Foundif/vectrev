@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ShieldCheck, Target, Users, Award } from "lucide-react";
+import { ShieldCheck, Target, Users, Award, Wrench, Building2, Globe2, MapPinned } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CTAStrip } from "@/components/CTAStrip";
 import aboutRegisteredBanner from "@/assets/about-registered-banner.jpg";
@@ -42,6 +42,34 @@ const values = [
     icon: Award,
     title: "Documented Quality",
     desc: "Every reading, drawing and protocol — audit-ready from day one.",
+  },
+];
+
+const milestones = [
+  {
+    icon: Wrench,
+    title: "Hands-on foundations",
+    desc: "Built by engineers with direct field experience in switchgear, protection and HV testing — not a paper-only outfit.",
+  },
+  {
+    icon: Building2,
+    title: "Incorporated as a Pvt Ltd company",
+    desc: "Registered as VECTREV Engineering Solutions Private Limited (CIN U71200TN2025PTC180169), formalising a decade of field practice.",
+  },
+  {
+    icon: Globe2,
+    title: "Crossed into overseas work",
+    desc: "Delivered 225 kV switching station and substation testing on international assignments, including projects in Cameroon.",
+  },
+  {
+    icon: Target,
+    title: "50+ sites commissioned",
+    desc: "A growing track record of testing, commissioning and consultancy assignments across Tamil Nadu and beyond, with a 100% safety record.",
+  },
+  {
+    icon: MapPinned,
+    title: "Expanding footprint",
+    desc: "New site presence in Kudankulam and a Middle East branch in Dubai, UAE — taking the same standards to more sites, further from home.",
   },
 ];
 
@@ -144,6 +172,35 @@ function About() {
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 sm:px-8 py-20 bg-card/40">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-xs uppercase tracking-[0.22em] text-accent-brand">
+            Our journey
+          </div>
+          <h2 className="mt-3 text-3xl md:text-5xl font-extrabold text-foreground max-w-2xl">
+            From field engineers to a growing engineering company
+          </h2>
+          <div className="mt-12 relative">
+            <div className="absolute left-5 top-2 bottom-2 w-px bg-border hidden sm:block" />
+            <div className="space-y-8">
+              {milestones.map((m) => (
+                <div key={m.title} className="relative flex gap-5 items-start">
+                  <div className="relative z-10 h-11 w-11 shrink-0 rounded-xl bg-accent/10 border border-border flex items-center justify-center">
+                    <m.icon className="h-5 w-5 text-accent-brand" />
+                  </div>
+                  <div className="pt-1.5">
+                    <h3 className="font-bold text-foreground">{m.title}</h3>
+                    <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                      {m.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

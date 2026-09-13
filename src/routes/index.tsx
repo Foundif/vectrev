@@ -896,7 +896,7 @@ function Home() {
       <FeaturedServices />
       <SocialProof />
       <Credentials />
-      <CTAStrip />
+      <CTAStrip subtitle="Send us your scope. An engineer responds promptly with a clear plan, realistic timeline, and a straightforward quote." />
     </>
   );
 }

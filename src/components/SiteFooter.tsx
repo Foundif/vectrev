@@ -4,18 +4,18 @@ import logo from "@/assets/logo.webp";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-dark text-dark-foreground mt-24 rounded-t-[2.5rem]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-20 pb-10">
-        <div className="grid lg:grid-cols-12 gap-12">
+    <footer className="bg-dark text-dark-foreground mt-16 sm:mt-24 rounded-t-[2.5rem]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-12 pb-8 sm:pt-20 sm:pb-10">
+        <div className="grid lg:grid-cols-12 gap-10 sm:gap-12">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
               <img src={logo} alt="VECTREV" className="h-10 w-10" />
               <div>
-                <div className="font-extrabold text-2xl tracking-tight">
-                  vec<span className="text-accent-brand">trev</span>
+                <div className="font-extrabold text-2xl md:text-3xl tracking-tight uppercase">
+                  VEC<span className="text-accent-brand">TREV</span>
                 </div>
-                <div className="text-[10px] uppercase tracking-[0.22em] text-white/60">
-                  Engineering Solutions Pvt Ltd
+                <div className="text-[10px] uppercase tracking-[0.2em] text-white/70 font-semibold">
+                  Energizing infrastructure with intelligent solutions
                 </div>
               </div>
             </div>
@@ -73,9 +73,20 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-white/50">
+        <div className="mt-10 sm:mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-white/50">
           <div>© {new Date().getFullYear()} VECTREV Engineering Solutions Pvt Ltd · CIN U71200TN2025PTC180169</div>
           <div>GSTIN 33AALCV0745P1ZU</div>
+        </div>
+        <div className="mt-4 pt-4 border-t border-white/10 text-center text-xs text-white/50">
+          Designed by{" "}
+          <a
+            href="https://foundif.com"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#D4AF37] font-semibold hover:underline"
+          >
+            Foundif Innovations
+          </a>
         </div>
       </div>
     </footer>
