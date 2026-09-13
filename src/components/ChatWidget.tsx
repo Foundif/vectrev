@@ -79,8 +79,7 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close chat" : "Chat with VECTREV"}
-        className="fixed bottom-[156px] right-5 z-[60] h-14 w-14 rounded-full bg-accent text-white border-2 border-white shadow-card-premium flex items-center justify-center hover:opacity-90 transition"
-        style={{ marginBottom: "env(safe-area-inset-bottom)" }}
+        className="sticky-cta chat-fab fixed bottom-[156px] right-5 z-[60] h-14 w-14 rounded-full bg-accent text-white border-2 border-white shadow-soft flex items-center justify-center hover:opacity-90 transition"
       >
         {open ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
       </button>

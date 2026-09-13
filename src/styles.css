@@ -208,5 +208,8 @@ body.menu-open .sticky-cta { display: none !important; }
     right: 0.75rem !important;
     bottom: calc(0.9rem + env(safe-area-inset-bottom)) !important;
   }
-  body { padding-bottom: 6rem; }
+  .chat-fab {
+    right: 0.75rem !important;
+    bottom: calc(9.4rem + env(safe-area-inset-bottom)) !important;
+  }
 }
