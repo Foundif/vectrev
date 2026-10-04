@@ -167,7 +167,7 @@ function Hero() {
   const slide = heroSlides[idx];
   return (
     <section className="relative px-5 sm:px-8 pt-8 md:pt-14 pb-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-6 lg:gap-14 items-center">
         <motion.div
           initial="hidden"
           animate="show"
@@ -184,7 +184,7 @@ function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="mt-6 text-[2.4rem] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
+            className="mt-6 text-[clamp(1.6rem,7vw,2.4rem)] sm:text-5xl lg:text-[4.5rem] font-extrabold tracking-tight text-foreground leading-[1.15] sm:leading-[1.12] lg:leading-[1.08]"
           >
             <span className="block">{t("home.hero.title_line1")}</span>
             <span className="block">
@@ -220,7 +220,7 @@ function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-10 grid grid-cols-2 max-w-lg gap-6">
+          <motion.div variants={fadeUp} className="mt-8 sm:mt-10 grid grid-cols-2 max-w-lg gap-6">
             {[
               [t("home.hero.stat1_value"), t("home.hero.stat1_label")],
               [t("home.hero.stat2_value"), t("home.hero.stat2_label")],
